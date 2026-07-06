@@ -279,6 +279,26 @@ style quick_button_text:
 
 
 ################################################################################
+## Game global sfx, and bgms
+################################################################################
+
+# Set to 0.5 for 50% volume, 0.2 for 20%, etc.
+define audio.hover_sfx  = "audio/ui_sfx/hover.ogg"
+define audio.click_sfx  = "audio/ui_sfx/click.ogg"
+define audio.close_sfx  = "audio/ui_sfx/close.ogg"
+
+## ── Assign them to button styles globally ────────────────────────────────────
+
+init python:
+    style.button.hover_sound         = audio.hover_sfx
+    style.button.activate_sound      = audio.click_sfx
+    style.image_button.hover_sound    = audio.hover_sfx
+    style.image_button.activate_sound = audio.click_sfx
+    style.text_button.hover_sound     = audio.hover_sfx
+    style.text_button.activate_sound  = audio.click_sfx
+
+
+################################################################################
 ## Main and Game Menu Screens
 ################################################################################
 
@@ -286,6 +306,18 @@ style quick_button_text:
 ##
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
+
+## Customize starting transition
+init python:
+    class TransitionStart(Action, DictEquality):
+        def __init__(self, label="start", trans=None):
+            self.label = label
+            self.trans = trans
+
+        def __call__(self):
+            renpy.transition(self.trans, layer="screens")
+            renpy.jump_out_of_context(self.label)
+
 
 screen navigation():
 
@@ -299,7 +331,7 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Start") action TransitionStart(trans=eyeclose_slow)
 
         else:
 

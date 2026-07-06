@@ -41,17 +41,122 @@ transform flicker(rate=1,min=0.45,max=0.5):
     linear 0.1*rate alpha max
     repeat
 
+
+################################################################################
+## Positions
+################################################################################
+
+transform offscreenleft: #redefined to prevent weird stuff on closer shots
+    anchor (1.0,1.0)
+    xpos 0.0
+
+transform farleft:
+    anchor (0.5,1.0)
+    xpos 0.0
+
+transform left: # ^
+    anchor (0.5,1.0)
+    xpos 0.1
+
+transform leftish:
+    anchor (0.5,1.0)
+    xpos 0.25
+
+transform centerleft:
+    anchor (0.5,1.0)
+    xpos 0.4
+
+transform center: # ^
+    anchor (0.5,1.0)
+    xpos 0.5
+
+transform centerright:
+    anchor (0.5,1.0)
+    xpos 0.6
+
+transform rightish:
+    anchor (0.5,1.0)
+    xpos 0.75
+
+transform right: # ^
+    anchor (0.5,1.0)
+    xpos 0.9
+
+transform farright:
+    anchor (0.5,1.0)
+    xpos 1.0
+
+transform offscreenright: # ^
+    anchor (0.0,1.0)
+    xpos 1.0
+
+
+################################################################################
+## Movement between positions
+################################################################################
+
+transform walkto(location,steps=5,walktime=2.0,bounce=1,sway=1):
+    parallel:
+        ease walktime location
+    parallel:
+        linear walktime/(steps*2) yoffset -10*bounce
+        linear walktime/(steps*2) yoffset 0
+        repeat steps
+    parallel:
+        linear walktime/(steps*4) rotate -sway
+        linear walktime/(steps*2) rotate sway
+        linear walktime/(steps*4) rotate 0
+        repeat steps
+
+transform leapto(location,windup=1,power=1,airtime=1):
+    ease windup yoffset 10*windup
+    parallel:
+        easein 0.4*airtime yoffset -100*power
+        easeout 0.4*airtime yoffset 0
+        easein_circ 0.1*airtime yoffset 10*power
+        ease 0.1*airtime yoffset 0
+    parallel:
+        easein airtime location
+
 transform fast_moveoutright:
     yalign 0.5
     easeout 0.5 xalign 1.5
 
+transform slow_moveoutright:
+    yalign 0.5
+    easeout 1.0 xalign 1.5
+
 transform slide_in_left:
     xpos -0.5 xanchor 1.0
     yalign 1.0
-    ease 1.5 xpos 0.55 xanchor 0.5
+    ease 1.5 xpos 0.5 xanchor 0.5
     ease 0.15 xpos 0.5
 
+transform slide_in_right:
+    xpos 1.5 xanchor 1.0
+    yalign 1.0
+    ease 1.0 xpos 0.5 xanchor 0.5
 
+transform enter_from_left_to_center:
+    xpos -0.5 
+    xanchor 0.5
+    yalign 1.0
+    ease 1.5 xpos 0.5
+
+transform slow_enter_from_left_to_center:
+    xpos -0.5 
+    xanchor 0.5
+    yalign 1.0
+    ease 2.5 xpos 0.5
+
+transform enter_from_right_to_center:
+    xpos 1.5 
+    xanchor 0.5
+    yalign 1.0
+    ease 1.5 xpos 0.5
+
+
+## Other transforms
 transform zoom_to(target_x, target_y, zoom_level=2.0):
     xanchor target_x
     yanchor target_y

@@ -38,6 +38,7 @@ define gui.about = _p("""
 ## or semicolons.
 
 define build.name = "toxic_yuri_vn"
+define gui.show_name = False
 
 
 ## Sounds and music ############################################################
@@ -120,7 +121,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 35
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0
@@ -207,3 +208,14 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+
+### Customized cursor
+init python:
+    config.mouse = { }
+    
+    # Standard Pointer (Arrow)
+    config.mouse['default'] = [ ( "gui/custom_cursor/PinkArrow.png", 0, 0) ]
+    
+    # Hover State (Sparkle) - Use this when hovering over houses/buttons
+    config.mouse['button'] = [ ( "gui/custom_cursor/Flower-Select.png", 0, 0) ]
