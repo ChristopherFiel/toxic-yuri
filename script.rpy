@@ -51,6 +51,7 @@ label start:
     with dissolve
     
     $ quick_menu= True
+    $ time_of_day = 'RAIN'
     scene bg abandoned house with eyeopen
     pause 2.0
     scene black with eyeclose_slow
@@ -65,7 +66,7 @@ label start:
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
     h_unknown "We can live together forever now, just the two us"
     scene black with eyeclose
-    scene abandoned house with eyeopen
+    scene bg abandoned house with eyeopen
     show holly with dissolve:        
         center
         medlong
@@ -73,7 +74,7 @@ label start:
     h_unknown "You couldn't hide from your true self, so now I'm setting you free"
     h_unknown "I know deep down inside you also want this to happen…"
     scene black with eyeclose
-    scene abandoned house with eyeopen
+    scene bg abandoned house with eyeopen
     show holly with dissolve:        
         center
         medclose
@@ -89,6 +90,7 @@ label start:
     stop sound fadeout 1.0
 
     play music "audio/ambience/morning_ambience.ogg" fadein 3.0
+    $ time_of_day = 'DAY'
     scene bg bed top view with eyeopen_slow
     show lily with dissolve
     l "What a fucking weird dream!"
@@ -97,7 +99,7 @@ label start:
     l "I’m gonna be late"
     stop music fadeout 2.0
     show lily at fast_moveoutright
-    scene black with wiperight
+    scene black with wiperight_medium
     play sound "audio/sfx/running.ogg"
     l "Comiiiiing!"
     pause 2.0
@@ -107,12 +109,16 @@ label start:
 
 label bus_scene_day_1:
     scene bg bus interior with wiperight
-    show lily at slide_in_left
+    show lily at slide_in_left, fall_and_recover(height=400, fall_time=0.5, ground_time=1.5, recover_time=0.6)
     play sound "audio/sfx/fall_down.ogg"
+    pause 3.6
+    
     l "OOOOUCCCCCHH!"
-    l "This whole town sucks!"
-    l "I’ve been living here for 16 years, and nothing's changed"
-    l "Ever since my father died..."
+    play music "audio/ambience/road ambiance.ogg" fadein 2.0
+    l "I hate this morning already"
+    l "School sucks"
+    l "Everything here sucks"
+    l "I've been living in this town for 16 years and nothing changed..."
     l "This town became so dull, and boring"
     l "The streets, buildings, the people seems to follow something nobody wants to change"
     l "Every eyes seems to be staring at me... "

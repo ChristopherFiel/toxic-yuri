@@ -129,13 +129,15 @@ transform slow_moveoutright:
 transform slide_in_left:
     xpos -0.5 xanchor 1.0
     yalign 1.0
-    ease 1.5 xpos 0.5 xanchor 0.5
+    ease 1.5 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
 
 transform slide_in_right:
     xpos 1.5 xanchor 1.0
     yalign 1.0
-    ease 1.0 xpos 0.5 xanchor 0.5
+    ease 1.0 xpos 0.55 xanchor 0.5
+    ease 0.15 xpos 0.5
+
 
 transform enter_from_left_to_center:
     xpos -0.5 
@@ -167,6 +169,18 @@ transform zoom_to(target_x, target_y, zoom_level=2.0):
 transform pan_to(target_x, target_y, zoom_level=1.8, dur=1.0):
     linear dur xanchor target_x yanchor target_y xpos target_x ypos target_y zoom zoom_level
 
+define wipeleft_fast   = CropMove(0.25, "wipeleft")
+define wipeleft_medium = CropMove(0.50, "wipeleft")
+define wiperight_fast   = CropMove(0.25, "wiperight")
+define wiperight_medium = CropMove(0.50, "wiperight")
+
+transform fall_and_recover(height=400, fall_time=0.5, ground_time=1.0, recover_time=0.6, recover_offset=50):
+    anchor (0.5, 1.0)
+    yoffset 0
+    rotate 0
+    easein fall_time yoffset height rotate 90
+    linear ground_time yoffset height rotate 90
+    easeout recover_time yoffset recover_offset rotate 0
 
 transform frantic_shake:
     subpixel True
@@ -187,7 +201,6 @@ transform frantic_shake:
         choice:
             linear 0.05 xoffset -12 yoffset -22 blur 12
         repeat
-
 
 transform shake_settle(t=3.0):
     subpixel True
