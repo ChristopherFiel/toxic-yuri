@@ -5,6 +5,12 @@
 
 define scale = 1.0
 
+transform toleft:
+    xzoom 1
+
+transform toright:
+    xzoom -1
+
 transform full:
     ypos 1.0
     zoom 1/scale
@@ -46,7 +52,7 @@ transform flicker(rate=1,min=0.45,max=0.5):
 ## Positions
 ################################################################################
 
-transform offscreenleft: #redefined to prevent weird stuff on closer shots
+transform offscreenleft: 
     anchor (1.0,1.0)
     xpos 0.0
 
@@ -124,7 +130,11 @@ transform fast_moveoutright:
 
 transform slow_moveoutright:
     yalign 0.5
-    easeout 1.0 xalign 1.5
+    easeout 1.0 xalign 2.0
+
+transform slow_moveoutleft:
+    yalign 0.5
+    easeout 1.0 xalign -1.0
 
 transform slide_in_left:
     xpos -0.5 xanchor 1.0
@@ -137,7 +147,6 @@ transform slide_in_right:
     yalign 1.0
     ease 1.0 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
-
 
 transform enter_from_left_to_center:
     xpos -0.5 
@@ -156,6 +165,18 @@ transform enter_from_right_to_center:
     xanchor 0.5
     yalign 1.0
     ease 1.5 xpos 0.5
+
+transform enter_from_right_slow(target_x=0.5, dur=2.5):
+    xpos 1.5
+    xanchor 0.5
+    yalign 1.0
+    ease dur xpos target_x
+
+transform enter_from_left_to_leftish(target_x=0.25, dur=1.5):
+    xpos -0.5
+    xanchor 0.25
+    yalign 1.0
+    ease dur xpos target_x
 
 
 ## Other transforms

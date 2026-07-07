@@ -112,7 +112,7 @@ label bus_scene_day_1:
     show lily at slide_in_left, fall_and_recover(height=400, fall_time=0.5, ground_time=1.5, recover_time=0.6)
     play sound "audio/sfx/fall_down.ogg"
     pause 3.6
-    
+
     l "OOOOUCCCCCHH!"
     play music "audio/ambience/road ambiance.ogg" fadein 2.0
     l "I hate this morning already"
@@ -165,11 +165,13 @@ label bus_scene_day_1:
     l_nvl "Anyways I gotta go to school now urgh. So lame. Talk to you later!" 
     h_nvl "it wasn't a joke. see you soon 👋"
     nvl clear
-
+    stop music fadeout 2.0
     play sound "audio/sfx/bus stopping.ogg"
     l "What does she mean by that..."
     l "Whatever there's no way she'll go to a place like this"
+    pause 1.0
     show lily at slow_moveoutright
+    stop sound
     scene black with wiperight
     hide lily
     jump school_day_1
@@ -177,7 +179,8 @@ label bus_scene_day_1:
 
 label school_day_1:
     scene bg classroom with wiperight
-
+    pause 2.0
+    
     s1 "Have you heard the news?"
     s2 "What news?"
     s3 "There's a new transfer student"
@@ -195,15 +198,15 @@ label school_day_1:
     show teacher at fast_moveoutright
     show school_girl_1 at enter_from_right_to_center
     pause 1.0
-    s1 "blabla"
+    s1 "Hellooo...."
     show school_girl_1 at fast_moveoutright
     show school_girl_2 at enter_from_right_to_center
     pause 1.0
-    s2 "blabla"
+    s2 "What's up..."
     show school_girl_2 at fast_moveoutright
     show school_girl_3 at enter_from_right_to_center
     pause 1.0
-    s3 "blabla"
+    s3 "...Rememeber my name..."
     show school_girl_3 at fast_moveoutright
     scene black with fade
     scene bg classroom with dissolve
@@ -217,7 +220,80 @@ label school_day_1:
     pause 1.0
     show teacher at slow_enter_from_left_to_center
     pause 1.5
-    t "alright that's it for our first day of cla--"
-    t "Oh wait nevermind… we have a new student she transfer from another city"
+    t "alright that's it for our first day of class"
+    t "Oh wait nevermind we have a new student she transfered from another city"
+    show teacher at slow_moveoutleft
 
+    show holly:
+        full
+        toleft
+        enter_from_right_slow(0.5, 2.5)
+    pause 3.0
+    h "My name is... my name Holly and for this year I want to have..." 
+    show holly:
+        medlong
+        center
+    h "I WANT WX_YuriZ TO BE MINE, AND ONLY MINE!!!"
+    show holly:
+        medium
+        center
+    h "I LOVE YOU WX_YuriZ I'VE COME HERE JUST TO BE WITH YOU" 
+    h "I FUCKING LOVE YOOOOOOOOOOOUUUUUUUUUU WX_YuriZ"
+    show holly:
+        full
+        toleft
+        ease 1.0 xpos 0.9
+    show lily:
+        full
+        toright
+        enter_from_left_to_leftish(0.1, 1.5)
+    pause 1.5
+    h "Aren't you happy to see me?"
+
+    l "What is she doing wait... no way..."
+    l "Wha-what should I say?"
+    menu first_meet:
+        "Wha-what should I say?"
+        "Who-who are you talking to":
+            l "Who-who are you talking to"
+            l "There's no girl named WX_YuriZ"
+            l "what a du-dumb name..."
+        "N-n-no way are you holl–":
+            l "I-is this reall..."
+            l "N-n-no way are you holl–"
+    
+    play sound "audio/sfx/school bell.ogg"
+    show teacher:
+        full
+        slide_in_left
+    show holly:
+        full
+        toleft
+        easeout 1.0 xpos 1.5 xanchor 0.5
+    t "What the hell is wrong with you! get out of this room and come to my office NOW! "
+    show teacher:
+        full
+        fast_moveoutright
+    s1 "What a weirdo, what is she even wearing"
+    s2 "Oh God, what an entrance I hate her already"
+    s3 "Her face makes me sick, I hope I’ll never get close to her for the whole year"
+    s4 "Oh my, what a brave confession so romantic hihi"
+    s5 "Uh who’s WX_YuriZ…"
+    s5 "Sick name!"
+    l "Huh??? Who the hell is that girl? how does she know my name?" 
+    l "If she's really her, then..."
+    l "This is bad I can't let anyone know that name"
+    l "what do I do?"
+    menu holly_chase:
+        "what do I do?"
+        "Choice 1":
+            #block of code to run
+        "Choice 2":
+            #block of code to run
+            
+    
+
+
+
+        
 
