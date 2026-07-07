@@ -253,15 +253,26 @@ label school_day_1:
 
     l "What is she doing wait... no way..."
     l "Wha-what should I say?"
+    "The choices you make affects the story of the game choose carefully"
+
     menu first_meet:
         "Wha-what should I say?"
         "Who-who are you talking to":
+            $ renpy.notify("Holly's Affection 💔")
             l "Who-who are you talking to"
             l "There's no girl named WX_YuriZ"
             l "what a du-dumb name..."
+            h "Is that so?"
+            h "Looks like my effort to get here are wasted how sad..."
         "N-n-no way are you holl–":
+            $ renpy.notify("Holly's Affection 💖")
             l "I-is this reall..."
             l "N-n-no way are you holl–"
+            h "How nice you noticed me"
+            h "I thought you're going to pretend"
+            l "but why?"
+            l "I won't be your friend here..."
+            h "what do you mea--"
     
     play sound "audio/sfx/school bell.ogg"
     show teacher:
@@ -285,30 +296,213 @@ label school_day_1:
     l "If she's really her, then..."
     l "This is bad I can't let anyone know that name"
     l "what do I do?"
-    "The choices you make affects the ending of the game choose carefully"
     menu holly_chase:
         "what do I do?"
         "Follow Holly":
+            $ renpy.notify("Holly's Affection 💖")
             l "Is she really who am talking to?"
             l "I need to find out..."
+            show lily at slow_moveoutright
+            scene black with fade
             jump school_office_day_1
         "Ignore":
             $ renpy.notify("Holly's Affection 💔")
             l "She must be referring to someone"
             l "There's a lot of people named Yuri out there"
-            l "Calm down, I will not get exposed..."
-            jump evening_day_1
+            l "Calm down, I will not get exposed today..."
+            show lily at slow_moveoutright
             scene black with fade
+            jump evening_day_1
             
 
 label school_office_day_1:
     scene bg school office
     l "I'll do this later"
-    
+
+
 label evening_day_1:
     scene bg Lily bedroom with dissolve
+    play music "audio/ambience/night ambiance.ogg" fadein 2.0
+
+    show lily:
+        full
+        left
+    l "*huff...* Is this for real? What is going on? could she really be h0lly_m0lly?"
+    show lily:
+        full
+        ease 1.0 xpos 0.9
+    l "Holy... Moly!"
+    show lily:
+        full
+        ease 1.0 xpos 0.1
+    l "No way.... No way... No way... this is bad"
+    show lily:
+        full
+        ease 1.0 xpos 0.9
+    l "She'll... she'll destroy my image in no time"
+    show lily:
+        full
+        ease 1.0 xpos 0.1
+    l "I can't live like that, what will I do?"
+    play sound "audio/sfx/phone notification.ogg"
+    show lily:
+        full
+        ease 1.0 xpos 0.7
+    l "Is that her?"
+    h_nvl "Good evening yuri, you looked so cute IRL <3"
+    h_nvl "Why are you ignoring me?"
+    h_nvl "Acting like you didn’t know me I thought we are friend"
+    h_nvl "You haven’t answered my question earlier"
+    h_nvl "Aren’t you happy to see me?"
+
+    menu (nvl=True):
+        "Are you really Holly?":
+            $ renpy.notify("Holly's Affection 💖")
+            l_nvl "Are you really Holly?"
+            l_nvl "You must be joking right?"
+            h_nvl "Yes I'am"
+            h_nvl "you want me to shout your name again tomorrow"
+            l_nvl "How can you do this?"
+        "Why would you this?":
+            $ renpy.notify("Holly's Affection 💔")
+            l_nvl "Why would you this?"
+            l_nvl "are you out of of your mind"
+            l_nvl "We only knew each other online"
+            l_nvl "How can you do this?"
+            h_nvl "Are my feelings not enough to do this?"
+    h_nvl "anyways... can you just anwer my question"
+    h_nvl "are you happy to see me 🥺"
+    menu (nvl=True):
+        "No":
+            $ renpy.notify("Holly's Affection 💔")
+            l_nvl "are you serious?"
+            l_nvl "no way"
+            l_nvl "I'm more scared, than happy"
+            h_nvl "HOW RUDE!!! "
+            h_nvl "I'VE COME THIS WAY JUST FOR YOU"
+            h_nvl "AND THIS IS HOW YOU'LL TREAT ME"
+            l_nvl "I am scared that you'll justt"
+            l_nvl "throw away my secrets"
+            l_nvl "I won't let you destroy my image"
+        "Yes":
+            $ renpy.notify("Holly's Affection 💖")
+            l_nvl "Yes"
+            h_nvl "Awwwwwwwww"
+            h_nvl "I'm happy to hear that, I'm gonna cry 🥺"
+            h_nvl "I'm also very happy to finally see you IRL 💖"
+            l_nvl "But not this way!!"
+            l_nvl "I can't let you just"
+            l_nvl "throw away my secrets"
+            l_nvl "I won't let you do that"
+    h_nvl "Too bad, it's too late for that now"
+    l_nvl "What do you want anyway?"
+    h_nvl "Why do you keep denying me, when I’ve come so far just to be with you :<"
+    h_nvl "aren't we..."
+    h_nvl "friends"
+    l_nvl "We are friends, not like this"
+    l_nvl "this is too far, I don't like this"
+    h_nvl "what are you hiding anyways?"
+    h_nvl "what are you afraid of?"
+    h_nvl "Oh see... so that's how it is"
+    h_nvl "I understand it now you're closeted, aren’t you?"
+    h_nvl "With the way you act"
+    h_nvl "the way you speak"
+    h_nvl "nobody here knows the real you"
+    h_nvl "right?"
+    h_nvl "The lily I know the real Lily"
+    l_nvl "stop it!"
+    h_nvl "I know how much you hated this place"
+    h_nvl "but don’t worry I’m here now I’ll save you"
+    h_nvl "I wonder what will happen if everyone here will know"
+    l_nvl "stop it!"
+    l_nvl "stop it!"
+    l_nvl "stop it!"
+    menu (nvl=True):
+        "Please stop this, I’ll do anything":
+            $ renpy.notify("Holly's Affection 💖")
+            l_nvl "please stop what you're about to do"
+            l_nvl "I'll do anything"
+        "Just tell me what you wan":
+            $ renpy.notify("Holly's Affection 💖")
+            l_nvl "Just tell me what you want"
+            l_nvl "Just don't expose me"
+            l_nvl "I'll do anything"
+    h_nvl "GO OUT WITH ME"
+    h_nvl "DO THE THINGS YOU SAID YOU WANT TO DO WITH ME" 
+    h_nvl "BE THE REAL LILY WITH ME"
+    l_nvl "I can’t believe you’re doing this, I thought you understand me"
+    l_nvl "I thought we are friends"
+    h_nvl "Yes I do, this is why I’m doing this! to save youuuuuuuu"
+    l_nvl "You really leave me no choice…"
+    h_nvl "see you after school tomorrow hihi <3"
+    h_nvl "Good night XOXO"
+    nvl clear
+
+    l "What did I set myself up to?"
+    l "I’m so tired there’s a lot of things that happened today… I wish I could just escape"
+    stop music fadeout 1.0
+    scene black with eyeclose_slow
+    pause 1.0
+    jump lily_monologue
 
 
+label lily_monologue:
+    scene black
+    pause 1.0
 
+    python:
+        lily_lines = [
+            "Lilly…",
+            "What are you doing?",
+            "Lily!",
+            "stop doing that, you're not a boy!",
+            "Lily",
+            "Stop wearing your father's army uniform that's for boys",
+            "Lily",
+            "Here play with this dolls instead drop that toy gun, that's not a for girls",
+            "Lily",
+            "Watch your mouth! girls never says bad words",
+            "Lily",
+            "This is not how I expect a girl like you should behave",
+            "Lily?",
+            "can you just be a normal girl",
+            "I'm so disappointed you grew up like this",
+            "I can't believe I raised a freak like you, I failed as your mother…",
+            "I'm sorry",
+            "Lily"
+        ]
+
+        for line in lily_lines:
+            txt = Text(line, xalign=0.5, yalign=0.5, xsize=900, text_align=0.5,
+                    color="#ffffff", size=62, outlines=[(2, "#000000", 0, 0)])
+            renpy.show("water_line", what=txt, at_list=[water_in], zorder=100)
+            renpy.pause(0.9, hard=False)
+            renpy.pause(get_line_pause(line), hard=False)
+            renpy.show("water_line", what=txt, at_list=[water_out], zorder=100)
+            renpy.pause(0.7, hard=False)
+            renpy.hide("water_line")
+            renpy.pause(0.3, hard=False)
+
+    stop music fadeout 1.0
+    jump morning_day_2
+
+
+label morning_day_2:
+    play sound "audio/sfx/alarm_beep.ogg"
+    pause 5.0
+    stop sound fadeout 1.0
+
+    play music "audio/ambience/morning_ambience.ogg" fadein 3.0
+    scene bg bed top view with eyeopen_slow
+    show lily with dissolve
+    l "Faaaaaaahh"
+    l "If you are seeing this Can you edit a bit some of the text"
+    l "Some of the dialogues are a bit too cheesy, unrealistic, and doesn't sound right"
+    l "Here's a menu so you can just skip without returning to menu"
+    menu optional_name:
+        "Say Statement"
+        "Choice 1":
+            "fahhhhh"
+        "Choice 2":
+            "haaaahhh"
         
-

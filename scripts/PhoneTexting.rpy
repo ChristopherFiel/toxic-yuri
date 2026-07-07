@@ -80,7 +80,7 @@ screen nvl_phonetext(dialogue):
             text d.what:
                     xpos -335
                     ypos 0.0
-                    xsize 350
+                    xsize 360
                     text_align 0.5
                     italic True
                     size 28
@@ -123,7 +123,7 @@ screen nvl_phonetext(dialogue):
                         
 
                         background Frame(message_frame, 23,23,23,23)
-                        xsize 350
+                        xsize 360
 
                         if d.current:
                             if d.who == MC_Name:
@@ -133,7 +133,7 @@ screen nvl_phonetext(dialogue):
 
                         text d.what:
                             pos (0,0)
-                            xsize 350
+                            xsize 360
                             slow_cps False
                             
 
@@ -148,6 +148,44 @@ screen nvl_phonetext(dialogue):
                             id d.what_id
         $ previous_d_who = d.who
                     
+screen nvl_choice(dialogue, items=None):
+    style_prefix "phoneFrame"
+    zorder 100
+
+    frame at phone_transform(phone_position_x, phone_position_y):
+        viewport:
+            draggable True
+            mousewheel True
+            yinitial 1.0
+            vbox:
+                null height 20
+                use nvl_phonetext(dialogue)
+
+                if items:
+                    null height 20
+                    vbox:
+                        style_prefix "phoneChoice"
+                        xalign 0.5
+                        spacing 10
+
+                        for i, item in enumerate(items):
+                            button:
+                                action item.action
+                                sensitive item.action is not None
+                                at (message_appear(1) if item.action else message_appear(0))
+
+                                idle_background Frame("gui/button/choice_idle_background.png", 23, 23, 23, 23)
+                                hover_background Frame("gui/button/choice_hover_background.png", 23, 23, 23, 23)
+                                padding (20, 20)
+                                xsize 400
+
+                                text item.caption:
+                                    text_align 0.5
+                                    color "#FFF"
+                                    size 26
+
+                null height 100
+
 style phoneFrame is default
 
 style phoneFrame_frame:
@@ -167,4 +205,12 @@ style phoneFrame_vbox:
     spacing 10
     xfill True
 
+style phoneChoice_frame:
+    xfill True
+    yoffset -20
 
+style phoneChoice_viewport:
+    xfill True
+
+style phoneChoice_button_text:
+    text_align 0.5

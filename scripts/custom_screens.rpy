@@ -45,20 +45,41 @@ screen press_to_continue():
         color "#ffffff"
 
 
-screen infinite_scream():
-    zorder 50
-    default a_str = ""
-
-    # cps ≈ 10
-    timer 0.10 repeat True action SetScreenVariable("a_str", a_str + "A")
-
-    python:
-        _full  = "WA" + a_str + "A"
-        _cpl   = 16   # characters per line — increase if text wraps too early,
-        _lines = [ _full[i : i + _cpl] for i in range(0, len(_full), _cpl) ]
-        _wrapped = "\n".join(_lines)
-
-    text "{font=Midnightconstellations-YLgo.ttf}{size=160}[_wrapped]{/size}{/font}":
+## Dream Scene Custom Screens
+screen centered_line(line_text):
+    zorder 100
+    text line_text:
         xalign 0.5
         yalign 0.5
+        xsize 900
         text_align 0.5
+        color "#ffffff"
+        size 34
+        font "gui/fonts/cmunorm.ttf"
+        outlines [(2, "#000000", 0, 0)]
+
+transform water_in:
+    alpha 0.0
+    blur 12.0
+    yoffset 8
+    parallel:
+        ease 0.9 alpha 1.0
+    parallel:
+        ease 0.9 blur 0.0
+    parallel:
+        ease 0.9 yoffset 0
+
+transform water_out:
+    alpha 1.0
+    blur 0.0
+    parallel:
+        ease 0.7 alpha 0.0
+    parallel:
+        ease 0.7 blur 14.0
+    parallel:
+        ease 0.7 yoffset -8
+
+init python:
+    def get_line_pause(text_line, min_pause=1.0, max_pause=3.0, chars_per_sec=18.0):
+        duration = len(text_line) / chars_per_sec
+        return max(min_pause, min(max_pause, duration))

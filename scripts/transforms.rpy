@@ -100,21 +100,6 @@ transform offscreenright: # ^
 ################################################################################
 ## Movement between positions
 ################################################################################
-
-transform walkto(location,steps=5,walktime=2.0,bounce=1,sway=1):
-    parallel:
-        ease walktime location
-    parallel:
-        linear walktime/(steps*2) yoffset -10*bounce
-        linear walktime/(steps*2) yoffset 0
-        repeat steps
-    parallel:
-        linear walktime/(steps*4) rotate -sway
-        linear walktime/(steps*2) rotate sway
-        linear walktime/(steps*4) rotate 0
-        repeat steps
-
-transform leapto(location,windup=1,power=1,airtime=1):
     ease windup yoffset 10*windup
     parallel:
         easein 0.4*airtime yoffset -100*power

@@ -290,12 +290,8 @@ define audio.close_sfx  = "audio/ui_sfx/close.ogg"
 ## ── Assign them to button styles globally ────────────────────────────────────
 
 init python:
-    style.button.hover_sound         = audio.hover_sfx
-    style.button.activate_sound      = audio.click_sfx
-    style.image_button.hover_sound    = audio.hover_sfx
-    style.image_button.activate_sound = audio.click_sfx
-    style.text_button.hover_sound     = audio.hover_sfx
-    style.text_button.activate_sound  = audio.click_sfx
+    style.default.hover_sound    = audio.hover_sfx
+    style.default.activate_sound = audio.click_sfx
 
 
 ################################################################################
