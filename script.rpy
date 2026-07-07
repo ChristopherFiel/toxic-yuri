@@ -181,6 +181,7 @@ label school_day_1:
     scene bg classroom with wiperight
     pause 2.0
     
+    play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.5
     s1 "Have you heard the news?"
     s2 "What news?"
     s3 "There's a new transfer student"
@@ -278,20 +279,34 @@ label school_day_1:
     s2 "Oh God, what an entrance I hate her already"
     s3 "Her face makes me sick, I hope I’ll never get close to her for the whole year"
     s4 "Oh my, what a brave confession so romantic hihi"
-    s5 "Uh who’s WX_YuriZ…"
+    s5 "Uh... who’s WX_Yuri"
     s5 "Sick name!"
-    l "Huh??? Who the hell is that girl? how does she know my name?" 
+    l "Huh??? Who the is that girl? how does she know my name?" 
     l "If she's really her, then..."
     l "This is bad I can't let anyone know that name"
     l "what do I do?"
+    "The choices you make affects the ending of the game choose carefully"
     menu holly_chase:
         "what do I do?"
-        "Choice 1":
-            #block of code to run
-        "Choice 2":
-            #block of code to run
+        "Follow Holly":
+            l "Is she really who am talking to?"
+            l "I need to find out..."
+            jump school_office_day_1
+        "Ignore":
+            $ renpy.notify("Holly's Affection 💔")
+            l "She must be referring to someone"
+            l "There's a lot of people named Yuri out there"
+            l "Calm down, I will not get exposed..."
+            jump evening_day_1
+            scene black with fade
             
+
+label school_office_day_1:
+    scene bg school office
+    l "I'll do this later"
     
+label evening_day_1:
+    scene bg Lily bedroom with dissolve
 
 
 
