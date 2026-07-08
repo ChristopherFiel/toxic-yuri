@@ -3,7 +3,7 @@
 ## This work is licensed under Creative Commons Attribution 4.0 International ##
 ## https://creativecommons.org/licenses/by/4.0/ ################################
 
-define scale = 1.0
+define scale = 0.909  # ~10% larger across all shots (1/1.1)
 
 transform toleft:
     xzoom 1
@@ -54,65 +54,53 @@ transform flicker(rate=1,min=0.45,max=0.5):
 
 transform offscreenleft:
     anchor (1.0, 1.0)
-    zoom 1.1
     xpos 0.0
 
 transform farleft:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.0
 
 transform left:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.1
 
 transform leftish:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.25
 
 transform centerleft:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.4
 
 transform center:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.5
 
 transform center_upper:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.5
     yanchor 1.0
     ypos 1.0
     yoffset -400
 
 transform centerright:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.6
 
 transform rightish:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.75
 
 transform right:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 0.9
 
 transform farright:
-    anchor (0.59, 1.0)
-    zoom 1.1
+    anchor (0.55, 1.0)
     xpos 1.0
 
 transform offscreenright:
     anchor (0.0, 1.0)
-    zoom 1.1
     xpos 1.0
 
 ################################################################################
@@ -231,3 +219,67 @@ transform shake_settle(t=3.0):
     xoffset 20 yoffset -20 blur 10
     easeout t xoffset 0 yoffset 0 blur 0
 
+### ADJUSTED MOVEMENT
+# transform fast_moveoutright:
+#     yalign 0.5
+#     zoom 1.1
+#     easeout 0.5 xalign 1.5
+
+# transform slow_moveoutright:
+#     yalign 0.5
+#     zoom 1.1
+#     easeout 1.0 xalign 2.0
+
+# transform slow_moveoutleft:
+#     yalign 0.5
+#     zoom 1.1
+#     easeout 1.0 xalign -1.0
+
+# transform slide_in_left:
+#     xpos -0.5 xanchor 1.0
+#     yalign 1.0
+#     zoom 1.1
+#     ease 1.5 xpos 0.59 xanchor 0.59
+#     ease 0.15 xpos 0.5
+
+# transform slide_in_right:
+#     xpos 1.5 xanchor 1.0
+#     yalign 1.0
+#     zoom 1.1
+#     ease 1.0 xpos 0.59 xanchor 0.59
+#     ease 0.15 xpos 0.5
+
+# transform enter_from_left_to_center:
+#     xpos -0.5
+#     xanchor 0.59
+#     yalign 1.0
+#     zoom 1.1
+#     ease 1.5 xpos 0.5
+
+# transform slow_enter_from_left_to_center:
+#     xpos -0.5
+#     xanchor 0.59
+#     yalign 1.0
+#     zoom 1.1
+#     ease 2.5 xpos 0.5
+
+# transform enter_from_right_to_center:
+#     xpos 1.5
+#     xanchor 0.59
+#     yalign 1.0
+#     zoom 1.1
+#     ease 1.5 xpos 0.5
+
+# transform enter_from_right_slow(target_x=0.5, dur=2.5):
+#     xpos 1.5
+#     xanchor 0.59
+#     yalign 1.0
+#     zoom 1.1
+#     ease dur xpos target_x
+
+# transform enter_from_left_to_leftish(target_x=0.25, dur=1.5):
+#     xpos -0.5
+#     xanchor 0.59
+#     yalign 1.0
+#     zoom 1.1
+#     ease dur xpos target_x
