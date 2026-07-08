@@ -1,6 +1,6 @@
 # Flags are here
 default holly_affection = 0
-default lily_courage = 0
+default holly_nickname = "Lily"
 
 
 # NVL characters are used for the phone texting
@@ -454,6 +454,7 @@ label evening_day_1:
 
 label lily_monologue:
     scene black
+    play music "audio/bgm/dream.ogg" fadein 2.0
     pause 1.0
 
     python:
@@ -500,15 +501,123 @@ label morning_day_2:
 
     play music "audio/ambience/morning_ambience.ogg" fadein 3.0
     scene bg bed top view with eyeopen_slow
-    show lily_here with dissolve
-    l "Faaaaaaahh"
-    l "If you are seeing this Can you edit a bit some of the text"
-    l "Some of the dialogues are a bit too cheesy, unrealistic, and doesn't sound right"
-    l "Here's a menu so you can just skip without returning to menu"
-    menu optional_name:
-        "Say Statement"
-        "Choice 1":
-            "fahhhhh"
-        "Choice 2":
-            "haaaahhh"
-        
+    show lily_here:
+        full
+        center
+    l "what's happening to me?"
+    l "all these weird dreams... I've had recently"
+    l "wha-what do they mean?"
+    l "please make it stop..."
+    play sound "audio/sfx/phone notification.ogg"
+    show lily_here at centerright with ease
+    
+    h_nvl "Good morning my Yuri (emojis)"
+    l_nvl "gm"
+    h_nvl "Why are you so cold to me Lily?"
+    h_nvl "Oppsss I forgot you're my girlfriend now"
+    h_nvl "Yippie"
+    h_nvl "*sent GIF*"
+    h_nvl "I should call you something else now"
+    h_nvl "What do you like???"
+    h_nvl "how about…"
+
+    # --- Holly floods the chat, auto-advancing without clicks ---
+    $ _old_afm_enable = _preferences.afm_enable
+    $ _old_afm_time = _preferences.afm_time
+    $ _preferences.afm_enable = True
+    $ _preferences.afm_time = 2
+
+    h_nvl "babe"
+    h_nvl "babyyyyy"
+    h_nvl "sweetheart"
+    h_nvl "my lovely lilllyyyy <3"
+    h_nvl "Blossom"
+    h_nvl "Snowflake"
+    h_nvl "Sunflower"
+    h_nvl "My World"
+    h_nvl "Shining Star"
+
+    # restore normal click-to-continue
+    $ _preferences.afm_enable = _old_afm_enable
+    $ _preferences.afm_time = _old_afm_time
+    # --- end flood ---
+
+    menu (nvl=True):
+        "Just call me by name":
+            $ holly_affection -= 1
+            $ holly_nickname = "Lovely Lily"
+            l_nvl "No you don't just call me by my name"
+            l_nvl "you're so cring you know"
+            l_nvl "I'm not yours just so you know"
+            h_nvl "So you don't like any of it huh?"
+            h_nvl "boriiiiiiiing…"
+            h_nvl "I'll pick one for you, how about..."
+            h_nvl "Lovely Lily"
+            h_nvl "Isn't cute?"
+            h_nvl "See you later"
+            h_nvl "My lovely Lily"
+
+        "Blossom":
+            $ holly_affection += 1
+            $ holly_nickname = "Blossom"
+            l_nvl "I dont mind being called blossom"
+            l_nvl "It's cute too"
+            h_nvl "YESSSSSSSSS!"
+            h_nvl "it sounds so cute, my heart is about to explode <3"
+            l_nvl "nothing wrong with calling a friend that"
+            h_nvl "Yeah... Right"
+            h_nvl "see you later, my Blossom"
+
+        "Shining Star":
+            $ holly_affection += 2
+            $ holly_nickname = "Shining Star"
+            l_nvl "I want to be your Shining star"
+            l_nvl "It's cute and funny"
+            l_nvl "I guess friends can call each other like that"
+            h_nvl "Yeah, obviously"
+            h_nvl "I love it, its so cuteeee my haaarrrt"
+            h_nvl "see you later, my shining star"
+
+        "Lovely Lily":
+            $ holly_affection += 3
+            $ holly_nickname = "Lovely Lily"
+            l_nvl "I want to be called Lovely"
+            l_nvl "No one's ever called me like that"
+            l_nvl "We're friends anyways so I guess..."
+            l_nvl "It's alright"
+            h_nvl "Yaaaaaaassss"
+            h_nvl "I was hoping you choose that"
+            h_nvl "I love that nickname"
+            h_nvl "I love it"
+            h_nvl "I love it"
+            h_nvl "I love it, my heart is about to explode"
+            h_nvl "See you later my Lovely Lily"
+    nvl clear
+    stop music
+    l "When will she stop"
+    l "I can't take this anymore..."
+    l "What is she planning to do?"
+    l "I guess I need to play along for now"
+    play sound "audio/sfx/bus_horn.ogg"
+    l "Commiinng"
+    stop music fadeout 2.0
+    show lily_here at fast_moveoutright
+    scene black with wiperight_medium
+    play sound "audio/sfx/running.ogg"
+    stop sound
+    
+    jump school_day_2
+
+
+label school_day_2:
+    scene black with wiperight
+    pause 2.0    
+    scene bg classroom with dissolve
+    stop music
+    show teacher with dissolve:
+        full
+        center
+    t "alright I hope all of you have already settled in, let's forget what happened yesterday and get along nicely, okay?"
+    t "so for today we'll discuss poetry"
+    t "I have here a poem by Audre Lorde and American writer and professor born in 1934 titled, “Who Said It Was Simple”"
+    t "I'll read it for all of you"

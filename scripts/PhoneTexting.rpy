@@ -20,14 +20,13 @@ transform phone_transform(pXalign=0.5, pYalign=0.5):
     xcenter pXalign
     yalign pYalign
 
-transform phone_appear(pXalign=0.5, pYalign=0.5): #Used only when the dialogue have one element
+transform phone_appear(pXalign=0.5, pYalign=0.5):
     xcenter pXalign
     yalign pYalign
 
     on show:
         yoffset 1080
         easein_back 1.0 yoffset 0
-
     
 transform message_appear(pDirection):
     alpha 0.0
@@ -41,7 +40,6 @@ transform message_appear_icon():
     zoom 0.0
     easein_back 0.5 zoom 1.0
     
-
 transform message_narrator:
     alpha 0.0
     yoffset -50
