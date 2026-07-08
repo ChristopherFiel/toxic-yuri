@@ -63,6 +63,7 @@ label start:
         full
         center
         flicker
+    stop sound
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
     h_unknown "We can live together forever now, just the two us"
     scene black with eyeclose
@@ -113,9 +114,11 @@ label bus_scene_day_1:
     play sound "audio/sfx/fall_down.ogg"
     pause 3.6
 
+    play sound "audio/sfx/bus start.ogg"
     l "OOOOUCCCCCHH!"
-    play music "audio/ambience/road ambiance.ogg" fadein 2.0
     l "I hate this morning already"
+    stop sound
+    play music "audio/ambience/road ambiance.ogg" fadein 2.0
     l "School sucks"
     l "Everything here sucks"
     l "I've been living in this town for 16 years and nothing changed..."
