@@ -7,5 +7,5 @@ How to use:
 * Download as zip
 * Inside the extracted zip folder, create a new folder named "game"
 * Move all the files inside to newly created "game" folder
-* Move the file in the Ren'py projects directory
+* Move the entire extracted folder in the Ren'py projects directory
 * Refresh Ren'Py, and play the game :>
