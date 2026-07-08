@@ -59,10 +59,9 @@ label start:
     pause 5.0
     scene bg abandoned house with eyeopen
 
-    show holly with dissolve:
+    show holly crazy_pose crazy:
         full
         center
-        flicker
     stop sound
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
     h_unknown "We can live together forever now, just the two us"
