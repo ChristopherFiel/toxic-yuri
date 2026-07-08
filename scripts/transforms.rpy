@@ -52,50 +52,68 @@ transform flicker(rate=1,min=0.45,max=0.5):
 ## Positions
 ################################################################################
 
-transform offscreenleft: 
-    anchor (1.0,1.0)
+transform offscreenleft:
+    anchor (1.0, 1.0)
+    zoom 1.1
     xpos 0.0
 
 transform farleft:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.0
 
-transform left: # ^
-    anchor (0.5,1.0)
+transform left:
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.1
 
 transform leftish:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.25
 
 transform centerleft:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.4
 
-transform center: # ^
-    anchor (0.5,1.0)
+transform center:
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.5
 
+transform center_upper:
+    anchor (0.59, 1.0)
+    zoom 1.1
+    xpos 0.5
+    yanchor 1.0
+    ypos 1.0
+    yoffset -400
+
 transform centerright:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.6
 
 transform rightish:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.75
 
-transform right: # ^
-    anchor (0.5,1.0)
+transform right:
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 0.9
 
 transform farright:
-    anchor (0.5,1.0)
+    anchor (0.59, 1.0)
+    zoom 1.1
     xpos 1.0
 
-transform offscreenright: # ^
-    anchor (0.0,1.0)
+transform offscreenright:
+    anchor (0.0, 1.0)
+    zoom 1.1
     xpos 1.0
-
 
 ################################################################################
 ## Movement between positions

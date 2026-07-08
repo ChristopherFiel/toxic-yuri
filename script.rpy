@@ -59,7 +59,7 @@ label start:
     pause 5.0
     scene bg abandoned house with eyeopen
 
-    show holly crazy_pose crazy:
+    show holly d2base d2l1 d2r2 oface crazyeye:
         full
         center
     stop sound
@@ -67,18 +67,16 @@ label start:
     h_unknown "We can live together forever now, just the two us"
     scene black with eyeclose
     scene bg abandoned house with eyeopen
-    show holly with dissolve:        
-        center
+    show holly d2base d2l1 d2r2 oface crazyeye:        
+        center_upper
         medlong
-        flicker
     h_unknown "You couldn't hide from your true self, so now I'm setting you free"
     h_unknown "I know deep down inside you also want this to happen…"
     scene black with eyeclose
     scene bg abandoned house with eyeopen
-    show holly with dissolve:        
-        center
+    show holly d2base d2l1 d2r2 oface crazyeye:        
+        center_upper
         medclose
-        flicker
     play sound "audio/sfx/thunder.ogg" volume 0.75
     h_unknown "DON'T YOU!"
     stop music
@@ -92,8 +90,10 @@ label start:
     play music "audio/ambience/morning_ambience.ogg" fadein 3.0
     $ time_of_day = 'DAY'
     scene bg bed top view with eyeopen_slow
-    show lily with dissolve
-    l "What a fucking weird dream!"
+    show lily:
+        center
+    l "What a weird dream..."
+    l "..."
     l "Oh shit shit shit… what time is it?"
     play sound "audio/sfx/bus_horn.ogg"
     l "I’m gonna be late"
