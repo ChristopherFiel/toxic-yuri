@@ -1,5 +1,3 @@
-# Here's the code for the phone!
-
 define nvl_mode = "phone"  ##Allow the NVL mode to become a phone conversation
 define MC_Name = "WX_YuriZ" ##The name of the main character, used to place them on the screen
 define h0lly_m0lly = "h0lly_m0lly"
