@@ -192,6 +192,7 @@ label school_day_1:
     l "what are they talking about"
     hide lily with dissolve
     show teacher at slide_in_right
+    stop music
     t "ermm..."
     t "Alright, alright everyone settle"
     t "for our first day of class..."
