@@ -66,6 +66,10 @@ label start:
     show holly d2base d2l1 d2r2 oface crazyeye:
         full
         center
+
+    # show school_girl_1 neutralface:
+    #     full
+    #     center
     stop sound
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
     h_unknown "We can live together forever now, just the two us"

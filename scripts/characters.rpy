@@ -189,3 +189,90 @@ layeredimage lily:
             "images/sprites/Lily/lilypj_hand_r1.png"
         attribute pjr2:
             "images/sprites/Lily/lilypj_hand_r2.png"
+
+# to pick a mouth attribute when showing them, e.g.:
+#   show school_girl_1 neutralface
+#   show school_girl_3 smileoface
+layeredimage school_girl_1:
+    always:
+        "images/sprites/npc/npc_base.png"
+    always:
+        "images/sprites/npc/npc_hair_1.png"
+
+    group mouth:
+        attribute neutralface default:
+            "images/sprites/npc/npc_mouth_neutral.png"
+        attribute grimaceface:
+            "images/sprites/npc/npc_mouth_grimace.png"
+        attribute oface:
+            "images/sprites/npc/npc_mouth_o.png"
+        attribute smileoface:
+            "images/sprites/npc/npc_mouth_smileo.png"
+
+
+layeredimage school_girl_2:
+    always:
+        "images/sprites/npc/npc_base.png"
+    always:
+        "images/sprites/npc/npc_hair_2.png"
+
+    group mouth:
+        attribute neutralface default:
+            "images/sprites/npc/npc_mouth_neutral.png"
+        attribute grimaceface:
+            "images/sprites/npc/npc_mouth_grimace.png"
+        attribute oface:
+            "images/sprites/npc/npc_mouth_o.png"
+        attribute smileoface:
+            "images/sprites/npc/npc_mouth_smileo.png"
+
+
+layeredimage school_girl_3:
+    always:
+        "images/sprites/npc/npc_base.png"
+    always:
+        "images/sprites/npc/npc_hair_3.png"
+
+    group mouth:
+        attribute neutralface default:
+            "images/sprites/npc/npc_mouth_neutral.png"
+        attribute grimaceface:
+            "images/sprites/npc/npc_mouth_grimace.png"
+        attribute oface:
+            "images/sprites/npc/npc_mouth_o.png"
+        attribute smileoface:
+            "images/sprites/npc/npc_mouth_smileo.png"
+
+
+layeredimage school_girl_4:
+    always:
+        "images/sprites/npc/npc_base.png"
+    always:
+        "images/sprites/npc/npc_hair_4.png"
+
+    group mouth:
+        attribute neutralface default:
+            "images/sprites/npc/npc_mouth_neutral.png"
+        attribute grimaceface:
+            "images/sprites/npc/npc_mouth_grimace.png"
+        attribute oface:
+            "images/sprites/npc/npc_mouth_o.png"
+        attribute smileoface:
+            "images/sprites/npc/npc_mouth_smileo.png"
+
+
+layeredimage school_girl_5:
+    always:
+        "images/sprites/npc/npc_base.png"
+    always:
+        "images/sprites/npc/npc_hair_5.png"
+
+    group mouth:
+        attribute neutralface default:
+            "images/sprites/npc/npc_mouth_neutral.png"
+        attribute grimaceface:
+            "images/sprites/npc/npc_mouth_grimace.png"
+        attribute oface:
+            "images/sprites/npc/npc_mouth_o.png"
+        attribute smileoface:
+            "images/sprites/npc/npc_mouth_smileo.png"
