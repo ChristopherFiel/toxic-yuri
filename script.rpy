@@ -15,6 +15,8 @@ define config.nvl_adv_transition = Dissolve(0.3)
 
 # this is yet another test
 
+#plz work plz work plz work
+
 #Warning splash screen
 # label splashscreen:
 #     with Pause(1)
