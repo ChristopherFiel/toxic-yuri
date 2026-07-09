@@ -1026,6 +1026,63 @@ label school_cafeteria_day_1_bully_scene:
 label date_intro:
     scene bg park with dissolve
 
+    show holly_here with dissolve:
+        full
+        rightish
+    h "When she coming"
+    show lily_here at slow_enter_from_left_to_center
+    h "Ohhh... there you are"
+    h "Hellooooo [holly_nickname] you look cuter today"
+    l "hello…"
+    h "Why are you wearing that?"
+    h "That's not the Lily I knew"
+    h "Hear wear this"
+
+    scene bg black with fade
+    scene bg park with dissolve
+
+    show holly_here with dissolve:
+        full
+        rightish
+    show lily_here at slow_enter_from_left_to_center
+
+    l "are you happy now?"
+    h "Now that's the Lily I know"
+    l "what do you plan"
+    h "anywhere where you want to go"
+    h "I'll let you decide, I'm happy wherever you want my [holly_nickname]"
+
+    menu date_option:
+        "Where do you want to go?"
+        "Somewhere quite":
+            $ renpy.notify("Holly's Affection 💖") 
+            l "Take me to somewhere quite"
+            l "Where nobody can see me... can see me like this"
+            h "Your wish is granted [holly_nickname]"
+            show holly_here with slow_moveoutright
+            show lily_here with slow_moveoutright
+            scene black with wipeleft
+            jump abandoned_house_date_1
+        "Some Cozy":
+            $ renpy.notify("Holly's Affection 💖") 
+            l "Take me to somewhere cozy"
+            l "I want to be somewhere safe..."
+            h "Perfect I know a place [holly_nickname]"
+            show holly_here with slow_moveoutleft
+            show lily_here with slow_moveoutleft
+            scene black with wiperight
+            jump restaurant_date
+
+
+label restaurant_date:
+    scene bg restaurant with wiperight
+    l "fuck"
+
+
+label abandoned_house_date_1:
+    scene bg abandoned house with wipeleft
+
+    
 
 label outted_ending:
     scene bg bed top view
