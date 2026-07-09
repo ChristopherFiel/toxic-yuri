@@ -1,6 +1,8 @@
 # Flags are here
 default holly_affection = 0
 default holly_nickname = "Lily"
+default holly_refusal_count = 0
+# Use like h "lets go [holly_nickname]"
 
 
 # NVL characters are used for the phone texting
@@ -67,14 +69,14 @@ label start:
     h_unknown "We can live together forever now, just the two us"
     scene black with eyeclose
     scene bg abandoned house with eyeopen
-    show holly d2base d2l1 d2r2 oface crazyeye:        
+    show holly d2base d2l1 d2r2 oface crazyeye:
         center_upper
         medlong
     h_unknown "You couldn't hide from your true self, so now I'm setting you free"
     h_unknown "I know deep down inside you also want this to happen…"
     scene black with eyeclose
     scene bg abandoned house with eyeopen
-    show holly d2base d2l1 d2r2 oface crazyeye:        
+    show holly d2base d2l1 d2r2 oface crazyeye:
         center_upper
         medclose
     play sound "audio/sfx/thunder.ogg" volume 0.75
@@ -198,7 +200,6 @@ label school_day_1:
     l "what are they talking about"
     hide lily_here with dissolve
     show teacher at slide_in_right
-    stop music
     t "ermm..."
     t "Alright, alright everyone settle"
     t "for our first day of class..."
@@ -240,17 +241,19 @@ label school_day_1:
     h "My name is... my name Holly and for this year I want to have..." 
     show holly_here:
         medlong
+        toleft
         center
     h "I WANT WX_YuriZ TO BE MINE, AND ONLY MINE!!!"
     show holly_here:
         medium
+        toleft
         center
     h "I LOVE YOU WX_YuriZ I'VE COME HERE JUST TO BE WITH YOU" 
     h "I FUCKING LOVE YOOOOOOOOOOOUUUUUUUUUU WX_YuriZ"
     show holly_here:
         full
         toleft
-        ease 1.0 xpos 0.9
+        slide_to(0.9)
     show lily_here:
         full
         toright
@@ -287,8 +290,8 @@ label school_day_1:
     show holly_here:
         full
         toleft
-        easeout 1.0 xpos 1.5 xanchor 0.5
-    t "What the hell is wrong with you! get out of this room and come to my office NOW! "
+        slide_off_right(1.0)
+    t "What the hell is wrong with you! get out of this room and come to my office NOW!"
     show teacher:
         full
         fast_moveoutright
@@ -336,24 +339,24 @@ label evening_day_1:
     l "*huff...* Is this for real? What is going on? could she really be h0lly_m0lly?"
     show lily_here:
         full
-        ease 1.0 xpos 0.9
+        slide_to(0.9)
     l "Holy... Moly!"
     show lily_here:
         full
-        ease 1.0 xpos 0.1
+        slide_to(0.1)
     l "No way.... No way... No way... this is bad"
     show lily_here:
         full
-        ease 1.0 xpos 0.9
+        slide_to(0.9)
     l "She'll... she'll destroy my image in no time"
     show lily_here:
         full
-        ease 1.0 xpos 0.1
+        slide_to(0.1)
     l "I can't live like that, what will I do?"
     play sound "audio/sfx/phone notification.ogg"
     show lily_here:
         full
-        ease 1.0 xpos 0.7
+        slide_to(0.7)
     l "Is that her?"
     h_nvl "Good evening yuri, you looked so cute IRL <3"
     h_nvl "Why are you ignoring me?"
@@ -454,7 +457,7 @@ label evening_day_1:
 
 label lily_monologue:
     scene black
-    play music "audio/bgm/dream.ogg" fadein 2.0
+    play music "audio/ambience/playground.ogg" fadein 2.0 volume 0.75
     pause 1.0
 
     python:
@@ -544,10 +547,12 @@ label morning_day_2:
 
     menu (nvl=True):
         "Just call me by name":
+            $ renpy.notify("Holly's Affection 💔")
             $ holly_affection -= 1
             $ holly_nickname = "Lovely Lily"
             l_nvl "No you don't just call me by my name"
-            l_nvl "you're so cring you know"
+            l_nvl "This is so cringe you know"
+            l_nvl "I don't want any of this"
             l_nvl "I'm not yours just so you know"
             h_nvl "So you don't like any of it huh?"
             h_nvl "boriiiiiiiing…"
@@ -559,6 +564,7 @@ label morning_day_2:
 
         "Blossom":
             $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖") 
             $ holly_nickname = "Blossom"
             l_nvl "I dont mind being called blossom"
             l_nvl "It's cute too"
@@ -570,6 +576,7 @@ label morning_day_2:
 
         "Shining Star":
             $ holly_affection += 2
+            $ renpy.notify("Holly's Affection 💖") 
             $ holly_nickname = "Shining Star"
             l_nvl "I want to be your Shining star"
             l_nvl "It's cute and funny"
@@ -580,6 +587,7 @@ label morning_day_2:
 
         "Lovely Lily":
             $ holly_affection += 3
+            $ renpy.notify("Holly's Affection 💖") 
             $ holly_nickname = "Lovely Lily"
             l_nvl "I want to be called Lovely"
             l_nvl "No one's ever called me like that"
@@ -610,14 +618,415 @@ label morning_day_2:
 
 
 label school_day_2:
+    play sound "audio/sfx/bus stopping.ogg"
+    pause 4.0
     scene black with wiperight
-    pause 2.0    
+    pause 2.0
+    stop sound
     scene bg classroom with dissolve
-    stop music
+    play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.75
     show teacher with dissolve:
         full
         center
     t "alright I hope all of you have already settled in, let's forget what happened yesterday and get along nicely, okay?"
     t "so for today we'll discuss poetry"
-    t "I have here a poem by Audre Lorde and American writer and professor born in 1934 titled, “Who Said It Was Simple”"
-    t "I'll read it for all of you"
+    t "I have here a poem by Amy Lowell, an American poet born in 1874, titled \"A Decade\""
+    t "I'll read it for all of you..."
+    hide teacher with dissolve
+    pause 1.0
+
+    python:
+        poem_stanzas = [
+            "When you came, you were like red wine and honey,",
+            "And the taste of you burnt my mouth with its sweetness.",
+            "Now you are like morning bread,",
+            "Smooth and pleasant.,",
+            "I hardly taste you at all for I know your savour.",
+            "But I am completely nourished."
+        ]
+
+        for stanza in poem_stanzas:
+            txt = Text(stanza, xalign=0.5, yalign=0.5, xsize=900, text_align=0.5,
+                    color="#ffffff", size=64, outlines=[(2, "#000000", 0, 0)],
+                    line_spacing=6)
+            renpy.show("water_line", what=txt, at_list=[water_in], zorder=100)
+            renpy.pause(0.9, hard=False)
+            renpy.pause(get_line_pause(stanza), hard=False)
+            renpy.show("water_line", what=txt, at_list=[water_out], zorder=100)
+            renpy.pause(0.7, hard=False)
+            renpy.hide("water_line")
+            renpy.pause(0.5, hard=False)
+
+    show teacher with dissolve:
+        full
+        center
+    t "alright I hope you enjoyed listening to that one"
+    t "Now, let's talk about more about the poem, let's dive in deep into its meaning"
+    t "Lily!"
+    show lily_here:
+        full
+        toright
+        enter_from_left_to_leftish(0.1, 1.5)
+    show teacher:
+        full
+        toleft
+        slide_to(0.9)
+    t "What do you think the poem is meaning of the poem?"
+    l "{i}uhhh...{/i}"
+    menu poem_meaning:
+        "What do you think is the meaning of the poem"
+        "People changing":
+            l "It is about..."
+            l "Pe-people change over time..."
+            l "The person you knew today might be completely different tommorrow"
+            $ renpy.notify("Holly's Affection 💔")
+        "Hiding your true identity":
+            l "It is about..."
+            l "hiding your tru-true identity to people"
+            l "Giving them an illusion, but your not truly that person they thought you are..."
+            $ renpy.notify("Holly's Affection 💖") 
+        "Passion fading":
+            l "I think the poem is about..."
+            l "passion fading away"
+            l "how something can be hot at first you know it but goes cold with time..."
+            $ renpy.notify("Holly's Affection 💔")
+        "I dont know":
+            l "I-I'm sorry but I don't know..."
+    
+    t "Is that so?"
+    t "very well, interesting interpretation..." 
+    show lily_here at slow_moveoutleft
+    show teacher:
+        slide_to(0.5)
+    t "Next!" 
+    t "Holly"
+    show holly_here:
+        full
+        toright
+        enter_from_left_to_leftish(0.1, 1.5)
+    show teacher:
+        full
+        toleft
+        slide_to(0.9)
+    h "Huh, oh come on!"
+    t "What does the line \"Now you are like morning bread\" mean?"
+    h "Do I really need to answer that question"
+    h "It means…"
+    h "Loft bread are bland, and stale but my love for Yuri will never go pale"
+    h "I love you everyday with no fail"
+    h "Together our love will prevail"
+    h "So let's go explore each other and sail"
+    t "Wow, that’s beautiful a beautiful poem *sobs*"
+    hide teacher with dissolve
+    hide holly_here with dissolve
+
+    show school_girl_1 with dissolve:
+        full
+        center
+    show school_girl_2 with dissolve:
+        full
+        rightish
+    show school_girl_3 with dissolve:
+        full
+        leftish
+    show school_girl_4 with dissolve:
+        full
+        right
+    show school_girl_5 with dissolve:
+        full
+        left
+
+    show school_girl_1 at center, school_pop
+    s1 "Cringeeeeeeee, what is she talking about"
+
+    show school_girl_1 at center, school_idle
+    show school_girl_2 at rightish, school_pop
+    s2 "Can someone stitch this bitch's mouth, I can't handle her anymore"
+
+    show school_girl_2 at rightish, school_idle
+    show school_girl_3 at leftish, school_pop
+    s3 "Guys I have an idea so that she'll never come to school again, later this lunch let's…"
+
+    show school_girl_3 at leftish, school_idle
+    show school_girl_4 at right, school_pop
+    s4 "wow what a romantic poem, I can feel your passion burning hot"
+
+    show school_girl_4 at right, school_idle
+    show school_girl_5 at left, school_pop
+    s5 "Can somebody tell me who is Yuri already?"
+    s5 "buy yeah, I don't like bread either but they're good with peanut butter hehe"
+    show school_girl_5 at left, school_idle
+
+    play sound "audio/sfx/school bell.ogg"
+    stop music
+    t "alright class dismissed"
+    play sound "audio/sfx/running.ogg"
+    show school_girl_1 at slow_moveoutright
+    play sound "audio/sfx/running.ogg"
+    show school_girl_2 at slow_moveoutright
+    play sound "audio/sfx/running.ogg"
+    show school_girl_3 at slow_moveoutright
+    play sound "audio/sfx/running.ogg"
+    show school_girl_4 at slow_moveoutright
+    play sound "audio/sfx/running.ogg"
+    show school_girl_5 at slow_moveoutright
+    
+    show lily_here:
+        full
+        toright
+        slide_to(0.9, 1.0)
+    show holly_here:
+        full
+        toright
+        enter_from_left_slow(0.1, 1.5)
+    h "Lily! Don't forget about our deal later"
+    menu deal_later:
+        "deal later?"
+        "What deal?":
+            $ renpy.notify("Holly's Affection 💔") 
+            l "wha-what deal?"
+            l "I don' remember any?"
+            h "Don't pretend you don't know, we have a deal right"
+            h "you agreed we'll go out"
+            l "ohh... date, a friendly date"
+            h "alright"
+        "Yeah, I won't":
+            $ renpy.notify("Holly's Affection 💖") 
+            l "yeah, I won't"
+            l "we have a deal..."
+            h "yeah, this is gonna be fun"
+            h "our first date together!"
+            h "yipppie"
+    
+    h "also let's have lunch together today"
+    h "nothing wrong with that, just like normal girlfrie-"
+    l "sto-stop it, not here please…"
+    h "Fine, just eat lunch with me right now… or else..." 
+    l "alright… alright… I’ll go…"
+    h "Yippieeeeeeee let’s go [holly_nickname]"
+    show holly_here at slow_moveoutright
+    show lily_here at slow_moveoutright
+    pause 1.5
+    scene black with wipeleft
+
+    jump school_cafeteria_day_1
+
+
+label school_cafeteria_day_1:
+    play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
+    h "Come on Lily, let’s sit right there"
+    scene bg cafeteria seat with wipeleft
+    show holly_here with dissolve:
+        full
+        centerleft
+    show lily_here with dissolve:
+        full 
+        centerright
+    h "This food is awful! How can you eat this every day?"
+    l "Yeah..."
+    h "Who do you usually eat lunch with?"
+    l "..."
+    h "Huh? Do you mean..."
+    l "..."
+    h "Awwww, my poor Lily... *sobs*"
+    h "Alone, cold, and lonely..."
+    h "*sobs*"
+    h "Don't worry, I'm here now. I'll never leave your side!"
+    l "it's nothing"
+    menu holly_pity:
+        "What should I say?"
+        "Thanks":
+            $ renpy.notify("Holly's Affection 💖") 
+            l "Tha-thanks for being here with me"
+        "I don't need your sympathy":
+            $ renpy.notify("Holly's Affection 💔")   
+            l "I don't need your pity"
+            l "I'm fine by my own anyways"
+    h "Don't worry, I'm on your side. I completely understand you."
+    h "I know what you want, what you need, what you think..."
+    h "But how about me?"
+    h "After all of our time together, do you know me?"
+    menu holly_knowledge:
+        "Do you know Holly?"
+        "Yeah":
+            $ renpy.notify("Holly's Affection 💖")
+            l "Yeah, of course..."
+            l "I know you best, I can read you easily"
+        "No":
+            $ renpy.notify("Holly's Affection 💔") 
+            l "No, of course not"
+            l "We haven't really spend much time together"
+    
+    h "Alrigh alright then..."
+    h "Let's play a game."
+    l "What game?"
+    l "Can we just have lunch, please...?"
+    h "It's not a big deal. Just guess what I'm thinking, and you win!"
+
+    scene bg napkin with dissolve
+    call hangman_minigame(word_list=["LILY"], category="What am I thinking?") from _call_hangman_cafeteria_day1
+
+    scene bg cafeteria seat with dissolve
+    show holly_here with dissolve:
+        full
+        centerleft
+    show lily_here with dissolve:
+        full 
+        centerright
+
+    if hangman_result == "win":
+        $ renpy.notify("Holly's Affection 💖")
+        l "L-Lily...? You were thinking about me?"
+        h "Of course! what else am I going to think about"
+        h "You actually know me well, I'm touched"
+    else:
+        h "Aw, out of guesses already? It was \"LILY\"!"
+        l "that was a dumb game"
+        l "why would you think about me..."
+        h "You don't know me well huh?"
+        h "It's ok [holly_nickname] we have time to get to know each other"
+        $ renpy.notify("Holly's Affection 💔")
+    
+    h "alright your turn, let me guess what's on your mind"
+    l "no... I don't want to play this game anymore"
+    h "come on it's just a game..."
+    h "oh... we already ran out of napkins, can you get some for me [holly_nickname] pleaseeee"
+
+    menu holly_napkin_request:
+        "I don't want to play your games":
+            $ holly_refusal_count += 1
+
+            if holly_refusal_count == 1:
+                l "I don't want to play your games"
+                l "Go get it yourself"
+                h "Is this how you'll treat me!"
+                h "AFTER ALL THE THINGS I'VE DONE FOR YOU"
+                h "NO!"
+            else:
+                $ no_text = " ".join(["NO!"] * (2 ** (holly_refusal_count - 1)))
+                h "Is this how you'll treat me!"
+                h "AFTER ALL THE THINGS I'VE DONE FOR YOU"
+                h "[no_text]"
+
+            $ renpy.notify("Holly's Affection 💔")
+            jump holly_napkin_request
+
+        "alright I'll get it":
+            $ renpy.notify("Holly's Affection 💖")
+            l "alright, alright I'll get it"
+            h "hehe that's my [holly_nickname]"
+            show lily_here at slow_moveoutright
+            scene black with wipeleft
+            jump school_cafeteria_counter
+
+
+label school_cafeteria_counter:
+    scene bg cafeteria counter with wipeleft
+    show lily_here at enter_from_left_to_center
+    pause 3.0
+    l "*huff..."
+    l "Wha-what have I done...?"
+    l "I just wanted to be me..."
+    l "To express myself freely..."
+    l "This is a disaster…"
+    l "I can't let her near me…"
+    l "I-I don't feel safe…"
+    l "I can't let her expose me, and out me…"
+    l "If anybody here finds out about that side of me, I..."
+    l "No, no, no, no, no, no..."
+    l "I can't let that happen..."
+    l "I am dead. I am dead. I am dead."
+    l "I won't let that happen. I won't let her..."
+    l "If I'm anywhere but here, I'll be doomed."
+    l "this should be enough"
+    l "I'm heading back"
+    show lily_here at slow_moveoutleft
+    scene black with wiperight
+    jump school_cafeteria_day_1_bully_scene
+
+
+label school_cafeteria_day_1_bully_scene:
+    scene bg cafeteria seat with wiperight
+    show school_girl_1 with dissolve:
+        full
+        centerright
+    show school_girl_2 with dissolve:
+        full
+        rightish
+    show school_girl_3 with dissolve:
+        full
+        right
+    show holly_here with dissolve:
+        full
+        leftish
+
+    s1 "What are you doing here, weirdo?"
+    h "It's none of your business."
+    s2 "This is our table, bitch!"
+    s3 "If you want this table, then have it all to yourself!"
+
+    play sound "audio/sfx/slime.ogg"
+    # TODO: swap to Holly's dirty-uniform attribute once you tell me its name
+    show holly_here at leftish, bump(-30)
+
+    s1 "Hahahahah, gotcha!"
+    s2 "Good one, hahaha!"
+    s3 "That'll teach her."
+
+    l "Oh god... what'll I do?"
+
+    menu holly_bullied:
+        "What will you do?"
+
+        "Protect holly":
+            show lily_here at enter_from_right_to_center
+            l "Tha-thats enough!"
+            s1 "oh there's two weirdos now"
+            s2 "what will you do if we won't hahahhaha"
+            s3 "boring come on now guys this is no longer fun"
+            $ renpy.notify("Holly's Affection 💖") 
+            show school_girl_1 at slow_moveoutright
+            show school_girl_2 at slow_moveoutright
+            show school_girl_3 at slow_moveoutright
+            stop music fadeout 1.0
+            l "are you alright"
+            h "Yeah they're nothing"
+            h "thank you"
+            l "it's nothing you would've done the same right?"
+            h "thank you"
+            l "here's the napkin"
+            h "it's fine forget it"
+            h "..."
+            h "Don't forget about later"
+            l "yeah.. I won't"
+            scene black with dissolve
+            hide lily_here  with dissolve
+            hide holly_here with dissolve
+            jump date_intro
+
+        "Pretend nothing happen":
+            show school_girl_1 at slow_moveoutright
+            show school_girl_2 at slow_moveoutright
+            show school_girl_3 at slow_moveoutright
+            show lily_here at enter_from_right_to_center
+            stop music fadeout 1.0
+            l "..."
+            l "Here's your napkins..."
+            $ renpy.notify("Holly's Affection 💔")
+            h "Thank you..."
+            h "Don't forget about later"
+            h "Afters school"
+            l "yea-yeah, I won't"
+            stop music
+            show lily at slow_moveoutright
+            scene black with dissolve
+            jump date_intro
+
+
+label date_intro:
+    scene bg park with dissolve
+
+
+label outted_ending:
+    scene bg bed top view
+    l "a"

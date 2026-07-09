@@ -5,11 +5,21 @@
 
 define scale = 0.909  # ~10% larger across all shots (1/1.1)
 
+
+################################################################################
+## Facing
+################################################################################
+
 transform toleft:
     xzoom 1
 
 transform toright:
     xzoom -1
+
+
+################################################################################
+## Shot distance (zoom level)
+################################################################################
 
 transform full:
     ypos 1.0
@@ -35,21 +45,9 @@ transform closeshort:
     ypos 4.2
     zoom 5.0/scale
 
-transform flicker(rate=1,min=0.45,max=0.5):
-    alpha max
-    choice:
-        rate+0.2*rate
-    choice:
-        rate
-    choice:
-        rate-0.2*rate
-    linear 0.1*rate alpha min
-    linear 0.1*rate alpha max
-    repeat
-
 
 ################################################################################
-## Positions
+## Static positions (snap, no animation)
 ################################################################################
 
 transform offscreenleft:
@@ -103,88 +101,101 @@ transform offscreenright:
     anchor (0.0, 1.0)
     xpos 1.0
 
+
 ################################################################################
-## Movement between positions
+## Animated movement — entrances / exits
 ################################################################################
-    ease windup yoffset 10*windup
-    parallel:
-        easein 0.4*airtime yoffset -100*power
-        easeout 0.4*airtime yoffset 0
-        easein_circ 0.1*airtime yoffset 10*power
-        ease 0.1*airtime yoffset 0
-    parallel:
-        easein airtime location
 
 transform fast_moveoutright:
     yalign 0.5
+    zoom 1/scale
     easeout 0.5 xalign 1.5
 
 transform slow_moveoutright:
     yalign 0.5
+    zoom 1/scale
     easeout 1.0 xalign 2.0
 
 transform slow_moveoutleft:
     yalign 0.5
+    zoom 1/scale
     easeout 1.0 xalign -1.0
 
 transform slide_in_left:
     xpos -0.5 xanchor 1.0
     yalign 1.0
+    zoom 1/scale
     ease 1.5 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
 
 transform slide_in_right:
     xpos 1.5 xanchor 1.0
     yalign 1.0
+    zoom 1/scale
     ease 1.0 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
 
 transform enter_from_left_to_center:
-    xpos -0.5 
+    xpos -0.5
     xanchor 0.5
     yalign 1.0
+    zoom 1/scale
     ease 1.5 xpos 0.5
 
 transform slow_enter_from_left_to_center:
-    xpos -0.5 
+    xpos -0.5
     xanchor 0.5
     yalign 1.0
+    zoom 1/scale
     ease 2.5 xpos 0.5
 
 transform enter_from_right_to_center:
-    xpos 1.5 
+    xpos 1.5
     xanchor 0.5
     yalign 1.0
+    zoom 1/scale
     ease 1.5 xpos 0.5
 
 transform enter_from_right_slow(target_x=0.5, dur=2.5):
     xpos 1.5
     xanchor 0.5
     yalign 1.0
+    zoom 1/scale
     ease dur xpos target_x
 
 transform enter_from_left_to_leftish(target_x=0.25, dur=1.5):
     xpos -0.5
     xanchor 0.25
     yalign 1.0
+    zoom 1/scale
+    ease dur xpos target_x
+
+transform enter_from_left_slow(target_x=0.1, dur=1.5):
+    xpos -0.5
+    xanchor 0.5
+    yalign 1.0
+    zoom 1/scale
     ease dur xpos target_x
 
 
-## Other transforms
-transform zoom_to(target_x, target_y, zoom_level=2.0):
-    xanchor target_x
-    yanchor target_y
-    xpos    target_x
-    ypos    target_y
-    zoom    zoom_level
+################################################################################
+## Animated movement — reposition an already-shown sprite
+################################################################################
 
-transform pan_to(target_x, target_y, zoom_level=1.8, dur=1.0):
-    linear dur xanchor target_x yanchor target_y xpos target_x ypos target_y zoom zoom_level
+transform slide_to(x, dur=1.0):
+    anchor (0.55, 1.0)
+    zoom 1/scale
+    ease dur xpos x
 
-define wipeleft_fast   = CropMove(0.25, "wipeleft")
-define wipeleft_medium = CropMove(0.50, "wipeleft")
-define wiperight_fast   = CropMove(0.25, "wiperight")
-define wiperight_medium = CropMove(0.50, "wiperight")
+transform slide_off_right(dur=1.0):
+    xanchor 0.5
+    zoom 1/scale
+    easeout dur xpos 1.5
+
+
+################################################################################
+## Falls / shakes / zooms
+################################################################################
 
 transform fall_and_recover(height=400, fall_time=0.5, ground_time=1.0, recover_time=0.6, recover_offset=50):
     anchor (0.5, 1.0)
@@ -197,8 +208,8 @@ transform fall_and_recover(height=400, fall_time=0.5, ground_time=1.0, recover_t
 transform frantic_shake:
     subpixel True
     pos (0.5, 0.5) anchor (0.5, 0.5)
-    zoom 1.05 
-    
+    zoom 1.05
+
     block:
         choice:
             linear 0.05 xoffset 18  yoffset -12 blur 2
@@ -219,67 +230,53 @@ transform shake_settle(t=3.0):
     xoffset 20 yoffset -20 blur 10
     easeout t xoffset 0 yoffset 0 blur 0
 
-### ADJUSTED MOVEMENT
-# transform fast_moveoutright:
-#     yalign 0.5
-#     zoom 1.1
-#     easeout 0.5 xalign 1.5
+transform zoom_to(target_x, target_y, zoom_level=2.0):
+    xanchor target_x
+    yanchor target_y
+    xpos    target_x
+    ypos    target_y
+    zoom    zoom_level
 
-# transform slow_moveoutright:
-#     yalign 0.5
-#     zoom 1.1
-#     easeout 1.0 xalign 2.0
+transform pan_to(target_x, target_y, zoom_level=1.8, dur=1.0):
+    linear dur xanchor target_x yanchor target_y xpos target_x ypos target_y zoom zoom_level
 
-# transform slow_moveoutleft:
-#     yalign 0.5
-#     zoom 1.1
-#     easeout 1.0 xalign -1.0
 
-# transform slide_in_left:
-#     xpos -0.5 xanchor 1.0
-#     yalign 1.0
-#     zoom 1.1
-#     ease 1.5 xpos 0.59 xanchor 0.59
-#     ease 0.15 xpos 0.5
+################################################################################
+## Scene transitions
+################################################################################
 
-# transform slide_in_right:
-#     xpos 1.5 xanchor 1.0
-#     yalign 1.0
-#     zoom 1.1
-#     ease 1.0 xpos 0.59 xanchor 0.59
-#     ease 0.15 xpos 0.5
+define wipeleft_fast    = CropMove(0.25, "wipeleft")
+define wipeleft_medium  = CropMove(0.50, "wipeleft")
+define wiperight_fast   = CropMove(0.25, "wiperight")
+define wiperight_medium = CropMove(0.50, "wiperight")
 
-# transform enter_from_left_to_center:
-#     xpos -0.5
-#     xanchor 0.59
-#     yalign 1.0
-#     zoom 1.1
-#     ease 1.5 xpos 0.5
 
-# transform slow_enter_from_left_to_center:
-#     xpos -0.5
-#     xanchor 0.59
-#     yalign 1.0
-#     zoom 1.1
-#     ease 2.5 xpos 0.5
+################################################################################
+## Effects
+################################################################################
 
-# transform enter_from_right_to_center:
-#     xpos 1.5
-#     xanchor 0.59
-#     yalign 1.0
-#     zoom 1.1
-#     ease 1.5 xpos 0.5
+transform flicker(rate=1, min=0.45, max=0.5):
+    alpha max
+    choice:
+        rate+0.2*rate
+    choice:
+        rate
+    choice:
+        rate-0.2*rate
+    linear 0.1*rate alpha min
+    linear 0.1*rate alpha max
+    repeat
 
-# transform enter_from_right_slow(target_x=0.5, dur=2.5):
-#     xpos 1.5
-#     xanchor 0.59
-#     yalign 1.0
-#     zoom 1.1
-#     ease dur xpos target_x
+transform bump(dx=-30, dur=0.15):
+    easeout dur xoffset dx
+    easein dur xoffset 0
 
-# transform enter_from_left_to_leftish(target_x=0.25, dur=1.5):
-#     xpos -0.5
-#     xanchor 0.59
-#     yalign 1.0
-#     zoom 1.1
-#     ease dur xpos target_x
+################################################################################
+## Reactions
+################################################################################
+
+transform school_pop:
+    ease 0.15 zoom 1.15
+
+transform school_idle:
+    ease 0.15 zoom 1.0
