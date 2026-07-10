@@ -2,6 +2,8 @@
 default holly_affection = 0
 default holly_nickname = "Lily"
 default holly_refusal_count = 0
+default push_holly_count = 0
+default delete_text = 0
 # Use like h "lets go [holly_nickname]"
 
 
@@ -69,9 +71,6 @@ label start:
         full
         center
 
-    # show school_girl_1 neutralface:
-    #     full
-    #     center
     stop sound
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
     h_unknown "We can live together forever now, just the two us"
@@ -313,29 +312,16 @@ label school_day_1:
     l "If she's really her, then..."
     l "This is bad I can't let anyone know that name"
     l "what do I do?"
-    menu holly_chase:
-        "what do I do?"
-        "Follow Holly":
-            $ renpy.notify("Holly's Affection 💖")
-            l "Is she really who am talking to?"
-            l "I need to find out..."
-            show lily_here at slow_moveoutright
-            scene black with fade
-            jump school_office_day_1
-        "Ignore":
-            $ renpy.notify("Holly's Affection 💔")
-            l "She must be referring to someone"
-            l "There's a lot of people named Yuri out there"
-            l "Calm down, I will not get exposed today..."
-            show lily_here at slow_moveoutright
-            scene black with fade
-            jump evening_day_1
+    l "..."
+    s5 "Yuri is such a sick name, I wish I have her name"
+    l "ye-yeah... right there's a lot of people named Yuri out there"
+    l "She must be referring to someone"
+    l "There's no way h0lly will come to this place just to see me"
+    l "Calm down, I will not get exposed today..."
+    show lily_here at slow_moveoutright
+    scene black with fade
+    jump evening_day_1
             
-
-label school_office_day_1:
-    scene bg school office
-    l "I'll do this later"
-
 
 label evening_day_1:
     scene bg Lily bedroom with dissolve
@@ -356,7 +342,7 @@ label evening_day_1:
     show lily_here:
         full
         slide_to(0.9)
-    l "She'll... she'll destroy my image in no time"
+    l "She'll... she'll destroy my image"
     show lily_here:
         full
         slide_to(0.1)
@@ -439,7 +425,7 @@ label evening_day_1:
             $ renpy.notify("Holly's Affection 💖")
             l_nvl "please stop what you're about to do"
             l_nvl "I'll do anything"
-        "Just tell me what you wan":
+        "Just tell me what you want":
             $ renpy.notify("Holly's Affection 💖")
             l_nvl "Just tell me what you want"
             l_nvl "Just don't expose me"
@@ -770,13 +756,9 @@ label school_day_2:
     t "alright class dismissed"
     play sound "audio/sfx/running.ogg"
     show school_girl_1 at slow_moveoutright
-    play sound "audio/sfx/running.ogg"
     show school_girl_2 at slow_moveoutright
-    play sound "audio/sfx/running.ogg"
     show school_girl_3 at slow_moveoutright
-    play sound "audio/sfx/running.ogg"
     show school_girl_4 at slow_moveoutright
-    play sound "audio/sfx/running.ogg"
     show school_girl_5 at slow_moveoutright
     
     show lily_here:
@@ -1032,27 +1014,47 @@ label school_cafeteria_day_1_bully_scene:
 
 
 label date_intro:
+    play music "audio/ambience/rural night.ogg" volume 0.75
     scene bg park with dissolve
 
-    show holly_here with dissolve:
+    show holly_here:
         full
         rightish
-    h "When she coming"
-    show lily_here at slow_enter_from_left_to_center
+    with dissolve
+
+    h "When is she coming"
+    play sound "audio/sfx/walk on grass.ogg"
+    show lily_here at enter_from_left_to_leftish
+    stop sound
+
+    h "..."
     h "Ohhh... there you are"
     h "Hellooooo [holly_nickname] you look cuter today"
     l "hello…"
     h "Why are you wearing that?"
+    l "it's what everyone wears"
     h "That's not the Lily I knew"
-    h "Hear wear this"
 
-    scene bg black with fade
+    show holly_here:
+        full
+        toright
+        slide_to(0.4, 0.8)
+    h "Hear wear this"
+    play sound "audio/sfx/clothes give.ogg" volume 0.5
+    show holly_here:
+        full
+        toright
+        slide_to(0.75, 0.8)
+    pause 1.0
+    h "change your clothes I want to date the Lily I know"
+
+    scene black with dissolve
     scene bg park with dissolve
 
     show holly_here with dissolve:
         full
         rightish
-    show lily_here at slow_enter_from_left_to_center
+    show lily_here at enter_from_left_to_leftish
 
     l "are you happy now?"
     h "Now that's the Lily I know"
@@ -1067,30 +1069,721 @@ label date_intro:
             l "Take me to somewhere quite"
             l "Where nobody can see me... can see me like this"
             h "Your wish is granted [holly_nickname]"
-            show holly_here with slow_moveoutright
-            show lily_here with slow_moveoutright
-            scene black with wipeleft
+            show holly_here at slow_moveoutright
+            show lily_here at slow_moveoutright
+            stop music
+            
+            scene black with wiperight
             jump abandoned_house_date_1
         "Some Cozy":
             $ renpy.notify("Holly's Affection 💖") 
             l "Take me to somewhere cozy"
             l "I want to be somewhere safe..."
             h "Perfect I know a place [holly_nickname]"
-            show holly_here with slow_moveoutleft
-            show lily_here with slow_moveoutleft
-            scene black with wiperight
+            show holly_here at slow_moveoutleft
+            show lily_here at slow_moveoutleft
+            stop music
+            scene black with wipeleft
             jump restaurant_date
 
 
 label restaurant_date:
-    scene bg restaurant with wiperight
-    l "fuck"
+    scene bg restaurant with wipeleft
+    play music "audio/ambience/restaurant.ogg" volume 0.5 fadein 3.0
+    
+    show holly_here with dissolve:
+        full
+        rightish
+    show lily_here with dissolve:
+        full
+        leftish
+    
+    h "Good choice [holly_nickname], I knew you have a great taste"
+    l "Where even are we?"
+    h "somewhere cozy, like you said"
+    l "I haven't been here before, I'm not sure… am I safe with you here…"
+    h "Don't worry, I'll make sure you're safe with me, I'll protect you with my life."
+    h "How about we get to know each other, this is our first date after all"
+    show holly_here:
+        parallel:
+            ease 0.5 medlong
+        parallel:
+            ease 0.5 rightish
 
+    show lily_here:
+        parallel:
+            ease 0.5 medlong
+        parallel:
+            ease 0.5 leftish
+    l "okay…"
+    h "Do you have any hobbies?"
+
+    menu hobby_choice_quite:
+        "Do you have any hobbies?"
+
+        "Yes":
+            l "yeah... I have some"
+            h "me too I also have some hobbies"
+
+        "No":
+            l "N-n-no, I don't have one"
+            h "me too I also don't have any hobby"
+
+    h "Hmmm... how about"
+    h "What's your favourite color?"
+    $ fav_color = renpy.input("What's your favorite color?").strip()
+    if fav_color == "":
+        $ fav_color = "lilac"
+    l "I like [fav_color]"
+    h "Ohh what a coincidence I also love [fav_color]"
+    h "I can't believe it we're so similar haahahhahahahahah"
+
+    h "Hmmm… What did you want to be when you grew up?"
+    $ childhood_dream = renpy.input("What did you want to be when you grew up?").strip()
+    if childhood_dream == "":
+        $ childhood_dream = "Police"
+    l "I want to be a [childhood_dream]"
+    h "whaaaaaat!! me too! I also want to be a [childhood_dream]"
+    h "We are really the same, I feel like I found my soulmate hehehe"
+
+    h "Your turn ask me anything you want…"
+    l "..."
+    l "Whe-when will you stop this?"
+    h "stop this?"
+    stop music fadeout 1.0
+    h "but [holly_nickname] we just got started"
+    play music "audio/bgm/hollys theme.ogg" volume 0.4 fadein 3.0
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.6, 0.8)
+    h "You wanted this didn't you"
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.5, 0.8)
+    h "You told me before you wanted to do this"
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.4, 0.8)
+    h "YOU TOLD ME YOU WANTED TO DO THIS!"
+
+    l "da-da-the Lily you met and knew online, and the Lily you're with right now are different"
+    l "a-a-I can't do this…"
+    menu holly_pressure:
+        "What do I do?"
+        "Run away":
+            show lily_here:
+                bump (-40)
+                medlong
+                leftish
+            l "I'm sorry I can't do this"
+            h "No, not this time you can't run away from me here"
+            h "Why are you doing this?"
+            #block of code to run
+        "Push holly":
+            show holly_here:
+                medlong
+                toright
+                slide_to(0.8, 0.8)
+            l "get away from me..."
+            h "Why are you doing this?"
+            h "What's wrong with you"
+            #block of code to run
+        
 
 label abandoned_house_date_1:
-    scene bg abandoned house with wipeleft
-
+    $ time_of_day = "SILVERMOON"
+    scene bg abandoned house with wiperight
+    play music "audio/ambience/rural night.ogg" volume 0.5 fadein 2.0
     
+    show holly_here with dissolve:
+        full
+        rightish
+    show lily_here with dissolve:
+        full
+        leftish
+    
+    h "Good choice [holly_nickname], I knew you have a great taste"
+    l "Where even are we?"
+    h "somewhere quite, like you said"
+    l "I haven't been here before, I'm not sure… am I safe with you here…"
+    h "Don't worry, I'll make sure you're safe with me, I'll protect you with my life."
+    h "How about we get to know each other, this is our first date after all"
+    show holly_here:
+        parallel:
+            ease 0.5 medlong
+        parallel:
+            ease 0.5 rightish
+
+    show lily_here:
+        parallel:
+            ease 0.5 medlong
+        parallel:
+            ease 0.5 leftish
+    l "okay…"
+    h "Do you have any hobbies?"
+
+    menu hobby_choice:
+        "Do you have any hobbies?"
+
+        "Yes":
+            l "yeah... I have some"
+            h "me too I also have some hobbies"
+
+        "No":
+            l "N-n-no, I don't have one"
+            h "me too I also don't have any hobby"
+
+    h "Hmmm... how about"
+    h "What's your favourite color?"
+    $ fav_color = renpy.input("What's your favorite color?").strip()
+    if fav_color == "":
+        $ fav_color = "lilac"
+    l "I like [fav_color]"
+    h "Ohh what a coincidence I also love [fav_color]"
+    h "I can't believe it we're so similar haahahhahahahahah"
+
+    h "Hmmm… What did you want to be when you grew up?"
+    $ childhood_dream = renpy.input("What did you want to be when you grew up?").strip()
+    if childhood_dream == "":
+        $ childhood_dream = "Police"
+    l "I want to be a [childhood_dream]"
+    h "whaaaaaat!! me too! I also want to be a [childhood_dream]"
+    h "We are really the same, I feel like I found my soulmate hehehe"
+
+    h "Your turn ask me anything you want…"
+    l "..."
+    l "Whe-when will you stop this?"
+    h "stop this?"
+    stop music fadeout 1.0
+    h "but [holly_nickname] we just got started"
+    play music "audio/bgm/hollys theme.ogg" volume 0.4 fadein 3.0
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.6, 0.8)
+    h "You wanted this didn't you"
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.5, 0.8)
+    h "You told me before you wanted to do this"
+
+    show holly_here:
+        medlong
+        toleft
+        slide_to(0.4, 0.8)
+    h "YOU TOLD ME YOU WANTED TO DO THIS!"
+
+    l "da-da-the Lily you met and knew online, and the Lily you're with right now are different"
+    l "a-a-I can't do this…"
+    menu holly_pressure_quite_1:
+        "I can't do this..."
+        "Run away":
+            if push_holly_count == 0:
+                show holly_here:
+                    parallel:
+                        ease 0.5 full
+                    parallel:
+                        ease 0.5 right
+
+                show lily_here:
+                    parallel:
+                        ease 0.5 full
+                    parallel:
+                        ease 0.5 left
+                l "I'm sorry I can't do this"
+                show lily_here at fast_moveoutleft
+                scene black with wiperight
+                jump abandoned_house_date_2
+            else: 
+                l "Stop followin me!"
+                l "please..."
+                show lily_here at fast_moveoutleft
+                scene black with wiperight
+                jump abandoned_house_date_3
+
+
+        "Push holly":
+            $ push_holly_count += 1
+            show holly_here:
+                medlong
+                toright
+                slide_to(0.9, 0.8)
+
+            if push_holly_count == 1:
+                l "ge-get away from me..."
+                show holly_here:
+                    parallel:
+                        ease 0.5 full
+                    parallel:
+                        ease 0.5 right
+
+                show lily_here:
+                    parallel:
+                        ease 0.5 full
+                    parallel:
+                        ease 0.5 left
+                h "Lily!"
+                h "Why are you doing this?"
+                h "I thought we were friends…"
+                h "*sobs*"
+                h "WAAAAAAAAAAAAAAAAAAAAAH!!!"
+                l "I know… I know we were friends"
+                l "bu-bu-but I"
+                h "Why are you doing this to me?"
+                h "Why are you like this?"
+                h "What's wrong with you?"
+                l "wha-what do you mean?"
+                l "I'm just acting, like how we are supposed to act"
+                h "Why can't you be like the Lily I knew, and the way you are supposed to act"
+                h "You want to do something like this right"
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.7, 1.0)
+                h "Right?"
+
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.4, 0.8)
+                h "Right…"
+
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.3, 0.6)
+                h "RIGHT!"
+                jump holly_pressure_quite_1
+            else:
+                show holly_here:
+                    parallel:
+                        ease 0.5 full
+                    parallel:
+                        ease 0.5 right
+                l "Stop!"
+                l "I don't feel safe around you"
+                l "ca-can we stop this…"
+                l "get away from me please"
+                h "You told me you want to be closer with me…"
+
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.7, 0.8)
+                h "spend time with me…"
+
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.4, 0.6)
+                h "do things with me…"
+
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.3, 0.5)
+                h "BE CLOSER TO ME!"
+
+                stop music fadeout 2.0
+                l "I can't be seen doing like this here, if only you understand you'd knew"
+                l "a-a-I'll be dead if I'm seen doing anything like this"
+                h "..."
+                show holly_here:
+                    full
+                    toleft
+                    slide_to(0.6, 0.8)
+                l "I'll be dead…"
+                h "what do you mean?"
+                l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
+                h "what abo--"
+                l "I can't be gay"
+                h "..."
+                l "It's already, can we just go home already…"
+                h "yeah right… right..."
+                h "Let's just go home now, we're still friends right?"
+                l "yes of course…"
+                scene black with fade
+                jump evening_day_2
+
+
+label abandoned_house_date_2:
+    $ time_of_day = "DAY"
+    scene bg outside abandoned house with wiperight
+
+    show lily_here with dissolve:
+        full
+        left
+    show holly_here with dissolve:
+        full
+        right
+
+    h "Lily!"
+    h "Why are you doing this?"
+    h "I thought we were friends…"
+    h "*sobs*"
+    h "WAAAAAAAAAAAAAAAAAAAAAH!!!"
+    l "I know… I know we were friends"
+    l "bu-bu-but I"
+    h "Why are you doing this to me?"
+    h "Why are you like this?"
+    h "What's wrong with you?"
+    l "wha-what do you mean?"
+    l "I'm just acting, like how we are supposed to act"
+    h "Why can't you be like the Lily I knew, and the way you are supposed to act"
+    h "You want to do something like this right"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.7, 1.0)
+    h "Right?"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.4, 0.8)
+    h "Right…"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.3, 0.6)
+    h "RIGHT!"
+    menu holly_pressure_quite_2:
+        "RIGHT!"
+        "Run away":
+            l "Stop followin me!"
+            l "please"
+            show lily_here at fast_moveoutleft
+            scene black with wiperight
+            jump abandoned_house_date_3
+
+        "Push Holly":
+            show holly_here:
+                full
+                toright
+                slide_to(0.9, 0.8)
+            l "Stop!"
+            l "I don't feel safe around you"
+
+            l "ca-can we stop this…"
+            l "get away from me please"
+
+            show holly_here:
+                full
+                toleft
+                slide_to(0.5, 1.0)
+            h "You told me you want to be closer with me…"
+
+            show holly_here:
+                full
+                toleft
+                slide_to(0.4, 0.8)
+            h "spend time with me…"
+
+            show holly_here:
+                full
+                toleft
+                slide_to(0.3, 0.6)
+            h "do things with me…"
+
+            show holly_here:
+                full
+                toleft
+                slide_to(0.2, 0.5)
+            h "BE CLOSER TO ME!"
+
+            stop music fadeout 2.0
+            l "I can't be seen doing like this here, if only you understand you'd knew"
+            l "a-a-I'll be dead if I'm seen doing anything like this"
+            show holly_here:
+                full
+                toleft
+                slide_to(0.6, 0.8)
+            h "..."
+            l "I'll be dead…"
+            h "what do you mean?"
+            l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
+            h "what abo--"
+            l "I can't be gay"
+            h "..."
+            l "It's already late, can we just go home already…"
+            h "yeah right… right..."
+            h "Let's just go home now, we're still friends right?"
+            l "yes of course…"
+            scene black with fade
+            jump evening_day_2
+
+
+label abandoned_house_date_3:
+    scene bg tunnel with wiperight
+
+    show lily_here with dissolve:
+        full
+        left
+    show holly_here with dissolve:
+        full
+        right
+
+    l "Stop!"
+    l "I don't feel safe around you"
+
+    l "ca-can we stop this…"
+    l "get away from me please"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.5, 1.0)
+    h "You told me you want to be closer with me…"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.4, 0.8)
+    h "spend time with me…"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.3, 0.6)
+    h "do things with me…"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.2, 0.5)
+    h "BE CLOSER TO ME!"
+
+    stop music fadeout 2.0
+    l "I can't be seen doing like this here, if only you understand you'd knew"
+    l "a-a-I'll be dead if I'm seen doing anything like this"
+    show holly_here:
+        full
+        toleft
+        slide_to(0.6, 0.8)
+    h "..."
+    l "I'll be dead…"
+    h "what do you mean?"
+    l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
+    h "what abo--"
+    l "I can't be gay"
+    h "..."
+    l "It's already, can we just go home already…"
+    h "yeah right… right..."
+    h "Let's just go home now, we're still friends right?"
+    l "yes of course…"
+    scene black with fade
+    jump evening_day_2
+
+
+label evening_day_2:
+    $ time_of_day = "DAY"
+
+    scene bg lily bedroom with dissolve
+    play music "audio/ambience/night ambiance.ogg" fadein 2.0
+
+    show lily_here with dissolve:
+        full
+        centerright
+
+    l "I don't feel so good…"
+    l "There's something wrong"
+    l "No. everything's going wrong"
+
+    play sound "audio/sfx/phone notification.ogg"
+    h_nvl "We looked so cute here, [holly_nickname] :3"
+    l_nvl "What the hell? When did you take this?!"
+    l_nvl "what are you going to do with these?"
+    l_nvl "Delete this right now!!!"
+    h_nvl "See you tomorrow."
+    h_nvl "Good night [holly_nickname]"
+
+
+label delete_this_menu:
+    menu (nvl=True):
+        "Delete this!":
+            $ delete_text += 1
+            $ renpy.notify("Holly's Affection 💖")
+
+            if delete_text == 1:
+                l_nvl "Hey what the hell"
+                l_nvl "Delete this now!"
+                jump delete_this_menu
+
+            elif delete_text == 2:
+                l_nvl "HEY Don't sleep on me!"
+                l_nvl "You can't be seriou"
+                l_nvl "Delete this now!"
+                jump delete_this_menu
+
+            elif delete_text >= 3:
+                l_nvl "D"
+                l_nvl "E"
+                l_nvl "L"
+                l_nvl "E"
+                l_nvl "T"
+                l_nvl "E"
+                l_nvl "T"
+                l_nvl "H"
+                l_nvl "I"
+                l_nvl "S"
+                jump delete_this_menu
+
+        "Give up":
+            l_nvl "I'll come talk to you tommorow"
+            l_nvl "please delete this"
+
+    nvl clear
+    l "What is she planning with those pirctures"
+    l "If those pictures comes out then..."
+    stop music fadeout 1.0
+    l "No no no no no no no no no no"
+    scene black with eyeclose_slow
+    jump lily_monologue_day_2
+
+
+label lily_monologue_day_2:
+    scene black
+    play music "audio/ambience/female talk.ogg" fadein 1.0 volume 0.75
+    pause 1.0
+
+    python:
+        left_lines = [
+            "There's something wrong with Lily...",
+            "What can we do?",
+            "She's not normal",
+            "Is this what happens when someone grows up away from their father",
+            "she's so rebellious",
+            "she doesn't know who she is",
+            "she acts so masculine",
+            "she speaks so strong",
+            "she likes other girls",
+            "That's not normal",
+        ]
+
+        for line in left_lines:
+            show_positioned_line(line, 0.2)
+
+    stop music
+    play music "audio/ambience/male talk.ogg" fadein 0.5 volume 0.75
+
+    python:
+        right_lines = [
+            "Ahh I see",
+            "That's indeed not normal",
+            "Do you want me to fix your daughter...",
+            "Lily, what a beautiful name",
+            "alright leave it up to me",
+            "I'll fix her",
+            "I'll fix her good...",
+        ]
+
+        renpy.pause(0.8, hard=False)
+
+        for line in right_lines:
+            show_positioned_line(line, 0.8)
+
+    stop music fadeout 3.0
+    pause 2.0
+    jump morning_day_3
+
+
+label morning_day_3:
+    play sound "audio/sfx/alarm_beep.ogg"
+    pause 5.0
+    stop sound fadeout 1.0
+    play music "audio/ambience/morning_ambience.ogg" fadein 3.0
+    scene bg bed top view with eyeopen_slow
+    show lily_here:
+        full 
+        center
+    
+    l "Another weird dream huh?"
+    l "when will this stop?"
+    l "What are those dreams even about?"
+    show lily_here at centerright with ease
+    play sound "audio/sfx/phone notification.ogg"
+
+    h_nvl "Good morning [holly_nickname]"
+    h_nvl "I hoped you slept well"
+    h_nvl "Don't worry about the pictures. I just took them cuz they're just cute"
+    h_nvl "I won't share them or anything"
+    h_nvl "I understand you now"
+    h_nvl "I'll keep you safe at your closet just as you like"
+    h_nvl "see you later [holly_nickname]"
+
+    l "Oh thank God"
+    l "I hope I can trust her…"
+    l "We are good friends on the internet"
+    l "She helped me understand myself"
+    l "after all... maybe… we might just have a little misunderstanding"
+    l "she might not be really that bad at all"
+
+    play sound "audio/sfx/bus_horn.ogg"
+    l "uhhh... yeah... I still have school today"
+    stop music fadeout 2.0
+    show lily_here at fast_moveoutright
+    l "cooommiiiing"
+    scene black with wiperight_medium
+    play sound "audio/sfx/running.ogg"
+    pause 2.0
+
+    jump bus_scene_day_3
+
+
+label bus_scene_day_3:
+    scene bg bus interior with wiperight
+    show lily_here at enter_from_left_to_center
+
+    play sound "audio/sfx/bus start.ogg"
+    # SHOW: Picture of rural Southeast Asian country (Scene 1)
+    l "This town is old, and rusty."
+    l "I forgot the exact reason why I hated it."
+
+    stop sound
+    play music "audio/ambience/road ambiance.ogg" fadein 2.0
+    # SHOW: Picture of rural Southeast Asian country (Scene 2)
+    l "I just have this feeling ever since."
+    l "Why can't I be me here? What am I scared of?"
+    l "I don't remember…"
+    l "I just know that if I don't act exactly as expected, something bad will happen…"
+    l "Something out of a nightmare."
+    l "Something that maybe I'd like to forget."
+    l "I wonder if I leave this place, I'll be free from that feeling."
+    # SHOW: Picture of a lily flower
+    
+    l "At least for now, I still feel safe online sharing who I really am."
+    l "One day I'll come out of my closet and kiss a girl in front of everyone…"
+    l "But not right now... She's just making things much harder for me."
+    stop music fadeout 2.0
+    l "I wish all of this would just end soon…"
+    pause 1.0
+    show lily_here at slow_moveoutright
+    stop sound
+    scene black with wiperight
+    hide lily_here
+    jump school_day_3
+    
+
+label school_day_3:
+    play sound "audio/sfx/bus stopping.ogg"
+    pause 4.0
+    scene black with wiperight
+    pause 2.0
+    stop sound
+    scene bg classroom with dissolve
+    play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.75
+    l "a"
 
 label outted_ending:
     scene bg bed top view

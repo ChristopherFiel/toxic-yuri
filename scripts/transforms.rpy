@@ -108,30 +108,29 @@ transform offscreenright:
 
 transform fast_moveoutright:
     yalign 0.5
-    zoom 1/scale
     easeout 0.5 xalign 1.5
 
 transform slow_moveoutright:
     yalign 0.5
-    zoom 1/scale
     easeout 1.0 xalign 2.0
+
+transform fast_moveoutleft:
+    yalign 0.5
+    easeout 0.5 xalign -1.0
 
 transform slow_moveoutleft:
     yalign 0.5
-    zoom 1/scale
     easeout 1.0 xalign -1.0
 
 transform slide_in_left:
     xpos -0.5 xanchor 1.0
     yalign 1.0
-    zoom 1/scale
     ease 1.5 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
 
 transform slide_in_right:
     xpos 1.5 xanchor 1.0
     yalign 1.0
-    zoom 1/scale
     ease 1.0 xpos 0.55 xanchor 0.5
     ease 0.15 xpos 0.5
 
@@ -139,57 +138,51 @@ transform enter_from_left_to_center:
     xpos -0.5
     xanchor 0.5
     yalign 1.0
-    zoom 1/scale
     ease 1.5 xpos 0.5
 
 transform slow_enter_from_left_to_center:
     xpos -0.5
     xanchor 0.5
     yalign 1.0
-    zoom 1/scale
     ease 2.5 xpos 0.5
 
 transform enter_from_right_to_center:
     xpos 1.5
     xanchor 0.5
     yalign 1.0
-    zoom 1/scale
     ease 1.5 xpos 0.5
 
 transform enter_from_right_slow(target_x=0.5, dur=2.5):
     xpos 1.5
     xanchor 0.5
     yalign 1.0
-    zoom 1/scale
     ease dur xpos target_x
 
 transform enter_from_left_to_leftish(target_x=0.25, dur=1.5):
     xpos -0.5
     xanchor 0.25
     yalign 1.0
-    zoom 1/scale
     ease dur xpos target_x
 
 transform enter_from_left_slow(target_x=0.1, dur=1.5):
     xpos -0.5
     xanchor 0.5
     yalign 1.0
-    zoom 1/scale
     ease dur xpos target_x
 
 
 ################################################################################
 ## Animated movement — reposition an already-shown sprite
 ################################################################################
+## Always pair these with an explicit shot-distance transform (full, medlong,
+## medium, etc.) in the same show block — these only control position, not zoom.
 
 transform slide_to(x, dur=1.0):
     anchor (0.55, 1.0)
-    zoom 1/scale
     ease dur xpos x
 
 transform slide_off_right(dur=1.0):
     xanchor 0.5
-    zoom 1/scale
     easeout dur xpos 1.5
 
 

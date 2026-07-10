@@ -83,3 +83,20 @@ init python:
     def get_line_pause(text_line, min_pause=1.0, max_pause=3.0, chars_per_sec=18.0):
         duration = len(text_line) / chars_per_sec
         return max(min_pause, min(max_pause, duration))
+
+init python:
+    def get_line_pause(text_line, min_pause=1.0, max_pause=3.0, chars_per_sec=18.0):
+        duration = len(text_line) / chars_per_sec
+        return max(min_pause, min(max_pause, duration))
+
+    def show_positioned_line(line_text, xalign_value):
+        txt = Text(line_text, xalign=xalign_value, yalign=0.5, xsize=700,
+                text_align=xalign_value, color="#ffffff", size=64,
+                outlines=[(2, "#000000", 0, 0)], line_spacing=6)
+        renpy.show("water_line", what=txt, at_list=[water_in], zorder=100)
+        renpy.pause(0.9, hard=False)
+        renpy.pause(get_line_pause(line_text), hard=False)
+        renpy.show("water_line", what=txt, at_list=[water_out], zorder=100)
+        renpy.pause(0.7, hard=False)
+        renpy.hide("water_line")
+        renpy.pause(0.3, hard=False)
