@@ -687,7 +687,7 @@ label school_day_2:
     
     t "Is that so?"
     t "very well, interesting interpretation..." 
-    show lily_here at slow_moveoutleft
+    hide lily_here with dissolve
     show teacher:
         slide_to(0.5)
     t "Next!" 
@@ -758,7 +758,8 @@ label school_day_2:
     show school_girl_3 at slow_moveoutright
     show school_girl_4 at slow_moveoutright
     show school_girl_5 at slow_moveoutright
-    
+    pause 2.0
+
     show lily_here:
         full
         toright
@@ -797,10 +798,10 @@ label school_day_2:
     pause 1.5
     scene black with wipeleft
 
-    jump school_cafeteria_day_1
+    jump school_cafeteria_day_2
 
 
-label school_cafeteria_day_1:
+label school_cafeteria_day_2:
     play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
     h "Come on Lily, let’s sit right there"
     scene bg cafeteria seat with wipeleft
@@ -930,10 +931,10 @@ label school_cafeteria_counter:
     l "I'm heading back"
     show lily_here at slow_moveoutleft
     scene black with wiperight
-    jump school_cafeteria_day_1_bully_scene
+    jump school_cafeteria_day_2_bully_scene
 
 
-label school_cafeteria_day_1_bully_scene:
+label school_cafeteria_day_2_bully_scene:
     scene bg cafeteria seat with wiperight
     show school_girl_1 with dissolve:
         full
@@ -1855,7 +1856,277 @@ label school_day_3:
     stop sound
     scene bg classroom with dissolve
     play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.75
-    l "a"
+    show teacher with dissolve:
+        full
+        center
+    t "Good morning"
+    t "For today, we're going to learn about plants, and flowers"
+    t "Who here likes flowers?"
+    s5 "oh me! I like it when you mix it with water, and yeast then heat it for a while it's really good"
+    t "Thank you for your answer, but I'm talking about F-l-o-w-e-r flowers not F-l-o-u-r flour"
+    t "let's move on... I have a question for you guys "
+    t "does anybody here knows what flower symbolises innocence and rebirth"
+    t "Lily!"
+    t "What do you think is the answer"
+    show lily_here:
+        full
+        toright
+        enter_from_left_to_leftish(0.1, 1.5)
+    show teacher:
+        full
+        toleft
+        slide_to(0.9)
+    l "{i}uhhh...{/i}"
+    menu flower_meaning:
+        "what flower symbolises innocence and rebirth"
+        "Cosmos":
+            l "Hmmm... Cosmos"
+            t "Study harder, that's incorrect"
+            $ renpy.notify("Holly's Affection 💔")
+        "Daffodil":
+            l "Uhhh... Daffodils?"
+            t "Nice try but, that's not correct"
+            $ renpy.notify("Holly's Affection 💖") 
+        "Lily":
+            l "I think the poem is about..."
+            t "Very good correct!"
+            $ renpy.notify("Holly's Affection 💖") 
+        "I dont know":
+            l "I don't know..."
+            t "It's alright"
+            t "I should've expected less from you"
+            $ renpy.notify("Holly's Affection 💔")
+    hide lily_here with dissolve
+    show teacher:
+        slide_to(0.5)
+    t "The flower that symbolizes innocence and rebirth are Lilies "
+    t "In Christian art Virgin Mary is usually depicted being given Lilies by Angel Gabriel."
+    t "That's why lilies are usually used at weddings representing new beginnings,
+    and at funerals which symbolizes the innocence of the soul after death." 
+    t "alright moving on"
+    show holly_here:
+        full
+        toright
+        enter_from_left_to_leftish(0.1, 1.5)
+    h "{i}hooooaaaaaah{/i}"
+    t "Yes, holly!"
+    h "huh? what did I do?"
+    hide holly_here with dissolve
+    t "No, I mean the flower is holly"
+    t "Hollies are known for their bright red winter berries, symbolizing the holiday season"
+    t "They are dioecious, meaning each bush or tree is strictly male or female"
+    t "Now did you know that lilies, and hollies cannot grow together"
+    t "Hollies grow into large, dense, woody shrubs or trees"
+    t "They cast a deep shadow over lower-growing plants, starving sun-loving flowers like lilies and killing them"
+    stop music
+    play sound "audio/sfx/school bell.ogg"
+    t "Before you leave, for your assignment this weekend I want you to take a sample of your favourite flower"
+    t "Give it a brieft description, of what it is, what does it likes, and how to take care of it, submit it to me next week alright"
+    t "Alright class dismissed"
+    show teacher at slow_moveoutright
+    pause 2.0
+
+    show school_girl_1 with dissolve:
+        full
+        center
+    show school_girl_2 with dissolve:
+        full
+        rightish
+    show school_girl_3 with dissolve:
+        full
+        leftish
+    show school_girl_4 with dissolve:
+        full
+        right
+    show school_girl_5 with dissolve:
+        full
+        left
+
+    show school_girl_1 at center, school_pop
+    s1 "I can't believe that bitch Holly is still here I guess we haven't done enough"
+    s1 "I won't survive a year in this class with her"
+
+    show school_girl_1 at center, school_idle
+    show school_girl_2 at rightish, school_pop
+    s2 "I have a tea, so yesterday after class I have seen her with..."
+    s2 "Two of them is too disgusting for me to handle"
+
+    show school_girl_2 at rightish, school_idle
+    show school_girl_3 at leftish, school_pop
+    s3 "I see... but let's see what will happen next before doing something"
+
+    show school_girl_3 at leftish, school_idle
+    show school_girl_4 at right, school_pop
+    s4 "He loves me, he loves me not, uh flowers symbol of love so romantic"
+
+    show school_girl_4 at right, school_idle
+    show school_girl_5 at left, school_pop
+    s5 "Uhhhh..."
+    s5 "What's the difference between flours, and flours aren't they the same"
+    show school_girl_5 at left, school_idle
+
+    play sound "audio/sfx/running.ogg"
+    show school_girl_1 at slow_moveoutright
+    show school_girl_2 at slow_moveoutright
+    show school_girl_3 at slow_moveoutright
+    show school_girl_4 at slow_moveoutright
+    show school_girl_5 at slow_moveoutright
+    pause 2.0
+
+    show lily_here:
+        full
+        toright
+        slide_to(0.9, 1.0)
+    show holly_here:
+        full
+        toright
+        enter_from_left_slow(0.1, 1.5)
+    pause 1.0
+    h "Lily, let’s take lunch together again today"
+    h "Just as friends, just as you like, and want"
+    h "We’re friends aren’t we?"
+    menu lunch_day_2:
+        "We're friends aren't we?"
+        "Ignore":
+            l "..."
+            h "I’ll take that as a yes."
+            l "Bu-bu-but I haven’t said anything…"            
+            h "Don’t worry, I know how to act now."
+            h "It’s just a casual friends' lunch, not a big deal."
+        "Go with Holly":
+            l "alright it's just a lunch anyways"
+            h "Yaaaay! Let’s go!"
+            h "I brought some food."
+            l "You won't pull any of those games right?"
+            h "Don’t worry, I know how to act now."
+            h "It’s just a casual friends' lunch, not a big deal"
+    show holly_here at slow_moveoutright
+    show lily_here at slow_moveoutright
+    scene black with wipeleft
+    jump school_cafeteria_day_3
+
+
+label school_cafeteria_day_3:
+    play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
+    h "That table occupied I guess, let’s sit right here"
+    scene bg cafeteria new seats with wipeleft
+    show holly_here with dissolve:
+        full
+        leftish
+    show lily_here with dissolve:
+        full 
+        rightish
+    h "Here, have some of this."
+    l "Thanks."
+    h "You're welcome! Is it good?"
+    l "It's better than what we usually have here at school."
+    h "Ahahahhahahaha!"
+    h "Yeah, the food here sucks."
+    l "I know, hahahhahaha."
+    h "I'm sorry about how I've acted these past few days."
+    h "I didn't know your situation."
+    l "It's fine... you're new here, so you had no idea about it."
+    l "I also didn't mean to push you far away and paint you as an evil person."
+    l "It's fine, we could still be friends…"
+    show holly_here:
+        bump(-40)
+        full
+        leftish
+    play sound "audio/sfx/slime.ogg"
+    l "Oh, shit, shit... my clothes!"
+    l "What do I do?"
+    l "How am I supposed to fix this…?"
+    h "Calm down [holly_nickname]— I mean, Lily"
+    h "I brought extra clothes. You can borrow them"
+        
+    menu borrow_clothes:
+        "You can borrow them"
+        "Take the clothes":
+            l "Tha-thanks."
+            l "I owe you one."
+            
+            h "Hurry up and change before your clothes dry."
+            
+            # SCENE: Fades to black
+            scene black with fade
+            $ renpy.pause(1.0)
+            
+            # SCENE: Back to school background
+            # SHOW: Lily sprite enters from left
+            h "Tha-that fits you so well... *blushes*"
+            l "This feels so uncomfortable."
+            l "How can you wear this every day?"
+            l "It feels like I’m sticking out too much right now."
+            l "I feel like everyone's eyes are on me."
+            s1 "We are, indeed."
+            s2 "What are you wearing... freak?"
+            s3 "It looks so shit on you, haha!"
+            s1 "Thank God the weirdos are now grouped together. It’s easier to pick on you two."
+            s2 "You look like such an eyesore. Get out of my sight now!"
+            h "Cut it out!"
+            h "I can tolerate your bullshit when it's directed at me..."
+            h "BUT NOT WITH LILY!"
+            # WITH: Holly sprite chases them off the screen
+            l "Tha-thanks."
+            l "It’s my first time getting picked on by them."
+            l "I-it's so scary…"
+            h "It’s alright, I’m here."
+            h "What if we go shopping for some new clothes, huh?"
+            h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
+            l "Re-really?"
+            l "Sounds like a good idea."
+            l "Thank God you're here. I would have panicked if this happened to me alone, hahahahah."
+            h "Yeah, let’s go!"
+            
+            jump shopping_scene
+
+        "Don't take the clothes":
+            l "Don’t worry."
+            l "It’s not a big deal, really."
+            l "I’ll just go home immediately after school… I’ll cover it up for now."
+            
+            s4 "Oh my… what a mess."
+            s4 "You're Lily, right?"
+            
+            l "Yeah, why?"
+            
+            s4 "You need to change your clothes. I have some spare clothes you can borrow."
+            
+            l "Really? Thank you!"
+            
+            # SCENE: Fades to black
+            scene black with fade
+            $ renpy.pause(1.0)
+            
+            # SCENE: Back to school background
+            # SHOW: Lily sprite enters from left
+            
+            s4 "Wow! *whistles* It looks good on you. Fits you perfectly."
+            s4 "You can return it anytime you like. See ya!"
+            
+            # WITH: Holly gets jealous
+            
+            h "That doesn’t fit you at all."
+            
+            l "Really? I-it fits nicely on me, though."
+            l "It's an okay replacement for now. I’ll just change after school."
+            
+            h "No, let’s go shopping for new clothes."
+            h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
+            
+            l "Re-really?"
+            l "Let’s make it quick then."
+            
+            h "Let’s go."
+            
+            # WITH: Holly sprite drags Lily off screen
+            
+            jump shopping_scene
+
+
+label shopping_scene:
+    # Your shopping scene background and dialogue go here!
+    pass
 
 
 label outted_ending:
