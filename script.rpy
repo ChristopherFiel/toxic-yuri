@@ -15,8 +15,6 @@ define config.adv_nvl_transition = None
 define config.nvl_adv_transition = Dissolve(0.3)
 
 
-# this is yet another test
-
 #plz work plz work plz work
 
 #Warning splash screen
@@ -1177,15 +1175,36 @@ label restaurant_date:
     menu holly_pressure:
         "What do I do?"
         "Run away":
+            l "I'm sorry I can't do this"
             show lily_here:
                 bump (-40)
                 medlong
                 leftish
-            l "I'm sorry I can't do this"
             h "No, not this time you can't run away from me here"
             h "Why are you doing this?"
-            #block of code to run
-        "Push holly":
+            h "I though we are friends"
+            h "What's wrong with you"
+            l "I-is this what friends do?"
+            l "please leave me alone"
+            show holly_here:
+                parallel:
+                    ease 0.5 full
+                parallel:
+                    ease 0.5 right
+
+            show lily_here:
+                parallel:
+                    ease 0.5 full
+                parallel:
+                    ease 0.5 left
+            h "But you told me you want to do this"
+            h "have something like this"
+            h "experience something like this"
+            l "you don't understand leave me alone"
+            show lily_here at fast_moveoutleft
+            scene black with wiperight
+            jump abandoned_house_date_3
+        "Push Holly":
             show holly_here:
                 medlong
                 toright
@@ -1193,7 +1212,60 @@ label restaurant_date:
             l "get away from me..."
             h "Why are you doing this?"
             h "What's wrong with you"
-            #block of code to run
+            l "I am just doing it like everybody here does"
+            l "a-am I doing it wrong"
+            h "Why are you doing this to me"
+            show holly_here:
+                medlong
+                toright
+                slide_to(0.6, 0.8)
+            h "Where's the Lily I know"
+            l "..."
+            show holly_here:
+                medlong
+                toright
+                slide_to(0.4, 0.8)
+            h "WHERE IS SHE?"
+            t "erm... Ahem!"
+            show teacher:
+                full
+                right
+            
+            show lily_here:
+                parallel:
+                    ease 0.5 full
+                parallel:
+                    ease 0.5 left
+
+            show holly_here:
+                parallel:
+                    ease 0.5 full
+                parallel:
+                    ease 0.5 leftish
+            
+            t "What the hell are you two doing here, at this time of day or night"
+            t "and why are you two so close to each other, uck!"
+            l "i-its not what you think it's jus--"
+            h "YES IT'S WHAT YOU THINK TEACH"
+            h "ME AND HOLLY ARE ABOUT TO HOOK UP"
+            h "ME AND HOLLY ARE MADLY IN LOVE WITH EACH OTHER"
+            h "Is there anything wrong with that teach?"
+            t "what the hell"
+            h "I don't care what you think"
+            h "YURI IS MINE!"
+            t "what the--"
+            t "ughhhh..."
+            stop music fadeout 1.0
+            t "You don't know what you are doing"
+            t "You don't have an idea what you are doing"
+            t "This is so wrong"
+            t "You two are not normal..."
+            t "and I will fix that"
+            t "You two are coming with me!"
+            t "It's for the best for both of you..."
+            t "Security!"
+            scene black with dissolve
+            jump asylum_ending                 
         
 
 label abandoned_house_date_1:
@@ -1785,6 +1857,41 @@ label school_day_3:
     play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.75
     l "a"
 
+
 label outted_ending:
     scene bg bed top view
     l "a"
+
+
+label asylum_ending:
+    scene black with dissolve
+    play music "audio/ambience/asylum.ogg" fadein 1.0 volume 0.75
+    scene bg mental asylum with fade
+
+    show lily_here with dissolve:
+        full
+        center
+
+    l "How did I end up here?"
+    l "Am I really a freak..."
+    l "Am I really not normal..."
+    l "What's wrong with me..."
+    l "..."
+    l "I just want to be myself..."
+    l "Is it wrong to be me..."
+    l "..."
+
+    camera at frantic_shake
+    $ quick_menu = False
+    window hide
+    show screen infinite_scream
+    pause 6.0
+    stop music fadeout 1.0
+    camera at shake_settle
+    pause 1.0
+    hide screen infinite_scream with dissolve
+    pause 1.0
+    scene black with fade
+    pause 1.0
+    # Play the credit scene after this
+    # $ renpy.full_restart()

@@ -45,6 +45,48 @@ screen press_to_continue():
         color "#ffffff"
 
 
+screen infinite_scream():
+    zorder 50
+    default a_str = ""
+
+    # cps ≈ 10
+    timer 0.10 repeat True action SetScreenVariable("a_str", a_str + "A")
+
+    python:
+        _full  = "A" + a_str + "AH"
+        _cpl   = 16   # characters per line — increase if text wraps too early,
+        _lines = [ _full[i : i + _cpl] for i in range(0, len(_full), _cpl) ]
+        _wrapped = "\n".join(_lines)
+
+    text "{font=gui/fonts/cmunorm.ttf}{size=160}[_wrapped]{/size}{/font}":
+        xalign 0.5
+        yalign 0.5
+
+transform frantic_shake:
+    subpixel True
+    pos (0.5, 0.5) anchor (0.5, 0.5)
+    zoom 1.05 
+    
+    block:
+        choice:
+            linear 0.05 xoffset 18  yoffset -12 blur 2
+        choice:
+            linear 0.05 xoffset -20 yoffset 15 blur 10
+        choice:
+            linear 0.05 xoffset 14  yoffset 20 blur 4
+        choice:
+            linear 0.05 xoffset -16 yoffset -18 blur 8
+        choice:
+            linear 0.05 xoffset 22  yoffset 10 blur 0
+        choice:
+            linear 0.05 xoffset -12 yoffset -22 blur 12
+        repeat
+
+transform shake_settle(t=3.0):
+    subpixel True
+    xoffset 20 yoffset -20 blur 10
+    easeout t xoffset 0 yoffset 0 blur 0
+
 ## Dream Scene Custom Screens
 screen centered_line(line_text):
     zorder 100
