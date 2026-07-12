@@ -62,6 +62,26 @@ screen infinite_scream():
         xalign 0.5
         yalign 0.5
 
+
+screen infinite_iloveu():
+    zorder 50
+
+    default a_str = ""
+
+    # adds one "I love U " chunk per tick
+    timer 0.6 repeat True action SetScreenVariable("a_str", a_str + "I love U ")
+
+    python:
+        _full = a_str
+        _cpl = 16   # characters per line — adjust if text wraps too early/late
+        _lines = [_full[i : i + _cpl] for i in range(0, len(_full), _cpl)]
+        _wrapped = "\n".join(_lines)
+
+    text "{font=gui/fonts/cmunorm.ttf}{size=60}[_wrapped]{/size}{/font}":
+        xalign 0.5
+        yalign 0.5
+
+
 transform frantic_shake:
     subpixel True
     pos (0.5, 0.5) anchor (0.5, 0.5)
@@ -82,10 +102,12 @@ transform frantic_shake:
             linear 0.05 xoffset -12 yoffset -22 blur 12
         repeat
 
+
 transform shake_settle(t=3.0):
     subpixel True
     xoffset 20 yoffset -20 blur 10
     easeout t xoffset 0 yoffset 0 blur 0
+
 
 ## Dream Scene Custom Screens
 screen centered_line(line_text):

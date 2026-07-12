@@ -38,7 +38,7 @@ label start:
     scene black
     $ quick_menu = False
     pause 1.0
-    play music "audio/ambience/heavy rain.ogg" fadein 3.0 volume 0.4
+    play music "audio/ambience/heavy rain.ogg" fadein 3.0 volume 0.5
     show screen disclaimer_screen with dissolve
     pause 5
     show screen press_to_continue with dissolve
@@ -79,7 +79,7 @@ label start:
         center_upper
         medlong
     h_unknown "You couldn't hide from your true self, so now I'm setting you free"
-    h_unknown "I know deep down inside you also want this to happen…"
+    h_unknown "I know deep down inside you also want this to happen..."
     scene black with eyeclose
     scene bg abandoned house with eyeopen
     show holly d2base d2l1 d2r2 oface crazyeye:
@@ -2528,21 +2528,153 @@ label morning_day_4:
     camera at frantic_shake
     $ quick_menu = False
     window hide
+    scene white with dissolve
+    pause 2.0
+    scene bg classroom with dissolve
+    pause 2.0
+    scene bg cafeteria counter with dissolve
+    pause 2.0
+    scene bg mall with dissolve
+    pause 2.0
     scene black with dissolve
     show screen infinite_scream
-    pause 6.0
+    pause 12.0
     stop music fadeout 1.0
     camera at shake_settle
     pause 1.0
     hide screen infinite_scream with dissolve
+    jump kidnap_intro
 
 
 label kidnap_intro:
-    l ""
+    $ time_of_day = 'RAIN'
+    $ quick_menu = True
+    play music "audio/ambience/drizzle.ogg" fadein 1.0
+    pause 1.0
+    scene bg rainy tree with fade
+
+    show lily_here with dissolve:
+        full
+        left
+    l "AH"
+    l "..."
+    pause 4.0
+    show holly_here at enter_from_right_to_rightish
+    h "Lily?"
+    h "What are you doing here?"
+    l "..."
+    h "Are you ok?"
+    h "You'll get sick if you stay here"
+    l "..."
+    play sound "audio/sfx/dry thunder.ogg"
+    h "It looks like it's going to rain hard"
+    h "Don't worry I've got a nice place for you to hide"
+    show holly_here:
+        full
+        slide_to (0.6, 0.6)
+    h "I'll keep you safe there"
+    show holly_here:
+        full
+        slide_to (0.4, 0.6)
+    h "I'll protect you there"
+    show holly_here:
+        full
+        slide_to (0.2, 0.6)
+    h "You can be the real Lily, Yuri, or [holly_nickname] there"
+    h "My Lily"
+    h "and We'll be together forever"
+    play sound "audio/sfx/thunder.ogg" volume 0.75
+    scene black
+    jump kidnap_ending
 
 
 label kidnap_ending:
-    
+    $ time_of_day = 'RAIN'
+    play music "audio/ambience/heavy rain.ogg" fadein 3.0 volume 0.5
+    pause 1.0
+    scene bg abandoned house with eyeopen
+    show lily_here with dissolve:
+        full
+        left
+    pause 2.0
+    scene black with eyeclose_slow
+    play sound "audio/sfx/breathe.ogg"
+    pause 5.0
+    scene bg abandoned house with eyeopen
+    show holly_here with dissolve:
+        full
+        right
+    stop sound
+    h "Finally, you're aaaaaall miiiiiiiine now"
+    h "We can live together forever now, just the two us"
+    show holly_here with dissolve:
+        full
+        slide_to (0.6, 0.5)
+    h "You couldn't hide from your true self, so now I'm setting you free"
+    h "I know deep down inside you also want this to happen..."
+    show holly_here with dissolve:
+        full
+        slide_to (0.3, 0.5)
+    h "DON'T YOU?"
+    play sound "audio/sfx/thunder.ogg" volume 0.75
+    scene black with eyeclose
+    scene bg abandoned house with eyeopen
+    show lily_here with dissolve:
+        medlong
+        left
+    show holly_here with dissolve:
+        medlong
+        right
+    h "Telling you the truth..."
+    h "I didn't saw you by accident, right then"
+    h "I followed you"
+    show holly_here:
+        medlong
+        slide_to(0.75, 1.0)
+    h "I know everything about you Lily"
+    h "EVERYTHING"
+    h "I know your past"
+    h "Present"
+    h "and future"
+    show holly_here:
+        medlong
+        slide_to(0.5, 1.0)
+    h "The world out there is cruel for people like you Lily"
+    h "You can't even be the real you Yuri"
+    h "But don't worry you're safe here with me"
+    h "I don't care who you are anymore whethe it's Lily, Yuri, or [holly_nickname]"
+    h "At the end"
+    show holly_here:
+        medlong
+        slide_to(0.25, 1.0)
+    h "YOU ARE MINE"
+    h "Do you want to be with me forever?"
+    menu together_forever:
+        "Together 4 Ever?"
+        "Yes":
+            show holly_here:
+                medlong
+                slide_to(0.75, 1.0)
+            h "Good"
+            h "You don't have a choice anyways"
+            h "HAHAHHAHAHAHHHHHHAHA"
+            h "Lily"
+            h "I love U"
+            h "I love U"
+            $ quick_menu = False
+            window hide
+            show screen infinite_iloveu
+            pause 6.0
+            stop music fadeout 1.0
+            scene black with fade
+            play music "audio/bgm/ending theme.ogg" fadein 0.5
+            pause 1.0
+            show text "{font=cmunorm.ttf}{size=60}Thank you for playing :>{/size}{/font}" with dissolve
+            pause 3.0
+            show end_credits with dissolve
+            pause
+            $ renpy.full_restart()
+
 
 label outted_ending:
     scene bg bed top view
@@ -2578,6 +2710,10 @@ label asylum_ending:
     hide screen infinite_scream with dissolve
     pause 1.0
     scene black with fade
-    pause 1.0
-    # Play the credit scene after this
-    # $ renpy.full_restart()
+    play music "audio/bgm/ending theme.ogg" fadein 0.5
+    pause 1.0        
+    show text "{font=cmunorm.ttf}{size=60}Thank you for playing :>{/size}{/font}" with dissolve
+    pause 3.0
+    show end_credits with dissolve
+    pause
+    $ renpy.full_restart()
