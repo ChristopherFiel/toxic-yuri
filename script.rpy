@@ -2669,10 +2669,14 @@ label kidnap_ending:
             scene black with fade
             play music "audio/bgm/ending theme.ogg" fadein 0.5
             pause 1.0
+            "Bad End"
+            "Play the game again to reach all 3 endings"
             show text "{font=cmunorm.ttf}{size=60}Thank you for playing :>{/size}{/font}" with dissolve
             pause 3.0
             show end_credits with dissolve
             pause
+            "Check out more of our works at {a=https://x.com/CharlieDuckArt}{color=#1da1f2}Charlie Duck{/color}{/a}"
+            "and at {a=https://chrisux.itch.io/}{color=#1da1f2}Chrisux{/color}{/a} for more games like this"
             $ renpy.full_restart()
 
 
@@ -2716,4 +2720,6 @@ label asylum_ending:
     pause 3.0
     show end_credits with dissolve
     pause
+    "Check out more of our works at {a=https://x.com/CharlieDuckArt}{color=#1da1f2}Charlie Duck{/color}{/a}"
+    "and at {a=https://chrisux.itch.io/}{color=#1da1f2}Chrisux{/color}{/a} for more games like this"
     $ renpy.full_restart()
