@@ -365,7 +365,7 @@ label evening_day_1:
     l "Is that her?"
     h_nvl "Good evening yuri, you looked so cute IRL <3"
     h_nvl "Why are you ignoring me?"
-    h_nvl "Acting like you didn’t know me I thought we are friend"
+    h_nvl "Acting like you didn’t know me I thought we are friends"
     h_nvl "You haven’t answered my question earlier"
     h_nvl "Aren’t you happy to see me?"
 
@@ -436,13 +436,13 @@ label evening_day_1:
     h_nvl "nobody here knows the real you"
     show lily downeye
     h_nvl "right?"
-    h_nvl "The lily I know the real Lily"
+    h_nvl "The Lily I know the real Lily"
     show lily grimaceoface
     l_nvl "stop it!"
     show lily grimacecface
     h_nvl "I know how much you hated this place"
     h_nvl "but don’t worry I’m here now I’ll save you"
-    h_nvl "I wonder what will happen if everyone here will know"
+    h_nvl "I wonder what will happen if everyone here will know the real you"
     show lily grimaceoface
     l_nvl "stop it!"
     l_nvl "stop it!"
@@ -2262,36 +2262,39 @@ label men_section:
         leftish
     with dissolve
 
-    h "let's try this"
+    h "let me pick clothes for you"
+    h "I mean Lily"
+    h "I think this will fit you well"
+    show holly_here:
+        full
+        slide_to(0.9)
     h "and this"
+    show holly_here:
+        full
+        slide_to(0.1)
     h "and this"
+    show holly_here:
+        full
+        slide_to(0.75)
     l "Isn't this a bit too much"
-    l "It's my first time trying out this stuff"
-    h "Don't worry I'm sure it'll fit you well"
-    h "Hurry and try it out I'll wait for you..."
-    h "Right there"
-
-    show holly_here at fast_moveoutleft
+    l "It's my first time trying this stuff"
+    h "Don't worry I'm sure it'll fit you well Yur--"
+    h "I mean Lily, hurry and try it out I'll wait for you"
     l "This is so embarrassing, I hope no one will see us"
     l "If someone noticed me wearing this then..."
     l "I'll be dead I'll be dead I'll be dead"
-    show lily_here at fast_moveoutright
+    show lily_here at fast_moveoutleft
+    scene black with dissolve
 
-    show holly_here:
-        full
-        toleft
-        center_upper
-    # Holly paces the screen while waiting
-    show holly_here pan_to(0.6, 1.0, zoom_level=1/scale, dur=2.0)
-    show holly_here pan_to(0.4, 1.0, zoom_level=1/scale, dur=2.0)
     show holly_here:
         full
         toleft
         slide_to(0.9, 0.6)
 
     show lily_here at enter_from_left_to_leftish
-    l "He-hello..."
-    l "I guess this is not too bad after all"
+    pause 1.0
+    l "hello"
+    l "I guess this is not too bad after all..."
     h "..."
     h "ah"
     h "AAAAAAAAAAAHHHHH"
@@ -2301,11 +2304,11 @@ label men_section:
     h "My [holly_nickname] Lily"
     l "o-ok calm down stop it or people would notice us"
     l "This feels so weird..."
-    l "We're standing out too much... we're not acting like them..."
+    l "We're standing out too much... we're not acting like other people"
     l "Oh god... Oh god... I'm gonna get exposed this way"
     h "Don't worry I won't let that happen"
     l "Let's hurry and buy the things I actually need please!"
-    l "a-i can't have anybody see me like this"
+    l "I-I can't have anybody see me like this"
     l "If anyone notices me and out me..."
     l "I'll be... dead..."
     h "Don't worry no one will notice you"
@@ -2321,14 +2324,14 @@ label men_section:
     show holly_here:
         full
         toleft
-        slide_to(0.5, 0.8)
+        slide_to(0.6, 0.8)
     h "To let out the real you"
     h "Not the Lily of this town, but the Lily I want, and I'll have"
 
     show holly_here:
         full
         toleft
-        slide_to(0.35, 0.6)
+        slide_to(0.4, 0.6)
     h "One day it'll all come out but you'll have me"
     h "AND I'LL HAVE YO-"
 
@@ -2337,7 +2340,7 @@ label men_section:
     s5 "Hellooooooo, it's nice meeting you around here hehe"
     s5 "Hmmmm... what are you two doing here?"
     s5 "It's rare to see Lily around with anyone"
-    s5 "You two seems undeniably close two each other"
+    s5 "You two seems supeeeeer close with each other"
     s5 "Ohh I see how it is, you two are..."
 
     menu shopping_date_kid5_choice:
@@ -2357,8 +2360,15 @@ label men_section:
             h "I just saved you"
             l "Let's just go home..."
             l "That's enough for today, I don't want to wear this again"
+            l "I can't let anybody see me like this again"
             h "yeah right"
-            pause 1.0
+            l "I'm just gonna buy the things the I need now"
+            scene black with dissolve
+            stop music fadeout 1.0
+            play sound "audio/sfx/cash register.ogg"
+            c "That would be 1000"
+            c "Thank you for shopping, come again soon!"
+            jump evening_day_3
 
         "Run away":
             show lily_here at fast_moveoutleft
@@ -2368,19 +2378,11 @@ label men_section:
             s5 "awwww... there's next time I guess"
             jump men_section_getaway
 
-    scene black with dissolve
-    play sound "audio/sfx/cash register.ogg"
-    c "That would be 1000"
-    c "Thank you for shopping, come again soon!"
-    jump evening_day_3
-
 
 label men_section_getaway:
-    scene bg women section with dissolve
-    show lily_here:
-        full
-        center
-    with dissolve
+    scene bg women section with wipeleft
+    show holly_here at enter_from_right_to_rightish
+    show lily_here at enter_from_right_to_center
 
     l "*huff* *huff* *huff*"
     l "I can no longer go on like this"
@@ -2389,10 +2391,11 @@ label men_section_getaway:
     h "But we're just friends right?"
     h "I bet she's just thinking we're just playing some game"
     h "Don't worry about it"
-    h "I'll talk to her, and explain. go buy your things [holly_nickname]"
+    h "I'll talk to her, and explain. Go buy your things Lily"
     show holly_here at fast_moveoutright
-    l "Tha-thanks... *sigh*"
+    l "Tha-thanks..."
     scene black with dissolve
+    stop music fadeout 1.0
     play sound "audio/sfx/cash register.ogg"
     c "That would be 1000"
     c "Thank you for shopping, come again soon!"
@@ -2400,7 +2403,52 @@ label men_section_getaway:
 
 
 label evening_day_3:
-    l "a"
+    scene bg lily bedroom with dissolve
+    play music "audio/ambience/night ambiance.ogg" fadein 2.0
+
+    show lily_here with dissolve:
+        full
+        center
+    
+    l "What a long day…"
+    l "A lot of things happened…"
+    l "Holly seems to have changed."
+    l "Did I judge her too quickly?"
+    l "No no no... she doesn't undestand it"
+    l "I'm just protecting myself..."
+    l "But I'm glad she's trying her best to understand this place"
+    l "She still didn't text me tonight"
+    l "Is there something wrong?"
+    l "Should I text her?"
+    menu text_Holly_tonight:
+        "Should I text her?"
+        "Text Holly":
+            $ renpy.notify("Holly's Affection 💖")
+            show lily_here:
+                full
+                slide_to (0.7, 0.9)
+            l_nvl "Helloooo H0lly"
+            l_nvl "Are you awake"
+            l "No replies huh"
+        "Sleep":
+            $ renpy.notify("Holly's Affection 💔") 
+            l "Nevermind"
+            l "She must be tired as well"
+            l "I'll just sleep"
+    l "But she was really helpful to me today, and she didn't put me on any drama"
+    l "Am I wrong about her?"
+    l "Is her drama over now"
+    l "Hahahahahaha, I was worried about nothing…"
+    l "I hope I won’t get any more of those weird dreams."
+    l "What was all that about, anyways… Is it because of what happened lately?"
+    l "I’m so tired…"
+    l "I think I'm fallin aslee-"
+
+    stop music fadeout 1.0
+    scene black with eyeclose_slow
+    pause 1.0
+    jump lily_monologue
+
 
 label outted_ending:
     scene bg bed top view
