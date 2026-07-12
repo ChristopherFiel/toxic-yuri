@@ -35,6 +35,23 @@ define s3 = Character("School Girl 3", image="school_girl_3", color="#ffffff")
 define s4 = Character("School Girl 4", image="school_girl_4", color="#ffffff")
 define s5 = Character("School Girl 5", image="school_girl_5", color="#ffffff")
 
+# Shaders
+transform silhouette_fade_in:
+    matrixcolor TintMatrix("#000000")
+    alpha 0.0
+    ease 0.8 alpha 1.0
+
+transform silhouette_fade_out:
+    matrixcolor TintMatrix("#000000")
+    alpha 1.0
+    ease 0.8 alpha 0.0
+
+transform silhouette_idle:
+    matrixcolor TintMatrix("#000000")
+
+transform dirty_tint_soft:
+    matrixcolor TintMatrix("#5c4433") * 0.5 + IdentityMatrix() * 0.5
+
 
 ## LAYERED SPRITES
 layeredimage holly:

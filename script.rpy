@@ -2285,11 +2285,11 @@ label men_section:
     l "I'll be dead I'll be dead I'll be dead"
     show lily_here at fast_moveoutleft
     scene black with dissolve
+    scene bg men section with dissolve
 
-    show holly_here:
+    show holly_here with dissolve:
         full
-        toleft
-        slide_to(0.9, 0.6)
+        rightish
 
     show lily_here at enter_from_left_to_leftish
     pause 1.0
@@ -2347,6 +2347,9 @@ label men_section:
         "Ohh I see how it is, you two are..."
 
         "Deny":
+            show lily_here:
+                full
+                slide_to (0.1, 0.3)
             l "No-no-no-no it's not what you're thinking…"
             l "We're ju-"
             s5 "Huh? you two are not role playing as undercover cop and a criminal"
@@ -2365,6 +2368,7 @@ label men_section:
             l "I'm just gonna buy the things the I need now"
             scene black with dissolve
             stop music fadeout 1.0
+            pause 1.0
             play sound "audio/sfx/cash register.ogg"
             c "That would be 1000"
             c "Thank you for shopping, come again soon!"
@@ -2380,9 +2384,13 @@ label men_section:
 
 
 label men_section_getaway:
+    scene black with wipeleft
     scene bg women section with wipeleft
     show holly_here at enter_from_right_to_rightish
     show lily_here at enter_from_right_to_center
+    show lily_here:
+        full
+        slide_to (0.3, 1.6)
 
     l "*huff* *huff* *huff*"
     l "I can no longer go on like this"
@@ -2396,6 +2404,7 @@ label men_section_getaway:
     l "Tha-thanks..."
     scene black with dissolve
     stop music fadeout 1.0
+    pause 1.0
     play sound "audio/sfx/cash register.ogg"
     c "That would be 1000"
     c "Thank you for shopping, come again soon!"
@@ -2451,8 +2460,89 @@ label evening_day_3:
 
 
 label lily_monologue_day_3:
+    scene black
+    play sound "audio/ambience/tension.ogg" fadein 1.0 volume 0.75
+    pause 1.0
+
+    python:
+        left_lines = [
+            "Lilyyyy",
+            "Oh Lilyyyyyyy",
+            "Where are youuuuu...",
+            "Oh there you are",
+            "Your mother told me I should take care of you",
+            "So today I'm teaching you things",
+            "Things that a girl like you should do",
+            "Girls at your age are a bit rebellious",
+            "You don't know what you want, what you should do",
+            "But I can fix that",
+            "I’ll teach you how a girl like you should behave, act, and like",
+        ]
+
+        for line in left_lines:
+            show_positioned_line(line, 0.2)
+
+    stop sound
+    # play sound "audio/sfx/kissing.ogg" fadein 1.0 volume 0.5
+
+    python:
+        right_lines = [
+            "Like this",
+            "This thing is what a girl and a boy do...",
+            "This is what you should like",
+            "This is what you should do",
+            "You should never do this with anyone else",
+            "Especially with a girl",
+        ]
+
+        renpy.pause(0.8, hard=False)
+
+        for line in right_lines:
+            show_positioned_line(line, 0.8)
+
+    stop sound fadeout 1.0
+    pause 1.0
+    jump morning_day_4
 
 
+label morning_day_4:
+    play sound "audio/sfx/alarm_beep.ogg"
+    pause 5.0
+    stop sound fadeout 1.0
+
+    play music "audio/ambience/morning_ambience.ogg" fadein 3.0
+    scene bg bed top view with eyeopen_slow
+    show lily_here:
+        full
+        center
+    l "..."
+    l "I remember now."
+    l "..."
+    l "The-these are no-not my dreams..."
+    l "..."
+    stop music
+    l "The-they are my me-me-memories..."
+    l "What the fuck!"
+    l "What the fuck!"
+    l "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    camera at frantic_shake
+    $ quick_menu = False
+    window hide
+    scene black with dissolve
+    show screen infinite_scream
+    pause 6.0
+    stop music fadeout 1.0
+    camera at shake_settle
+    pause 1.0
+    hide screen infinite_scream with dissolve
+
+
+label kidnap_intro:
+    l ""
+
+
+label kidnap_ending:
+    
 
 label outted_ending:
     scene bg bed top view
