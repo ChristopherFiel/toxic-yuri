@@ -3,7 +3,7 @@
 ## This work is licensed under Creative Commons Attribution 4.0 International ##
 ## https://creativecommons.org/licenses/by/4.0/ ################################
 
-define scale = 0.909  # ~10% larger across all shots (1/1.1)
+define scale = 1  # ~10% larger across all shots (1/1.1)
 
 
 ################################################################################
@@ -151,6 +151,12 @@ transform enter_from_right_to_center:
     xanchor 0.5
     yalign 1.0
     ease 1.5 xpos 0.5
+
+transform enter_from_right_to_rightish(target_x=0.75, dur=1.5):
+    xpos 1.5
+    xanchor 0.75
+    yalign 1.0
+    ease dur xpos target_x
 
 transform enter_from_right_slow(target_x=0.5, dur=2.5):
     xpos 1.5

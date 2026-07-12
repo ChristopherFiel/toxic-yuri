@@ -2040,14 +2040,17 @@ label school_day_3:
 
 label school_cafeteria_day_3:
     play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
-    h "That table occupied I guess, let’s sit right here"
+    h "That table occupied I guess, let's sit right here"
     scene bg cafeteria new seats with wipeleft
-    show holly_here with dissolve:
+
+    show lily_here:
         full
         leftish
-    show lily_here with dissolve:
-        full 
+    show holly_here:
+        full
         rightish
+    with dissolve
+
     h "Here, have some of this."
     l "Thanks."
     h "You're welcome! Is it good?"
@@ -2060,105 +2063,107 @@ label school_cafeteria_day_3:
     l "It's fine... you're new here, so you had no idea about it."
     l "I also didn't mean to push you far away and paint you as an evil person."
     l "It's fine, we could still be friends…"
-    show holly_here:
-        bump(-40)
+
+    show lily_here:
         full
         leftish
+        bump(-40)
     play sound "audio/sfx/slime.ogg"
     l "Oh, shit, shit... my clothes!"
     l "What do I do?"
     l "How am I supposed to fix this…?"
     h "Calm down [holly_nickname]— I mean, Lily"
     h "I brought extra clothes. You can borrow them"
-        
-    menu borrow_clothes:
-        "You can borrow them"
-        "Take the clothes":
-            l "Tha-thanks."
-            l "I owe you one."
-            
-            h "Hurry up and change before your clothes dry."
-            
-            # SCENE: Fades to black
-            scene black with fade
-            $ renpy.pause(1.0)
-            
-            # SCENE: Back to school background
-            # SHOW: Lily sprite enters from left
-            h "Tha-that fits you so well... *blushes*"
-            l "This feels so uncomfortable."
-            l "How can you wear this every day?"
-            l "It feels like I’m sticking out too much right now."
-            l "I feel like everyone's eyes are on me."
-            s1 "We are, indeed."
-            s2 "What are you wearing... freak?"
-            s3 "It looks so shit on you, haha!"
-            s1 "Thank God the weirdos are now grouped together. It’s easier to pick on you two."
-            s2 "You look like such an eyesore. Get out of my sight now!"
-            h "Cut it out!"
-            h "I can tolerate your bullshit when it's directed at me..."
-            h "BUT NOT WITH LILY!"
-            # WITH: Holly sprite chases them off the screen
-            l "Tha-thanks."
-            l "It’s my first time getting picked on by them."
-            l "I-it's so scary…"
-            h "It’s alright, I’m here."
-            h "What if we go shopping for some new clothes, huh?"
-            h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
-            l "Re-really?"
-            l "Sounds like a good idea."
-            l "Thank God you're here. I would have panicked if this happened to me alone, hahahahah."
-            h "Yeah, let’s go!"
-            
-            jump shopping_scene
 
-        "Don't take the clothes":
-            l "Don’t worry."
-            l "It’s not a big deal, really."
-            l "I’ll just go home immediately after school… I’ll cover it up for now."
-            
-            s4 "Oh my… what a mess."
-            s4 "You're Lily, right?"
-            
-            l "Yeah, why?"
-            
-            s4 "You need to change your clothes. I have some spare clothes you can borrow."
-            
-            l "Really? Thank you!"
-            
-            # SCENE: Fades to black
-            scene black with fade
-            $ renpy.pause(1.0)
-            
-            # SCENE: Back to school background
-            # SHOW: Lily sprite enters from left
-            
-            s4 "Wow! *whistles* It looks good on you. Fits you perfectly."
-            s4 "You can return it anytime you like. See ya!"
-            
-            # WITH: Holly gets jealous
-            
-            h "That doesn’t fit you at all."
-            
-            l "Really? I-it fits nicely on me, though."
-            l "It's an okay replacement for now. I’ll just change after school."
-            
-            h "No, let’s go shopping for new clothes."
-            h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
-            
-            l "Re-really?"
-            l "Let’s make it quick then."
-            
-            h "Let’s go."
-            
-            # WITH: Holly sprite drags Lily off screen
-            
-            jump shopping_scene
+    show lily_here at slow_moveoutleft
+    scene black with dissolve
+    scene bg cafeteria new seats with dissolve
 
+    show holly_here:
+        full
+        rightish
+    with dissolve
+    pause 1.0
+    h "she sure is taking here time"
 
-label shopping_scene:
+    show lily_here at enter_from_left_to_leftish
+    h "..."
+    h "Tha-that fits you so well... *blushes*"
+    l "This feels so uncomfortable."
+    l "How can you wear this every day?"
+    l "It feels like I'm sticking out too much right now."
+    l "I feel like everyone's eyes are on me."
+
+    show school_girl_1 at enter_from_right_to_rightish
+    show school_girl_2 at enter_from_right_slow(0.9, 1.0)
+    show school_girl_3 at enter_from_right_slow(0.5, 1.3)
+
+    show lily_here:
+        full
+        toright
+        slide_to(0.1, 0.8)
+    show holly_here:
+        full
+        toright
+        slide_to(0.25, 0.8)
+
+    s1 "We are, indeed."
+    s2 "What are you wearing... freak?"
+    s3 "It looks so shit on you, haha!"
+    s1 "Thank God the weirdos are now grouped together. It's easier to pick on you two."
+    s2 "You look like such an eyesore. Get out of my sight now!"
+    h "CUT IT OUT!"
+    h "I can tolerate your bullshit when it at me..."
+    show holly_here:
+        bump (-60)
+        full
+        toleft
+    h "BUT NOT WITH LILYYYYYYYYYYYY!"
+
+    show holly_here:
+        bump (-40)
+        full
+        toleft
+        slide_to(1.5, 0.6)
+    show school_girl_1 at fast_moveoutright
+    show school_girl_2 at fast_moveoutright
+    show school_girl_3 at fast_moveoutright
+    pause 1.0
+    scene black with dissolve
+    pause 1.0
+    scene bg cafeteria new seats with dissolve
+
+    show lily_here:
+        full
+        leftish
+    with dissolve
+    l "Is she gonna be ok"
+    l "Did I treat her to harshly? Why is she still protecting me"
+    show holly_here at enter_from_right_to_rightish
+    l "Holly... you're here"
+    h "yeah"
+    l "Tha-thanks"
+    l "It's my first time getting picked by them"
+    l "I-it's scary…"
+    h "It's alright, I'm here."
+    h "Let's go shopping for some new clothes"
+    h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
+    l "Re-really?"
+    l "Sounds like a good idea."
+    l "Thank God you're here. I would have panicked if this happened to me alone hahahaha"
+    h "yeah, let's go"
+
+    jump shopping_date
+
+label shopping_date:
     # Your shopping scene background and dialogue go here!
     pass
+
+
+label men_section:
+
+
+label women_section:
 
 
 label outted_ending:
