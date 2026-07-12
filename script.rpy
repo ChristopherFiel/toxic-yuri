@@ -4,6 +4,7 @@ default holly_nickname = "Lily"
 default holly_refusal_count = 0
 default push_holly_count = 0
 default delete_text = 0
+default kidnap_ending_flag = False
 # Use like h "lets go [holly_nickname]"
 
 
@@ -2084,10 +2085,9 @@ label school_cafeteria_day_3:
         rightish
     with dissolve
     pause 1.0
-    h "she sure is taking here time"
 
     show lily_here at enter_from_left_to_leftish
-    h "..."
+    h "what is taking her so long"
     h "Tha-that fits you so well... *blushes*"
     l "This feels so uncomfortable."
     l "How can you wear this every day?"
@@ -2112,7 +2112,7 @@ label school_cafeteria_day_3:
     s3 "It looks so shit on you, haha!"
     s1 "Thank God the weirdos are now grouped together. It's easier to pick on you two."
     s2 "You look like such an eyesore. Get out of my sight now!"
-    h "CUT IT OUT!"
+    h "CUT IT!"
     h "I can tolerate your bullshit when it at me..."
     show holly_here:
         bump (-60)
@@ -2149,22 +2149,258 @@ label school_cafeteria_day_3:
     h "Let's go shopping for some new clothes"
     h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
     l "Re-really?"
+    stop music fadeout 1.0
     l "Sounds like a good idea."
     l "Thank God you're here. I would have panicked if this happened to me alone hahahaha"
     h "yeah, let's go"
-
+    scene black with dissolve
     jump shopping_date
 
+
 label shopping_date:
-    # Your shopping scene background and dialogue go here!
-    pass
+    play music "audio/ambience/mall.ogg" fadein 2.0 volume 0.75
+    l "I hope nobody sees us here"
+    scene bg mall with dissolve
+    pause 1.0
+    show holly_here with dissolve:
+        full
+        rightish
+    show lily_here with dissolve:
+        full
+        leftish
 
+    l "If somebody sees us like this, we're surely dead"
+    h "It's ok this is just friends doing errands right?"
+    l "yeah right…"
+    l "let's go hurry, the women's section should be at the second floor"
+    h "boriiiiing… tomorrow's weekend anyways, let's have some fun"
+    h "I've never seen you dressed like you told me you wanted to"
+    h "Have you ever dressed like the way you wanted to?"
+    l "n-no… I can't… Why would I?"
+    h "give it a shot, it's not really a big deal"
+    l "but I'm really here for to get replacement for my uniform"
+    h "we can do that after, come on we have time"
+    h "Alright, then decide what you want?"
 
-label men_section:
+    menu shopping_date_choice:
+        "Alright, then decide what you want?"
+        "Don't go with Holly":
+            l "I'll just buy replacement for my uniform"
+            l "I dont really need to go anywhere"
+            l "I don't need to change my clothings"
+            h "ah…"
+            h "AAAAAAAAAAAAAAHHHHHHH!!!"
+            h "ARE YOU SERIOUS"
+            h "THEN WHY MAKE ME GO WITH YOU?"
+            l "But yo-you're the one who insist to go here with me"
+            h "hahahahaahaha"
+            h "Yeah, right… right…"
+            h "I didn't mean anything I said"
+            h "I'll go now myself, have fun shopping"
+            l "yeah… take care"
+            l "You didn't take any photos this time, did you?"
+            h "… ye-yeah"
+            show holly_here at fast_moveoutright
+            l "Thanks for coming alo—"
+            l "long"
+            l "..."
+            show lily_here at slow_moveoutleft
+            scene black with wipeleft
+            jump women_section
+
+        "Go with Holly":
+            $ holly_affection += 4
+            l "yeah your're right yeah have some time"
+            l "we could shop around for a bit and try out stuff"
+            h "Yippie!"
+            h "I know you want to try it out don't you?"
+            h "I really knew you better than anyone"
+            l "I'm not really uncomfortable with my clothes..."
+            h "don't worry it won't take too much time"
+            h "we could get your uniform later"
+            l "yeah"
+            h "let's go"
+            show holly_here at slow_moveoutright
+            show lily_here at slow_moveoutright
+            scene black with wiperight
+            jump men_section
 
 
 label women_section:
+    scene bg women section with wipeleft
+    show lily_here at enter_from_right_to_center
+    l "Hmmm..."
+    show lily_here:
+        full
+        slide_to(0.8)
+    l "I don't have enough money for this one... hehe"
+    show lily_here:
+        full
+        slide_to(0.1)
+    l "This one's cheaper"
+    l "I'll buy this"
+    show lily_here at slide_off_right
+    pause 1.0
+    scene black with dissolve
+    stop music fadeout 1.0
+    pause 1.0
+    play sound "audio/sfx/cash register.ogg"
+    c "That would be 1000"
+    c "Thank you for shoping come again!"
+    $ kidnap_ending_flag = True
+    jump evening_day_3
 
+
+label men_section:
+    scene bg men section with wiperight
+
+    show holly_here:
+        full
+        rightish
+    show lily_here:
+        full
+        leftish
+    with dissolve
+
+    h "let's try this"
+    h "and this"
+    h "and this"
+    l "Isn't this a bit too much"
+    l "It's my first time trying out this stuff"
+    h "Don't worry I'm sure it'll fit you well"
+    h "Hurry and try it out I'll wait for you..."
+    h "Right there"
+
+    show holly_here at fast_moveoutleft
+    l "This is so embarrassing, I hope no one will see us"
+    l "If someone noticed me wearing this then..."
+    l "I'll be dead I'll be dead I'll be dead"
+    show lily_here at fast_moveoutright
+
+    show holly_here:
+        full
+        toleft
+        center_upper
+    # Holly paces the screen while waiting
+    show holly_here pan_to(0.6, 1.0, zoom_level=1/scale, dur=2.0)
+    show holly_here pan_to(0.4, 1.0, zoom_level=1/scale, dur=2.0)
+    show holly_here:
+        full
+        toleft
+        slide_to(0.9, 0.6)
+
+    show lily_here at enter_from_left_to_leftish
+    l "He-hello..."
+    l "I guess this is not too bad after all"
+    h "..."
+    h "ah"
+    h "AAAAAAAAAAAHHHHH"
+    h "OMG OMG OMG OMG"
+    h "it fits you so well, you're just like the Lily I imagined, the Lily I knew"
+    h "THE REAL LILYYYYY"
+    h "My [holly_nickname] Lily"
+    l "o-ok calm down stop it or people would notice us"
+    l "This feels so weird..."
+    l "We're standing out too much... we're not acting like them..."
+    l "Oh god... Oh god... I'm gonna get exposed this way"
+    h "Don't worry I won't let that happen"
+    l "Let's hurry and buy the things I actually need please!"
+    l "a-i can't have anybody see me like this"
+    l "If anyone notices me and out me..."
+    l "I'll be... dead..."
+    h "Don't worry no one will notice you"
+    h "You look like a totally new different person"
+    h "But..."
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.7, 1.0)
+    h "It feels good doesn't it?"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.5, 0.8)
+    h "To let out the real you"
+    h "Not the Lily of this town, but the Lily I want, and I'll have"
+
+    show holly_here:
+        full
+        toleft
+        slide_to(0.35, 0.6)
+    h "One day it'll all come out but you'll have me"
+    h "AND I'LL HAVE YO-"
+
+    show school_girl_5 at enter_from_right_to_rightish
+    s5 "Oh what a coincidence if it isn't Holly, and Lily"
+    s5 "Hellooooooo, it's nice meeting you around here hehe"
+    s5 "Hmmmm... what are you two doing here?"
+    s5 "It's rare to see Lily around with anyone"
+    s5 "You two seems undeniably close two each other"
+    s5 "Ohh I see how it is, you two are..."
+
+    menu shopping_date_kid5_choice:
+        "Ohh I see how it is, you two are..."
+
+        "Deny":
+            l "No-no-no-no it's not what you're thinking…"
+            l "We're ju-"
+            s5 "Huh? you two are not role playing as undercover cop and a criminal"
+            s5 "Aawww too bad I would love to join"
+            h "Uh man You blew up my cover now she knows that I'm the criminal... game's over"
+            s5 "ooppsss hehe, my bad"
+            show school_girl_5 at slow_moveoutright
+            l "That was a close one..."
+            h "see I got this"
+            h "I can save you"
+            h "I just saved you"
+            l "Let's just go home..."
+            l "That's enough for today, I don't want to wear this again"
+            h "yeah right"
+            pause 1.0
+
+        "Run away":
+            show lily_here at fast_moveoutleft
+            show holly_here at fast_moveoutleft
+            s5 "Hey wait!"
+            s5 "You guys are role playing as undercover cop, and criminal right! I wanna join"
+            s5 "awwww... there's next time I guess"
+            jump men_section_getaway
+
+    scene black with dissolve
+    play sound "audio/sfx/cash register.ogg"
+    c "That would be 1000"
+    c "Thank you for shopping, come again soon!"
+    jump evening_day_3
+
+
+label men_section_getaway:
+    scene bg women section with dissolve
+    show lily_here:
+        full
+        center
+    with dissolve
+
+    l "*huff* *huff* *huff*"
+    l "I can no longer go on like this"
+    l "Oh God... Oh God... I wonder what is she thinking"
+    l "does she knew about our relationship"
+    h "But we're just friends right?"
+    h "I bet she's just thinking we're just playing some game"
+    h "Don't worry about it"
+    h "I'll talk to her, and explain. go buy your things [holly_nickname]"
+    show holly_here at fast_moveoutright
+    l "Tha-thanks... *sigh*"
+    scene black with dissolve
+    play sound "audio/sfx/cash register.ogg"
+    c "That would be 1000"
+    c "Thank you for shopping, come again soon!"
+    jump evening_day_3
+
+
+label evening_day_3:
+    l "a"
 
 label outted_ending:
     scene bg bed top view

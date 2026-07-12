@@ -23,6 +23,12 @@ define t = Character(
     color="#000000",
 )
 
+define c = Character(
+    "Cashier",
+    image = "lily",
+    color="#85BB65",
+)
+
 define s1 = Character("School Girl 1", image="school_girl_1", color="#ffffff")
 define s2 = Character("School Girl 2", image="school_girl_2", color="#ffffff")
 define s3 = Character("School Girl 3", image="school_girl_3", color="#ffffff")
