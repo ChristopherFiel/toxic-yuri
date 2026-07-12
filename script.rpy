@@ -2447,7 +2447,7 @@ label evening_day_3:
     stop music fadeout 1.0
     scene black with eyeclose_slow
     pause 1.0
-    jump lily_monologue
+    jump lily_monologue_day_3
 
 
 label outted_ending:
