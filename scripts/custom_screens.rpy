@@ -68,18 +68,21 @@ screen infinite_iloveu():
 
     default a_str = ""
 
-    # adds one "I love U " chunk per tick
     timer 0.6 repeat True action SetScreenVariable("a_str", a_str + "I love U ")
 
     python:
         _full = a_str
-        _cpl = 16   # characters per line — adjust if text wraps too early/late
+        _cpl = 16
         _lines = [_full[i : i + _cpl] for i in range(0, len(_full), _cpl)]
         _wrapped = "\n".join(_lines)
 
-    text "{font=gui/fonts/cmunorm.ttf}{size=60}[_wrapped]{/size}{/font}":
+    text "{font=gui/fonts/cmunorm.ttf}{size=120}[_wrapped]{/size}{/font}":
         xalign 0.5
         yalign 0.5
+        xsize config.screen_width
+        ysize config.screen_height
+        text_align 0.5
+        layout "subtitle"
 
 
 transform frantic_shake:
