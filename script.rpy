@@ -2343,7 +2343,7 @@ label men_section:
     s5 "You two seems supeeeeer close with each other"
     s5 "Ohh I see how it is, you two are..."
 
-    menu shopping_date_kid5_choice:
+    menu shopping_date_s5_choice:
         "Ohh I see how it is, you two are..."
 
         "Deny":
@@ -2448,6 +2448,10 @@ label evening_day_3:
     scene black with eyeclose_slow
     pause 1.0
     jump lily_monologue_day_3
+
+
+label lily_monologue_day_3:
+
 
 
 label outted_ending:
