@@ -112,6 +112,42 @@ transform shake_settle(t=3.0):
     easeout t xoffset 0 yoffset 0 blur 0
 
 
+#Exposed pics
+default obj_index = 1
+image obj_pic1 = "images/objects/pic 1.webp"
+image obj_pic2 = "images/objects/pic 2.webp"
+image obj_pic3 = "images/objects/pic 3.webp"
+image obj_pic4 = "images/objects/pic 4.webp"
+
+screen object_viewer():
+    zorder 10
+
+    frame:
+        xalign 0.5
+        yalign 0.5
+        background "#ffffff"
+        padding (12, 12)
+
+        add "obj_pic[obj_index]":
+            zoom 2.5
+
+    button:
+        xysize (config.screen_width, config.screen_height)
+        background None
+        action If(obj_index < 4, [SetVariable("obj_index", obj_index + 1)], [Hide("object_viewer")])
+
+
+# Bus hit
+define whiteout_dissolve = ImageDissolve("images/wipes/radial_mask.png", 1.5, ramplen=256)
+
+screen white_out(duration=1.5, hold=0.3, then_hide=True):
+    zorder 200
+    add Solid("#ffffff")
+
+    if then_hide:
+        timer duration + hold action Hide("white_out")
+
+
 ## Dream Scene Custom Screens
 screen centered_line(line_text):
     zorder 100

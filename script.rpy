@@ -1987,7 +1987,7 @@ label delete_this_menu:
     stop music fadeout 1.0
     l "No no no no no no no no no no"
     scene black with eyeclose_slow
-    jump lily_monologue_day_2
+    jump outted_ending
 
 
 label lily_monologue_day_2:
@@ -2914,6 +2914,7 @@ label kidnap_ending:
             pause 2.0
             "Bad End"
             "Play the game again to reach all 3 endings"
+            window hide
             hide screen infinite_iloveu
             show text "{font=gui/fonts/cmunorm.ttf}{size=120}Thank you for playing :>{/size}{/font}"
             pause 3.0
@@ -2927,8 +2928,193 @@ label kidnap_ending:
 
 
 label outted_ending:
-    scene bg bed top view
-    l "a"
+    scene black with dissolve
+    stop music fadeout 1.0
+    pause 1.0
+
+    play music "audio/ambience/morning_ambience.ogg" fadein 2.0
+    scene bg bed top view with eyeopen_slow
+    show lily pjbase pjl2 pjr1 neutraleye oface with dissolve:
+        full
+        center
+    l "..."
+    l "Hmmm..."
+    l "I didn't have any weird dream tonight"
+    l "and I woke up earlier today..."
+    l "it's uncanny"
+    play sound "audio/sfx/phone notification.ogg"
+    show lily frownface
+    l "It's Holly, what is she up to again"
+    show lily pjlphone downeye:
+        full
+        slide_to(0.6, 0.5)
+    h_nvl "Hello Yuri"
+    h_nvl "I'm sorry I acted to abruptly"
+    h_nvl "What I've done is a bit too far"
+    h_nvl "I'm sorry 🥺🥺"
+    h_nvl "Anyways enjoy your school year without me"
+    h_nvl "I'm going back"
+    h_nvl "I wish you well XW_YuriZ 😉"
+    show lily thinkeye pjbase pjl1 pjr2:
+        full
+        slide_to(0.45, 0.5)
+    l "She left just like that"
+    l "Is everything going back to normal"
+    show lily neutraleye smilecface
+    l "I'm free"
+    show lily smileoface
+    l "Hahahahaha... Finally"
+    l "Perhaps, I treated her too harshly"
+    show lily smilecface
+    play sound "audio/sfx/bus_horn.ogg"
+    l "Commiinng"
+    stop music fadeout 2.0
+    show lily at fast_moveoutright
+    scene black with wiperight_medium
+    play sound "audio/sfx/running.ogg"
+    stop sound
+    pause 1.0
+    jump outted_ending_2
+
+
+label outted_ending_2:
+    play sound "audio/sfx/bus stopping.ogg"
+    pause 4.0
+    scene black with wiperight
+    pause 2.0
+    stop sound
+    scene bg classroom with dissolve
+    play music "audio/ambience/classroom ambience.ogg" fadein 3.0 volume 0.75
+    show lily unibase unil1 unir1 neutraleye noface at enter_from_left_to_center
+    pause 1.0
+    l "huh..."
+    l "I guess I'm too early for class"
+    play sound "audio/sfx/running.ogg"
+    
+    show school_girl_1 with dissolve:
+        full
+        slide_to (0.6, 1.0)
+    show school_girl_2 with dissolve:
+        full
+        rightish
+    show school_girl_3 with dissolve:
+        full
+        leftish
+    show school_girl_4 with dissolve:
+        full
+        right
+    show school_girl_5 with dissolve:
+        full
+        left
+    stop music fadeout 1.0
+
+    show school_girl_1 grimaceface at school_pop
+    s1 "Oh there's the gay fag"
+    show lily spookeye
+    s1 "I can't believe I'm sitting next to her"
+    s1 "Oh no will I catch her gay virus"
+
+    play music "audio/bgm/hollys theme.ogg" fadein 1.0
+    show school_girl_1 neutralface at school_idle
+    show school_girl_2 oface at rightish, school_pop
+    s2 "FREAAAAAAAAAAAK"
+    s2 "Get away from me!"
+    s2 "You don't desserve to be here"
+
+    show school_girl_2 neutralface at rightish, school_idle
+    show school_girl_3 smileoface at leftish, school_pop
+    s3 "uccckkk... the air's poisoned with hey gay mist"
+    s3 "Be careful"
+    s3 "Can we vote to kick her out to this school"
+    s3 "She's poisoning the air"
+
+    show school_girl_3 at leftish, school_idle
+    show school_girl_4 smileoface at right, school_pop
+    s4 "I believe in all kinds of love"
+    s4 "But not like that"
+    s4 "Eeeeeeeew"
+
+    show school_girl_4 at right, school_idle
+    show school_girl_5 smileoface at left, school_pop
+    s5 "I don't care what they all think"
+    s5 "You have a sick username Lily"
+    show school_girl_5 at left, school_idle
+    t "LILYYYYYYYY!!"
+    hide school_girl_1 with dissolve
+    hide school_girl_2 with dissolve
+    hide school_girl_3 with dissolve
+    hide school_girl_4 with dissolve
+    hide school_girl_5 with dissolve
+
+    show teacher at enter_from_right_to_rightish
+    l "Wha-what's happening. what did I do?"
+    t "Or should I say WX_Yuri"
+    l "huh? Ho-how did you"
+    t "and here I thought your the quite, and well behaved one"
+    t "I'm dissapointed"
+    l "Wha-what did I do?"
+    t "Explain this?"
+    show screen object_viewer
+    t "What kind of sickness is this"
+    show lily scaredeye
+    t "This is unaccepatable go to my office NOW!"
+    l "Bu-bu-but... I--"
+    t "Save your words later"
+    t "People like you are the ones destroying the society"
+    t "tssk"
+    show teacher at slow_moveoutright
+    pause 2.0
+    stop music fadeout 2.0
+    scene black with dissolve
+    pause 1.0
+    jump road_ending
+
+
+label road_ending:
+    $ time_of_day = 'RAIN'
+    play music "audio/ambience/rainy road.ogg" fadein 1.0 volume 0.75
+    pause 1.0
+    scene bg rainy road with dissolve
+    show lily unibase unil1 unir2 emptiness:
+        full
+        left
+    l "I see..."
+    l "So this is her goodbye"
+    show lily:
+        full
+        slide_to (0.25, 1.0)
+    l "I should've known better"
+    l "Now everyone here knows about Yuri"
+    l "They will never stop bullying me"
+    l "Until they fixed me"
+    l "Until I'm liked them"
+    l "Until I turn straight"
+    l "Maybe they're right..."
+    show lily:
+        full
+        slide_to (0.45, 1.0)
+    l "There's something wrong with me..."
+    play sound "audio/sfx/truck horn.ogg" volume 0.5
+    show screen white_out(duration=3.0) with whiteout_dissolve
+    pause 1.0
+    scene black with dissolve
+    stop music fadeout 1.0
+    stop sound
+    pause 5.0
+    play music "audio/bgm/ending theme.ogg" fadein 0.5
+    pause 2.0
+    "Bad end"
+    "Play the game again to unlock all 3 endings"
+    window hide
+    show text "{font=gui/fonts/cmunorm.ttf}{size=120}Thank you for playing :>{/size}{/font}"
+    pause 3.0
+    show end_credits with dissolve
+    pause
+    "Check out more of our works at {a=https://x.com/CharlieDuckArt}{color=#1da1f2}Charlie Duck{/color}{/a}"
+    "and at {a=https://chrisux.itch.io/}{color=#1da1f2}Chrisux{/color}{/a} for more games like this"
+    scene black with dissolve
+    pause 1.0
+    $ renpy.full_restart()
 
 
 label asylum_ending:
@@ -2970,6 +3156,7 @@ label asylum_ending:
     pause 1.0
     "Bad end"
     "Play the game again to unlock all 3 endings"
+    window hide
     show text "{font=gui/fonts/cmunorm.ttf}{size=120}Thank you for playing :>{/size}{/font}"
     pause 3.0
     show end_credits with dissolve
