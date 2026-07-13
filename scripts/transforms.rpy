@@ -68,7 +68,7 @@ transform leftish:
 
 transform centerleft:
     anchor (0.55, 1.0)
-    xpos 0.4
+    xpos 0.3
 
 transform center:
     anchor (0.55, 1.0)
@@ -103,6 +103,10 @@ transform center_uppest:
     yoffset 600
 
 transform centerright:
+    anchor (0.55, 1.0)
+    xpos 0.7
+
+transform righty:
     anchor (0.55, 1.0)
     xpos 0.6
 

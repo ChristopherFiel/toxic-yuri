@@ -138,6 +138,14 @@ screen hangman_screen(state):
     modal True
     zorder 100
 
+    # catches a click anywhere on screen once the round is over
+    if state.finished:
+        button:
+            xfill True
+            yfill True
+            background None
+            action Return()
+
     frame:
         xalign 0.5
         yalign 0.5
@@ -177,10 +185,11 @@ screen hangman_screen(state):
 
             if state.finished:
                 if state.won:
-                    text "You got it! The word was [state.word]." size 52 color "#8b0000" xalign 0.5
+                    text "You got it! The word was [state.word]." size 42 color "#8b0000" xalign 0.5
                 else:
-                    text "Out of guesses! The word was [state.word]." size 52 color "#b30000" xalign 0.5
+                    text "Out of guesses! The word was [state.word]." size 42 color "#b30000" xalign 0.5
 
                 textbutton "Continue":
                     xalign 0.5
+                    text_size 44
                     action Return()

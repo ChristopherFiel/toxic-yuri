@@ -160,6 +160,8 @@ layeredimage lily:
             "images/sprites/Lily/Face/lily_eye_cry.png"
         attribute spookeye:
             "images/sprites/Lily/Face/lily_eye_spook.png"
+        attribute emptiness:
+            "images/sprites/Lily/Face/emptiness.png"
 
     group face:
         attribute frownface:

@@ -400,6 +400,7 @@ label evening_day_1:
             h_nvl "Are my feelings not enough to do this?"
     h_nvl "anyways... can you just anwer my question"
     h_nvl "are you happy to see me 🥺"
+    stop music
     show lily shyface
     menu (nvl=True):
         "No":
@@ -431,6 +432,7 @@ label evening_day_1:
             l_nvl "throw away my secrets"
             l_nvl "I won't let you do that"
     show lily downeye frownface pjr2
+    play music "audio/bgm/hollys theme.ogg" fadein 1.0
     h_nvl "Too bad, it's too late for that now"
     l_nvl "What do you want anyway?"
     h_nvl "Why do you keep denying me, when I’ve come so far just to be with you :<"
@@ -482,7 +484,9 @@ label evening_day_1:
     l_nvl "I can’t believe you’re doing this, I thought you understand me"
     l_nvl "I thought we are friends"
     h_nvl "Yes I do, this is why I’m doing this! to save youuuuuuuu"
+    stop music fadeout 1.0
     show lily grimacecface
+    play music "audio/ambience/night ambiance.ogg" fadein 1.0
     l_nvl "You really leave me no choice…"
     h_nvl "see you after school tomorrow hihi <3"
     h_nvl "Good night XOXO"
@@ -490,7 +494,6 @@ label evening_day_1:
 
     l "What did I set myself up to?"
     l "I’m so tired there’s a lot of things that happened today… I wish I could just escape"
-    stop music fadeout 1.0
     scene black with eyeclose_slow
     pause 1.0
     jump lily_monologue
@@ -565,7 +568,7 @@ label morning_day_2:
     h_nvl "*sent GIF*"
     h_nvl "I should call you something else now"
     h_nvl "What do you like???"
-    h_nvl "how about…"
+    h_nvl "how about..."
 
     # --- Holly floods the chat, auto-advancing without clicks ---
     $ _old_afm_enable = _preferences.afm_enable
@@ -590,8 +593,8 @@ label morning_day_2:
 
     menu (nvl=True):
         "Just call me by name":
-            $ renpy.notify("Holly's Affection 💔")
             $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             $ holly_nickname = "Lovely Lily"
             show lily grimacecface
             l_nvl "No, don't! Just call me by my name"
@@ -713,7 +716,7 @@ label school_day_2:
     show lily unibase unil1 unir2 spookeye noface:
         full
         toright
-        enter_from_left_to_leftish(0.1, 1.5)
+        enter_from_left_to_leftish(0.1, 1.0)
     show teacher:
         full
         toleft
@@ -728,16 +731,19 @@ label school_day_2:
             l "Pe-people change over time..."
             l "The person you knew today might be completely different tommorrow."
             $ renpy.notify("Holly's Affection 💔")
+            $ holly_affection -= 1
         "Hiding your true identity":
             l "It is about..."
             l "Hiding your tru-true identity from people."
             l "Giving them an illusion, but you're not truly that person they thought you are..."
-            $ renpy.notify("Holly's Affection 💖") 
+            $ renpy.notify("Holly's Affection 💖")
+            $ holly_affection += 1
         "Passion fading":
             l "I think the poem is about..."
             l "Passion fading away..."
             l "How something can be hot at first you know it but goes cold with time..."
             $ renpy.notify("Holly's Affection 💔")
+            $ holly_affection -= 1
         "I dont know":
             l "I-I'm sorry but I don't know..."
     
@@ -823,15 +829,17 @@ label school_day_2:
     show lily unibase unil2 unir2 downeye noface:
         full
         toright
-        slide_to(0.9, 1.0)
+        slide_to(0.9, 0.8)
     show holly unibase unil2 unir1 neutraleye smugface:
         full
         toright
-        enter_from_left_slow(0.1, 1.5)
+        enter_from_left_slow(0.2, 1.6)
+    pause 2.0
     h "Lily! Don't forget about our deal later~"
     menu deal_later:
         "Deal later?"
         "What deal?":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔") 
             l "Wha-what deal?"
             l "I don' remember any?"
@@ -843,6 +851,7 @@ label school_day_2:
             show holly thinkeye
             h "Alright."
         "Yeah, I won't":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖") 
             show lily neutraleye
             l "Yeah, I won't."
@@ -874,9 +883,11 @@ label school_cafeteria_day_2:
     scene bg cafeteria seat with wipeleft
     show holly unibase unil1 unir1 smilecface neutraleye with dissolve:
         full
+        toright
         centerleft
     show lily unibase unil1 unir2 neutraleye noface with dissolve:
-        full 
+        full
+        toright
         centerright
     show holly shockeye frownface
     h "This food is awful! How can you eat this every day?"
@@ -896,10 +907,12 @@ label school_cafeteria_day_2:
     menu holly_pity:
         "What should I say?"   
         "Thanks.":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖") 
             show lily unir1 neutraleye
             l "Tha-thanks for being here with me"
         "I don't need your sympathy.":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔")
             show lily unil2 angryeye
             l "I don't need your pity"
@@ -914,10 +927,12 @@ label school_cafeteria_day_2:
     menu holly_knowledge:
         "Do you know Holly?"
         "Yeah":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             l "Yeah, of course..."
             l "I know you best, I can read you easily."
         "No":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔") 
             l "No, of course not."
             l "We haven't really spent much time together."
@@ -934,14 +949,17 @@ label school_cafeteria_day_2:
     call hangman_minigame(word_list=["LILY"], category="What am I thinking?") from _call_hangman_cafeteria_day1
 
     scene bg cafeteria seat with dissolve
-    show holly unibase unil2 unir1 neutraleye smilecface with dissolve:
+    show holly unibase unil1 unir1 smilecface neutraleye with dissolve:
         full
+        toright
         centerleft
-    show lily unibase unil1 unir1 neutraleye noface with dissolve:
-        full 
+    show lily unibase unil1 unir2 neutraleye noface with dissolve:
+        full
+        toright
         centerright
 
     if hangman_result == "win":
+        $ holly_affection += 1
         $ renpy.notify("Holly's Affection 💖")
         l "L-Lily...? You were thinking about me?"
         h "Of course! what else am I going to think about?"
@@ -956,6 +974,7 @@ label school_cafeteria_day_2:
         h "You don't know me well huh?"
         show holly neutraleye smilecface    
         h "It's ok [holly_nickname] we have time to get to know each other"
+        $ holly_affection -= 3
         $ renpy.notify("Holly's Affection 💔")
 
     show holly winkeye smileoface unil1
@@ -968,6 +987,7 @@ label school_cafeteria_day_2:
 
     menu holly_napkin_request:
         "I don't want to play your games.":
+            $ holly_affection -= 1
             $ holly_refusal_count += 1
 
             if holly_refusal_count == 1:
@@ -990,10 +1010,14 @@ label school_cafeteria_day_2:
             jump holly_napkin_request
 
         "Alright I'll get it.":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             show holly winkeye smugface
             l "Alright, alright I'll get it."
             h "Hehe that's my [holly_nickname]"
+            show lily unibase unil1 unir2 neutraleye noface:
+                full
+                toleft
             show lily at slow_moveoutright
             scene black with wipeleft
             jump school_cafeteria_counter
@@ -1022,6 +1046,8 @@ label school_cafeteria_counter:
     l "If I'm anywhere but here, I'll be doomed."
     show lily cryeye
     l "This should be enough."
+    show lily:
+        toright
     l "I'm heading back."
     show lily at slow_moveoutleft
     scene black with wiperight
@@ -1032,7 +1058,7 @@ label school_cafeteria_day_2_bully_scene:
     scene bg cafeteria seat with wiperight
     show school_girl_1 with dissolve:
         full
-        centerright
+        righty
     show school_girl_2 with dissolve:
         full
         rightish
@@ -1055,7 +1081,6 @@ label school_cafeteria_day_2_bully_scene:
     s3 "If you want this table, then have it all to yourself!"
 
     play sound "audio/sfx/slime.ogg"
-    #uploaded to drive, u need to add 
     show holly unibasedirty unil2 grimacecface at leftish, bump(-30)
     show school_girl_1 smileoface
     show school_girl_2 smileoface
@@ -1078,12 +1103,14 @@ label school_cafeteria_day_2_bully_scene:
             s2 "What will you do if we won't hahahhaha!"
             show school_girl_3 neutralface
             s3 "Boring come on now guys this is no longer fun."
+            $ holly_affection += 2 
             $ renpy.notify("Holly's Affection 💖") 
             show school_girl_1 at slow_moveoutright
             show school_girl_2 at slow_moveoutright
             show school_girl_3 at slow_moveoutright
             stop music fadeout 1.0
-            show lily neutraleye
+            show lily neutraleye:
+                toright
             l "Are you alright?"
             show holly neutraleye smilecface
             h "Yeah they're nothing."
@@ -1101,16 +1128,22 @@ label school_cafeteria_day_2_bully_scene:
             scene black with dissolve
             hide lily  with dissolve
             hide holly with dissolve
+            pause 1.0
             jump date_intro
 
         "Pretend nothing happen":
             show school_girl_1 at slow_moveoutright
             show school_girl_2 at slow_moveoutright
             show school_girl_3 at slow_moveoutright
-            show lily neutraleye at enter_from_right_to_center
+            show lily unibase unil2 unir1 neutraleye at enter_from_right_to_center
             stop music fadeout 1.0
+            pause 1.0
             l "..."
+            l "They're gone now"
+            show lily:
+                toright
             l "Here's your napkins..."
+            $ holly_affection -= 4
             $ renpy.notify("Holly's Affection 💔")
             show holly smilecface thinkeye
             h "Thank you..."
@@ -1121,6 +1154,7 @@ label school_cafeteria_day_2_bully_scene:
             stop music
             show lily at slow_moveoutright
             scene black with dissolve
+            pause 1.0
             jump date_intro
 
 
@@ -1138,8 +1172,6 @@ label date_intro:
     show lily unibase unil1 unir2 downeye noface at enter_from_left_to_leftish
     stop sound
 
-    #charlotte note: I didn't rlly wanna make a new sprite rn so just decided she shows up to the dayte in uniform lmao
-
     show holly oface
     h "..."
     h "Ohhh... there you are"
@@ -1154,13 +1186,11 @@ label date_intro:
 
     show holly:
         full
-        toright
-        slide_to(0.4, 0.8)
+        slide_to(0.5, 0.8)
     h "Here wear this."
     play sound "audio/sfx/clothes give.ogg" volume 0.5
     show holly:
         full
-        toright
         slide_to(0.75, 0.8)
     pause 1.0
     h "Change your clothes. I want to date the Lily I know."
@@ -1172,7 +1202,7 @@ label date_intro:
         full
         rightish
     show lily d2base d2l2 d2r2 shyface downeye at enter_from_left_to_leftish
-
+    pause 1.0
     l "Are you happy now?"
     show holly winkeye smugface
     h "Now that's the Lily I know"
@@ -1186,6 +1216,7 @@ label date_intro:
     menu date_option:
         "Where do you want to go?"
         "Somewhere quiet":
+            $ holly_affection += 2
             $ renpy.notify("Holly's Affection 💖") 
             show lily downeye frownface
             l "Take me to somewhere quiet."
@@ -1199,6 +1230,7 @@ label date_intro:
             scene black with wiperight
             jump abandoned_house_date_1
         "Some Cozy":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💖") 
             show lily downeye frownface
             l "Take me to somewhere cozy"
@@ -1250,10 +1282,14 @@ label restaurant_date:
         "Do you have any hobbies?"
 
         "Yes":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖") 
             l "Yeah... I have some."
             h "Me too, I also have some hobbies!!"
 
         "No":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖") 
             l "N-n-no, I don't have one."
             h "Me too, I also don't have any hobbies!!"
     
@@ -1261,11 +1297,14 @@ label restaurant_date:
     h "Hmmm... how about"
     show holly neutraleye smileoface
     h "What's your favourite color?"
+    "You can input your answer by typing"
     $ fav_color = renpy.input("What's your favorite color?").strip()
     if fav_color == "":
         $ fav_color = "lilac"
     l "I like [fav_color]"
     show holly crazyeye d2r2
+    $ holly_affection += 1
+    $ renpy.notify("Holly's Affection 💖") 
     h "Ohh what a coincidence I also love [fav_color]"
     h "I can't believe it we're so similar haahahhahahahahah"
 
@@ -1274,8 +1313,10 @@ label restaurant_date:
     $ childhood_dream = renpy.input("What did you want to be when you grew up?").strip()
     if childhood_dream == "":
         $ childhood_dream = "Police"
+    $ holly_affection += 1
     l "I want to be a [childhood_dream]"
     show holly crazyeye d2r2
+    $ renpy.notify("Holly's Affection 💖") 
     h "whaaaaaat!! me too! I also want to be a [childhood_dream]"
     h "We are really the same, I feel like I found my soulmate hehehe"
 
@@ -1355,7 +1396,7 @@ label restaurant_date:
         "Push Holly":
             show holly shockeye oface:
                 medlong
-                toright
+                toleft
                 slide_to(0.8, 0.8)
             l "Get away from me..."
             show holly cryeye frownface
@@ -1369,13 +1410,13 @@ label restaurant_date:
             show holly:
                 medlong
                 toright
-                slide_to(0.6, 0.8)
+                slide_to(0.7, 0.8)
             h "Where's the Lily I know?"
             l "..."
             show holly grimaceoface:
                 medlong
                 toright
-                slide_to(0.4, 0.8)
+                slide_to(0.5, 0.8)
             h "WHERE IS SHE?"
             t "Erm... Ahem!"
             show teacher:
@@ -2843,7 +2884,7 @@ label asylum_ending:
     play music "audio/ambience/asylum.ogg" fadein 1.0 volume 0.75
     scene bg mental asylum with fade
 
-    show lily_here with dissolve:
+    show lily pjbase pjl2 pjr2 frownface emptiness with dissolve:
         full
         center
 
@@ -2851,11 +2892,17 @@ label asylum_ending:
     l "Am I really a freak..."
     l "Am I really not normal..."
     l "What's wrong with me..."
+    show lily grimacecface scaredeye:
+        parallel:
+            ease 0.5 medlong
+        parallel:
+            ease 0.5 center
     l "..."
     l "I just want to be myself..."
     l "Is it wrong to be me..."
     l "..."
-
+    show lily grimaceoface cryeye
+    l "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     camera at frantic_shake
     $ quick_menu = False
     window hide
@@ -2868,7 +2915,9 @@ label asylum_ending:
     pause 1.0
     scene black with fade
     play music "audio/bgm/ending theme.ogg" fadein 0.5
-    pause 1.0        
+    pause 1.0
+    "Bad end"
+    "Play the game again to unlock all 3 endings"
     show text "{font=gui/fonts/cmunorm.ttf}{size=120}Thank you for playing :>{/size}{/font}"
     pause 3.0
     show end_credits with dissolve
