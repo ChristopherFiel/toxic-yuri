@@ -2000,11 +2000,11 @@ label lily_monologue_day_2:
             "What can we do?",
             "She's not normal",
             "Is this what happens when someone grows up away from their father",
-            "she's so rebellious",
-            "she doesn't know who she is",
-            "she acts so masculine",
-            "she speaks so strong",
-            "she likes other girls",
+            "She's so rebellious",
+            "She doesn't know who she is",
+            "She acts so masculine",
+            "She speaks so strong",
+            "She likes other girls",
             "That's not normal",
         ]
 
@@ -2020,7 +2020,7 @@ label lily_monologue_day_2:
             "That's indeed not normal",
             "Do you want me to fix your daughter...",
             "Lily, what a beautiful name",
-            "alright leave it up to me",
+            "Alright leave it up to me",
             "I'll fix her",
             "I'll fix her good...",
         ]
@@ -2041,14 +2041,15 @@ label morning_day_3:
     stop sound fadeout 1.0
     play music "audio/ambience/morning_ambience.ogg" fadein 3.0
     scene bg bed top view with eyeopen_slow
-    show lily_here:
+    show lily pjbase pjl1 pjr2 cryeye frownface:
         full 
         center
     
-    l "Another weird dream huh?"
-    l "when will this stop?"
+    l "Another weird dream, huh?"
+    l "When will this stop?"
+    show lily thinkeye
     l "What are those dreams even about?"
-    show lily_here at centerright with ease
+    show lily downeye pjlphone at centerright with ease
     play sound "audio/sfx/phone notification.ogg"
 
     h_nvl "Good morning [holly_nickname]"
@@ -2059,18 +2060,21 @@ label morning_day_3:
     h_nvl "I'll keep you safe at your closet just as you like"
     h_nvl "see you later [holly_nickname]"
 
-    l "Oh thank God"
+    show lily pjl1 pjr2 
+    l "Oh thank God."
     l "I hope I can trust her…"
-    l "We are good friends on the internet"
-    l "She helped me understand myself"
-    l "after all... maybe… we might just have a little misunderstanding"
-    l "she might not be really that bad at all"
+    l "We are good friends online"
+    show lily downeye smilecface
+    l "She helped me understand myself."
+    l "After all... maybe… we might just have had a little misunderstanding."
+    l "She might not be really that bad at all."
 
     play sound "audio/sfx/bus_horn.ogg"
-    l "uhhh... yeah... I still have school today"
+    show lily thinkeye frownface
+    l "Uhhh... yeah... I still have school today..."
     stop music fadeout 2.0
-    show lily_here at fast_moveoutright
-    l "cooommiiiing"
+    show lily at fast_moveoutright
+    l "Cooommiiiing-"
     scene black with wiperight_medium
     play sound "audio/sfx/running.ogg"
     pause 2.0
@@ -2080,31 +2084,40 @@ label morning_day_3:
 
 label bus_scene_day_3:
     scene bg bus interior with wiperight
-    show lily_here at enter_from_left_to_center
+    show lily unibase unil1 unir1 neutraleye at enter_from_left_to_center
 
     play sound "audio/sfx/bus start.ogg"
+    # SHOW: Picture of rural Southeast Asian country (Scene 1)
     l "This town is old, and rusty."
     l "I forgot the exact reason why I hated it."
 
     stop sound
     play music "audio/ambience/road ambiance.ogg" fadein 2.0
-    l "I just have this feeling ever since."
+    # SHOW: Picture of rural Southeast Asian country (Scene 2)
+    l "I just have this feeling ever since..."
+    show lily thinkeye unir2
     l "Why can't I be me here? What am I scared of?"
     l "I don't remember…"
     l "I just know that if I don't act exactly as expected, something bad will happen…"
+    show lily cryeye
     l "Something out of a nightmare."
     l "Something that maybe I'd like to forget."
-    l "I wonder if I leave this place, I'll be free from that feeling."    
+    show lily downeye
+    l "I wonder if I leave this place, I'll be free from that feeling."
+    # SHOW: Picture of a lily flower
+    
     l "At least for now, I still feel safe online sharing who I really am."
-    l "One day I'll come out of my closet and kiss a girl in front of everyone…"
-    l "But not right now... She's just making things much harder for me."
+    show lily neutraleye
+    l "One day, I'll come out of my closet and kiss a girl in front of everyone…"
+    show lily downeye
+    l "But not right now... She's just making things so much harder for me."
     stop music fadeout 2.0
     l "I wish all of this would just end soon…"
     pause 1.0
-    show lily_here at slow_moveoutright
+    show lily at slow_moveoutright
     stop sound
     scene black with wiperight
-    hide lily_here
+    hide lily
     jump school_day_3
     
 
@@ -2119,16 +2132,16 @@ label school_day_3:
     show teacher with dissolve:
         full
         center
-    t "Good morning"
-    t "For today, we're going to learn about plants, and flowers"
+    t "Good morning."
+    t "For today, we're going to learn about plants and flowers."
     t "Who here likes flowers?"
-    s5 "oh me! I like it when you mix it with water, and yeast then heat it for a while it's really good"
-    t "Thank you for your answer, but I'm talking about F-l-o-w-e-r flowers not F-l-o-u-r flour"
-    t "let's move on... I have a question for you guys "
-    t "does anybody here knows what flower symbolises innocence and rebirth"
+    s5 "Oh me! I like it when you mix it with water and yeast, then heat it for a while. It's really good!"
+    t "Thank you for your answer, but I'm talking about F-l-o-w-e-r flowers, not F-l-o-u-r flour"
+    t "Let's move on... I have a question for you guys."
+    t "Does anybody here know what flower symbolises innocence and rebirth?"
     t "Lily!"
-    t "What do you think is the answer"
-    show lily_here:
+    t "What do you think is the answer?"
+    show lily unibase unil1 unir1 spookeye:
         full
         toright
         enter_from_left_to_leftish(0.1, 1.5)
@@ -2136,51 +2149,54 @@ label school_day_3:
         full
         toleft
         slide_to(0.9)
-    l "{i}uhhh...{/i}"
+    l "{i}Uhhh...{/i}"
     menu flower_meaning:
-        "what flower symbolises innocence and rebirth"
+        "What flower symbolises innocence and rebirth?"
         "Cosmos":
-            l "Hmmm... Cosmos"
-            t "Study harder, that's incorrect"
+            l "Hmmm... Cosmos?"
+            t "Study harder, that's incorrect."
+            $ renpy.notify("Holly's Affection 💔")
         "Daffodil":
             l "Uhhh... Daffodils?"
-            t "Nice try but, that's not correct"
-        "Lily":
-            $ holly_affection += 2
-            l "I think the poem is about..."
-            t "Very good correct!"
+            t "Nice try but that's not correct."
             $ renpy.notify("Holly's Affection 💖") 
-        "I dont know":
+        "Lily":
+            l "I think the poem is about... lilies?"
+            t "Very good, correct!"
+            $ renpy.notify("Holly's Affection 💖") 
+        "I don't know":
             l "I don't know..."
-            t "It's alright"
-            t "I should've expected less from you"
-    hide lily_here with dissolve
+            t "It's alright."
+            t "I should've expected less from you."
+            $ renpy.notify("Holly's Affection 💔")
+    hide lily with dissolve
     show teacher:
         slide_to(0.5)
-    t "The flower that symbolizes innocence and rebirth are Lilies "
-    t "In Christian art Virgin Mary is usually depicted being given Lilies by Angel Gabriel."
-    t "That's why lilies are usually used at weddings representing new beginnings,
+    t "The flower that symbolizes innocence and rebirth are Lilies."
+    t "In Christian art, the Virgin Mary is usually depicted being given Lilies by the Angel Gabriel."
+    t "That's why lilies are usually used at weddings, representing new beginnings,
     and at funerals which symbolizes the innocence of the soul after death." 
-    t "alright moving on"
-    show holly_here:
+    t "Alright moving on~"
+    show holly unibase unil1 unir1 neutraleye oface:
         full
         toright
         enter_from_left_to_leftish(0.1, 1.5)
-    h "{i}hooooaaaaaah{/i}"
+    h "{i}hooooaaaaaah{/i}" #whats hoooooaaaaah?
     t "Yes, holly!"
-    h "huh? what did I do?"
-    hide holly_here with dissolve
-    t "No, I mean the flower is holly"
-    t "Hollies are known for their bright red winter berries, symbolizing the holiday season"
-    t "They are dioecious, meaning each bush or tree is strictly male or female"
-    t "Now did you know that lilies, and hollies cannot grow together"
-    t "Hollies grow into large, dense, woody shrubs or trees"
-    t "They cast a deep shadow over lower-growing plants, starving sun-loving flowers like lilies and killing them"
+    show holly shockeye frownface
+    h "Huh? What did I do?"
+    hide holly with dissolve
+    t "No, I mean the flower is holly."
+    t "Hollies are known for their bright red winter berries, symbolizing the holiday season."
+    t "They are dioecious, meaning each bush or tree is strictly male or female."
+    t "Now, did you know that lilies and hollies cannot grow together?"
+    t "Hollies grow into large, dense, woody shrubs or trees."
+    t "They cast a deep shadow over lower-growing plants, starving sun-loving flowers like lilies and killing them."
     stop music
     play sound "audio/sfx/school bell.ogg"
-    t "Before you leave, for your assignment this weekend I want you to take a sample of your favourite flower"
-    t "Give it a brieft description, of what it is, what does it likes, and how to take care of it, submit it to me next week alright"
-    t "Alright class dismissed"
+    t "Before you leave, for your assignment this weekend, I want you to take a sample of your favourite flower."
+    t "Give it a brief description of what it is, what does it likes, and how to take care of it, submit it to me next week, okay?"
+    t "Alright, class dismissed!"
     show teacher at slow_moveoutright
     pause 2.0
 
@@ -2201,26 +2217,30 @@ label school_day_3:
         left
 
     show school_girl_1 at center, school_pop
-    s1 "I can't believe that bitch Holly is still here I guess we haven't done enough"
-    s1 "I won't survive a year in this class with her"
+    s1 "I can't believe that bitch Holly is still here. I guess we haven't done enough."
+    show school_girl_1 grimaceface
+
+    s1 "I won't survive a year in this class with her."
 
     show school_girl_1 at center, school_idle
-    show school_girl_2 at rightish, school_pop
-    s2 "I have a tea, so yesterday after class I have seen her with..."
-    s2 "Two of them is too disgusting for me to handle"
+    show school_girl_2 oface at rightish, school_pop
+    s2 "I have some tea~"
+    s2 "So, yesterday after class, I saw her with..."
+    s2 "The two of them are too disgusting for me to handle-"
+    show school_girl_2 neutralface
 
     show school_girl_2 at rightish, school_idle
     show school_girl_3 at leftish, school_pop
-    s3 "I see... but let's see what will happen next before doing something"
+    s3 "I see... but let's see what will happen next before doing something."
 
     show school_girl_3 at leftish, school_idle
-    show school_girl_4 at right, school_pop
-    s4 "He loves me, he loves me not, uh flowers symbol of love so romantic"
+    show school_girl_4 smileoface at right, school_pop
+    s4 "He loves me, he loves me not. Ohhh~ Flowers being a symbol of love is so romantic."
 
     show school_girl_4 at right, school_idle
     show school_girl_5 at left, school_pop
     s5 "Uhhhh..."
-    s5 "What's the difference between flours, and flours aren't they the same"
+    s5 "What's the difference between flours and flours? Aren't they the same?"
     show school_girl_5 at left, school_idle
 
     play sound "audio/sfx/running.ogg"
@@ -2231,95 +2251,109 @@ label school_day_3:
     show school_girl_5 at slow_moveoutright
     pause 2.0
 
-    show lily_here:
+    show lily unibase unil1 unir1 downeye:
         full
         toright
         slide_to(0.9, 1.0)
-    show holly_here:
+    show holly unibase unil2 unir1 neutraleye smilecface:
         full
         toright
         enter_from_left_slow(0.1, 1.5)
     pause 1.0
-    h "Lily, let’s take lunch together again today"
-    h "Just as friends, just as you like, and want"
-    h "We’re friends aren’t we?"
+    h "Lily, let’s take lunch together again today!"
+    show holly winkeye smileoface
+    h "Just as friends, just as you like, and want."
+    h "We’re friends, aren’t we?"
     menu lunch_day_2:
-        "We're friends aren't we?"
+        "We're friends, aren't we?"
         "Ignore":
-            $ holly_affection -= 1
-            $ renpy.notify("Holly's Affection 💔")
             l "..."
             h "I’ll take that as a yes."
+            show lily neutraleye unil2
             l "Bu-bu-but I haven’t said anything…"            
             h "Don’t worry, I know how to act now."
             h "It’s just a casual friends' lunch, not a big deal."
         "Go with Holly":
-            $ holly_affection += 1
-            $ renpy.notify("Holly's Affection 💔")
-            l "alright it's just a lunch anyways"
+            show lily neutraleye
+            l "Alright, it's just lunch anyways"
+            show holly smugface
             h "Yaaaay! Let’s go!"
             h "I brought some food."
             l "You won't pull any of those games right?"
+            show holly smilecface neutraleye unil1
             h "Don’t worry, I know how to act now."
-            h "It’s just a casual friends' lunch, not a big deal"
-    show holly_here at slow_moveoutright
-    show lily_here at slow_moveoutright
+            h "It’s just a casual friends' lunch, not a big deal~"
+    show holly at slow_moveoutright
+    show lily at slow_moveoutright
     scene black with wipeleft
     jump school_cafeteria_day_3
 
 
 label school_cafeteria_day_3:
     play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
-    h "That table occupied I guess, let's sit right here"
+    h "That table is occupied I guess. Let's sit right here"
     scene bg cafeteria new seats with wipeleft
 
-    show lily_here:
+    show lily unibase unil1 unir2 neutraleye:
         full
         leftish
-    show holly_here:
+    show holly unibase unil1 unir1 neutraleye smilecface:
         full
         rightish
     with dissolve
 
     h "Here, have some of this."
+    show lily thinkeye
     l "Thanks."
+    show holly winkeye smileoface
     h "You're welcome! Is it good?"
     l "It's better than what we usually have here at school."
     h "Ahahahhahahaha!"
     h "Yeah, the food here sucks."
+    show lily neutraleye
     l "I know, hahahhahaha."
-    h "I'm sorry about how I've acted these past few days."
+    show holly thinkeye frownface unil2
+    h "..."
+    h "Listen... I'm sorry about how I've acted these past few days."
     h "I didn't know your situation."
+    show lily unil2 
     l "It's fine... you're new here, so you had no idea about it."
     l "I also didn't mean to push you far away and paint you as an evil person."
     l "It's fine, we could still be friends…"
 
-    show lily_here:
+    show lily:
         full
         leftish
         bump(-40)
     play sound "audio/sfx/slime.ogg"
+    show lily unibasedirty unir2 unil1 scaredeye
+    show holly shockeye
     l "Oh, shit, shit... my clothes!"
     l "What do I do?"
     l "How am I supposed to fix this…?"
-    h "Calm down [holly_nickname]— I mean, Lily"
-    h "I brought extra clothes. You can borrow them"
+    show lily cryeye
+    show holly unil1 winkeye smilecface
+    h "Calm down [holly_nickname]— I mean, Lily."
+    h "I brought extra clothes. You can borrow them."
 
-    show lily_here at slow_moveoutleft
+    show lily at slow_moveoutleft
     scene black with dissolve
     scene bg cafeteria new seats with dissolve
 
-    show holly_here:
+    show holly unibase unil2 unir1 neutraleye frownface:
         full
         rightish
     with dissolve
     pause 1.0
 
-    show lily_here at enter_from_left_to_leftish
-    h "what is taking her so long"
+    show lily unibasepants downeye unil1 unir2 at enter_from_left_to_leftish
+    h "What is taking her so long?"
+    show holly crazyeye smilecface unir2
     h "Tha-that fits you so well... *blushes*"
+    show holly winkeye
     l "This feels so uncomfortable."
     l "How can you wear this every day?"
+    show lily unil2
     l "It feels like I'm sticking out too much right now."
     l "I feel like everyone's eyes are on me."
 
@@ -2327,151 +2361,181 @@ label school_cafeteria_day_3:
     show school_girl_2 at enter_from_right_slow(0.9, 1.0)
     show school_girl_3 at enter_from_right_slow(0.5, 1.3)
 
-    show lily_here:
+    show lily:
         full
         toright
         slide_to(0.1, 0.8)
-    show holly_here:
+    show holly:
         full
         toright
         slide_to(0.25, 0.8)
 
+    show school_girl_1 smileoface
     s1 "We are, indeed."
     s2 "What are you wearing... freak?"
+    show holly frownface unir1
+    show school_girl_2 smileoface
     s3 "It looks so shit on you, haha!"
     s1 "Thank God the weirdos are now grouped together. It's easier to pick on you two."
+    show school_girl_2 grimacecface
+    show holly annoyedeye grimacecface
     s2 "You look like such an eyesore. Get out of my sight now!"
+    show holly grimaceoface
     h "CUT IT!"
+    show holly unir2
     h "I can tolerate your bullshit when it at me..."
-    show holly_here:
+    show holly unil1 unir1:
         bump (-60)
         full
         toleft
     h "BUT NOT WITH LILYYYYYYYYYYYY!"
 
-    show holly_here:
+    show holly:
         bump (-40)
         full
         toleft
         slide_to(1.5, 0.6)
-    show school_girl_1 at fast_moveoutright
-    show school_girl_2 at fast_moveoutright
-    show school_girl_3 at fast_moveoutright
+    show school_girl_1 oface at fast_moveoutright
+    show school_girl_2 oface at fast_moveoutright
+    show school_girl_3 oface at fast_moveoutright
     pause 1.0
     scene black with dissolve
     pause 1.0
     scene bg cafeteria new seats with dissolve
 
-    show lily_here:
+    show lily unibasepants unil1 unir2 downeye:
         full
         leftish
     with dissolve
     l "Is she gonna be ok"
-    l "Did I treat her to harshly? Why is she still protecting me"
-    show holly_here at enter_from_right_to_rightish
-    l "Holly... you're here"
-    h "yeah"
-    l "Tha-thanks"
-    l "It's my first time getting picked by them"
+    l "Did I treat her too harshly? Why is she still protecting me..."
+    show holly unibase unil2 unir2 winkeye smilecface at enter_from_right_to_rightish
+    show lily neutraleye
+    l "Holly... you're here!"
+    h "Yeah~"
+    l "Tha-thanks..."
+    l "It's my first time getting picked by them-"
     l "I-it's scary…"
+    show holly neutraleye smileoface unil1
     h "It's alright, I'm here."
-    h "Let's go shopping for some new clothes"
+    h "Let's go shopping for some new clothes!"
+    show holly frownface thinkeye
     h "It seems like the stains on your old clothes are really bad. I doubt you can wear them again."
+    show holly smilecface unil2
+    show lily spookeye
     l "Re-really?"
     stop music fadeout 1.0
+    show lily downeye
     l "Sounds like a good idea."
-    l "Thank God you're here. I would have panicked if this happened to me alone hahahaha"
-    h "yeah, let's go"
+    l "Thank God you're here. I would have panicked if this happened to me alone hahahaha."
+    show holly winkeye unil1
+    h "Yeah, let's go."
     scene black with dissolve
     jump shopping_date
 
 
 label shopping_date:
     play music "audio/ambience/mall.ogg" fadein 2.0 volume 0.75
-    l "I hope nobody sees us here"
+    l "I hope nobody sees us here..."
     scene bg mall with dissolve
     pause 1.0
-    show holly_here with dissolve:
+    show holly d3base d3l2 d3r1 smilecface neutraleye with dissolve:
         full
         rightish
-    show lily_here with dissolve:
+    show lily unibasepants unil1 unir2 downeye with dissolve:
         full
         leftish
 
-    l "If somebody sees us like this, we're surely dead"
-    h "It's ok this is just friends doing errands right?"
-    l "yeah right…"
-    l "let's go hurry, the women's section should be at the second floor"
-    h "boriiiiing… tomorrow's weekend anyways, let's have some fun"
-    h "I've never seen you dressed like you told me you wanted to"
-    h "Have you ever dressed like the way you wanted to?"
-    l "n-no… I can't… Why would I?"
-    h "give it a shot, it's not really a big deal"
-    l "but I'm really here for to get replacement for my uniform"
-    h "we can do that after, come on we have time"
+    l "If somebody sees us like this, we're surely dead-"
+    show holly winkeye d3r2
+    h "It's ok. This is just friends doing errands, right?"
+    show lily thinkeye
+    l "Yeah right…"
+    l "Let's go hurry, the women's section should be at the second floor."
+    show holly frownface neutraleye d3r1
+    h "Boriiiiing… tomorrow's a weekend anyways, let's have some fun!"
+    h "I've never seen you dressed like how you told me you wanted to."
+    h "Have you ever dressed the way you wanted to?"
+    show lily unil2 unir1 spookeye
+    l "N-no… I can't… Why would I?"
+    h "Give it a shot, it's not really a big deal!"
+    show lily thinkeye unil1 unir1
+    l "But I'm really here to get a replacement for my uniform..."
+    show holly d3l1 winkeye smilecface
+    h "We can do that after. Come on, we have time!"
     h "Alright, then decide what you want?"
 
     menu shopping_date_choice:
         "Alright, then decide what you want?"
         "Don't go with Holly":
-            $ holly_affection -= 1
-            $ renpy.notify("Holly's Affection 💔")
             l "I'll just buy replacement for my uniform"
             l "I dont really need to go anywhere"
             l "I don't need to change my clothings"
+            show holly shockeye oface
             h "ah…"
+            show holly annoyedeye
             h "AAAAAAAAAAAAAAHHHHHHH!!!"
+            show holly grimaceoface
             h "ARE YOU SERIOUS"
             h "THEN WHY MAKE ME GO WITH YOU?"
+            show lily scaredeye unil2
             l "But yo-you're the one who insist to go here with me"
+            show holly neutraleye smugface
             h "hahahahaahaha"
             h "Yeah, right… right…"
+            show holly winkeye
             h "I didn't mean anything I said"
             h "I'll go now myself, have fun shopping"
+            show lily downeye
             l "yeah… take care"
+            show lily neutraleye
             l "You didn't take any photos this time, did you?"
             h "… ye-yeah"
-            show holly_here at fast_moveoutright
+            show holly frownface annoyedeye at fast_moveoutright
             l "Thanks for coming alo—"
             l "long"
             l "..."
-            show lily_here at slow_moveoutleft
+            show lily cryeye at slow_moveoutleft
             scene black with wipeleft
             jump women_section
 
         "Go with Holly":
-            $ holly_affection += 1
-            $ renpy.notify("Holly's Affection 💖")
+            $ holly_affection += 4
+            show lily unil1 unir1
             l "yeah your're right yeah have some time"
             l "we could shop around for a bit and try out stuff"
+            show holly neutraleye smugface d3l2 d3r1
             h "Yippie!"
             h "I know you want to try it out don't you?"
+            show holly d3l1 winkeye
             h "I really knew you better than anyone"
+            show lily downeye
             l "I'm not really uncomfortable with my clothes..."
             h "don't worry it won't take too much time"
             h "we could get your uniform later"
+            show lily neutraleye
             l "yeah"
             h "let's go"
-            show holly_here at slow_moveoutright
-            show lily_here at slow_moveoutright
+            show holly at slow_moveoutright
+            show lily at slow_moveoutright
             scene black with wiperight
             jump men_section
 
 
 label women_section:
     scene bg women section with wipeleft
-    show lily_here at enter_from_right_to_center
+    show lily unibasepants unil2 unir1 thinkeye at enter_from_right_to_center
     l "Hmmm..."
-    show lily_here:
+    show lily:
         full
         slide_to(0.8)
     l "I don't have enough money for this one... hehe"
-    show lily_here:
+    show lily unil1 downeye:
         full
         slide_to(0.1)
     l "This one's cheaper"
     l "I'll buy this"
-    show lily_here at slide_off_right
+    show lily at slide_off_right
     pause 1.0
     scene black with dissolve
     stop music fadeout 1.0
@@ -2479,97 +2543,113 @@ label women_section:
     play sound "audio/sfx/cash register.ogg"
     c "That would be 1000"
     c "Thank you for shoping come again!"
+    $ kidnap_ending_flag = True
     jump evening_day_3
 
 
 label men_section:
     scene bg men section with wiperight
 
-    show holly_here:
+    show holly d3base d3l2 d3r1 neutraleye smugface:
         full
         rightish
-    show lily_here:
+    show lily unibasepants unil1 unir2 neutraleye:
         full
         leftish
     with dissolve
 
-    h "let me pick clothes for you"
+    h "Let me pick clothes for you"
     h "I mean Lily"
     h "I think this will fit you well"
-    show holly_here:
+    show holly d3l1:
         full
         slide_to(0.9)
     h "and this"
-    show holly_here:
+    show holly d3l2 d3r2 crazyeye smilecface:
         full
         slide_to(0.1)
     h "and this"
-    show holly_here:
+    show holly neutraleye smugface:
         full
         slide_to(0.75)
+    show lily spookeye unil2
     l "Isn't this a bit too much"
     l "It's my first time trying this stuff"
+    show holly winkeye
     h "Don't worry I'm sure it'll fit you well Yur--"
     h "I mean Lily, hurry and try it out I'll wait for you"
+    show lily downeye unir1
     l "This is so embarrassing, I hope no one will see us"
     l "If someone noticed me wearing this then..."
     l "I'll be dead I'll be dead I'll be dead"
-    show lily_here at fast_moveoutleft
+    show lily at fast_moveoutleft
     scene black with dissolve
     scene bg men section with dissolve
 
-    show holly_here with dissolve:
+    show holly d3base d3l2 d3r1 neutraleye smugface with dissolve:
         full
         rightish
 
-    show lily_here at enter_from_left_to_leftish
+    show lily d3base d3l1 d3r1 neutraleye shyface at enter_from_left_to_leftish
     pause 1.0
     l "hello"
+    show lily smilecface
+    show holly crazyeye frownface
     l "I guess this is not too bad after all..."
     h "..."
+    show holly oface
     h "ah"
     h "AAAAAAAAAAAHHHHH"
+    show holly smileoface d3r2 
     h "OMG OMG OMG OMG"
     h "it fits you so well, you're just like the Lily I imagined, the Lily I knew"
     h "THE REAL LILYYYYY"
     h "My [holly_nickname] Lily"
+    show lily spookeye d3l2
+    show holly winkeye smilecface
     l "o-ok calm down stop it or people would notice us"
     l "This feels so weird..."
+    show lily thinkeye frownface
     l "We're standing out too much... we're not acting like other people"
     l "Oh god... Oh god... I'm gonna get exposed this way"
+    show lily d3r2
     h "Don't worry I won't let that happen"
     l "Let's hurry and buy the things I actually need please!"
     l "I-I can't have anybody see me like this"
+    show lily frownface cryeye
     l "If anyone notices me and out me..."
     l "I'll be... dead..."
     h "Don't worry no one will notice you"
     h "You look like a totally new different person"
     h "But..."
 
-    show holly_here:
+    show holly d3l2 d3r1 neutraleye smileoface:
         full
         toleft
         slide_to(0.7, 1.0)
     h "It feels good doesn't it?"
 
-    show holly_here:
+    show holly smugface d3r2:
         full
         toleft
         slide_to(0.6, 0.8)
     h "To let out the real you"
     h "Not the Lily of this town, but the Lily I want, and I'll have"
 
-    show holly_here:
+    show holly crazyeye d3l1:
         full
         toleft
         slide_to(0.4, 0.6)
     h "One day it'll all come out but you'll have me"
     h "AND I'LL HAVE YO-"
 
-    show school_girl_5 at enter_from_right_to_rightish
+    show holly shockeye oface 
+    show lily spookeye grimacecface
+    show school_girl_5 smileoface at enter_from_right_to_rightish
     s5 "Oh what a coincidence if it isn't Holly, and Lily"
     s5 "Hellooooooo, it's nice meeting you around here hehe"
     s5 "Hmmmm... what are you two doing here?"
+    show school_girl_5 oface
     s5 "It's rare to see Lily around with anyone"
     s5 "You two seems supeeeeer close with each other"
     s5 "Ohh I see how it is, you two are..."
@@ -2578,25 +2658,30 @@ label men_section:
         "Ohh I see how it is, you two are..."
 
         "Deny":
-            $ holly_affection -= 1
-            $ renpy.notify("Holly's Affection 💔")
-            show lily_here:
+            show lily:
                 full
                 slide_to (0.1, 0.3)
             l "No-no-no-no it's not what you're thinking…"
             l "We're ju-"
+            show school_girl_5 smileoface
             s5 "Huh? you two are not role playing as undercover cop and a criminal"
             s5 "Aawww too bad I would love to join"
+            show holly winkeye smileoface d3l1 d3r1
             h "Uh man You blew up my cover now she knows that I'm the criminal... game's over"
             s5 "ooppsss hehe, my bad"
             show school_girl_5 at slow_moveoutright
+            show lily cryeye d3l2 d3r2 frownface
             l "That was a close one..."
+            show holly neutraleye smilecface d3l2 d3r2
             h "see I got this"
             h "I can save you"
             h "I just saved you"
+            show lily downeye smilecface d3l1
             l "Let's just go home..."
             l "That's enough for today, I don't want to wear this again"
+            show lily d3l2 cryeye smileoface
             l "I can't let anybody see me like this again"
+            show holly thinkeye frownface
             h "yeah right"
             l "I'm just gonna buy the things the I need now"
             scene black with dissolve
@@ -2608,10 +2693,8 @@ label men_section:
             jump evening_day_3
 
         "Run away":
-            $ holly_affection += 1
-            $ renpy.notify("Holly's Affection 💔")
-            show lily_here at fast_moveoutleft
-            show holly_here at fast_moveoutleft
+            show lily at fast_moveoutleft
+            show holly at fast_moveoutleft
             s5 "Hey wait!"
             s5 "You guys are role playing as undercover cop, and criminal right! I wanna join"
             s5 "awwww... there's next time I guess"
@@ -2621,21 +2704,24 @@ label men_section:
 label men_section_getaway:
     scene black with wipeleft
     scene bg women section with wipeleft
-    show holly_here at enter_from_right_to_rightish
-    show lily_here at enter_from_right_to_center
-    show lily_here:
+    show holly d3base d3l2 d3r1 neutraleye frownface at enter_from_right_to_rightish
+    show lily d3base d3l2 d3r1 neutraleye frownface at enter_from_right_to_center
+    show lily:
         full
         slide_to (0.3, 1.6)
 
     l "*huff* *huff* *huff*"
     l "I can no longer go on like this"
+    show lily spookeye grimacecface
     l "Oh God... Oh God... I wonder what is she thinking"
     l "does she knew about our relationship"
+    show holly winkeye smilecface d3l1 d3r2
     h "But we're just friends right?"
     h "I bet she's just thinking we're just playing some game"
     h "Don't worry about it"
+    show holly neutraleye smileoface
     h "I'll talk to her, and explain. Go buy your things Lily"
-    show holly_here at fast_moveoutright
+    show holly at fast_moveoutright
     l "Tha-thanks..."
     scene black with dissolve
     stop music fadeout 1.0
@@ -2650,41 +2736,48 @@ label evening_day_3:
     scene bg lily bedroom with dissolve
     play music "audio/ambience/night ambiance.ogg" fadein 2.0
 
-    show lily_here with dissolve:
+    show lily pjbase pjl1 pjr2 downeye frownface with dissolve:
         full
         center
     
     l "What a long day…"
     l "A lot of things happened…"
+    show lily smilecface
     l "Holly seems to have changed."
+    show lily thinkeye
     l "Did I judge her too quickly?"
+    show lily downeye frownface pjl2
     l "No no no... she doesn't undestand it"
     l "I'm just protecting myself..."
     l "But I'm glad she's trying her best to understand this place"
     l "She still didn't text me tonight"
+    show lily spookeye
     l "Is there something wrong?"
     l "Should I text her?"
     menu text_Holly_tonight:
         "Should I text her?"
         "Text Holly":
-            $ holly_affection += 2
             $ renpy.notify("Holly's Affection 💖")
-            show lily_here:
+            show lily downeye:
                 full
                 slide_to (0.7, 0.9)
             l_nvl "Helloooo H0lly"
             l_nvl "Are you awake"
             l "No replies huh"
         "Sleep":
-            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔") 
+            show lily neutraleye
             l "Nevermind"
             l "She must be tired as well"
             l "I'll just sleep"
+    
+    show lily shyface downeye pjl1 pjr1
     l "But she was really helpful to me today, and she didn't put me on any drama"
     l "Am I wrong about her?"
     l "Is her drama over now"
+    show lily smileoface pjl2
     l "Hahahahahaha, I was worried about nothing…"
+    show lily smilecface downeye
     l "I hope I won’t get any more of those weird dreams."
     l "What was all that about, anyways… Is it because of what happened lately?"
     l "I’m so tired…"
