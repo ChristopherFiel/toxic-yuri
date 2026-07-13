@@ -66,9 +66,10 @@ label start:
     pause 5.0
     scene bg abandoned house with eyeopen
 
-    show holly d2base d2l1 d2r2 oface crazyeye:
+    show holly d3base d3l2 d3r2 oface crazyeye:
         full
         center
+        silhouette_idle
 
     stop sound
     h_unknown "Finally, you're aaaaaall miiiiiiiine now"
@@ -76,15 +77,17 @@ label start:
     scene black with eyeclose
     scene bg abandoned house with eyeopen
     show holly d2base d2l1 d2r2 oface crazyeye:
-        center_upper
+        center_lower
         medlong
+        silhouette_idle
     h_unknown "You couldn't hide from your true self, so now I'm setting you free"
     h_unknown "I know deep down inside you also want this to happen..."
     scene black with eyeclose
     scene bg abandoned house with eyeopen
     show holly d2base d2l1 d2r2 oface crazyeye:
-        center_upper
+        center_lowest
         medclose
+        silhouette_idle
     play sound "audio/sfx/thunder.ogg" volume 0.75
     h_unknown "DON'T YOU!"
     stop music
@@ -120,10 +123,11 @@ label start:
 
 label bus_scene_day_1:
     scene bg bus interior with wiperight
-    show lily unibase unil1 unir1 spookeye noface at slide_in_left, fall_and_recover(height=400, 
-                                                        fall_time=0.5, 
-                                                        ground_time=1.5, 
-                                                        recover_time=0.6)
+    show lily unibase unil1 unir1 spookeye noface:
+        slide_in_left
+        fall_and_recover(height=400, fall_time=0.5, ground_time=1.5, recover_time=0.6)
+        slide_to_vert (1.1, 0.3)
+        slide_to (0.45, 0.6)
     play sound "audio/sfx/fall_down.ogg"
     pause 3.6
 
@@ -191,8 +195,8 @@ label bus_scene_day_1:
     l "What does she mean by that..."
     show lily unil1 neutraleye
     l "Whatever there's no way she'll go to a place like this"
+    show lily at bus_slow_moveoutright
     pause 1.0
-    show lily at slow_moveoutright
     stop sound
     scene black with wiperight
     hide lily
@@ -209,7 +213,7 @@ label school_day_1:
     s3 "There's a new transfer student"
     s4 "Wow, transferring schools at highschool is she chasing someone? How Romantic"
     s5 "Where's our teacher?"
-    show lily at enter_from_left_to_center
+    show lily unibase unil1 unir1 thinkeye noface at enter_from_left_to_center
     l "huhhh..."
     l "what are they talking about"
     hide lily with dissolve
@@ -221,16 +225,25 @@ label school_day_1:
     show teacher at fast_moveoutright
     show school_girl_1 smileoface at enter_from_right_to_center
     pause 1.0
-    s1 "Hellooo...."
+    s1 "Hey, don't look at me that way, don't you know my name..."
     show school_girl_1 at fast_moveoutright
     show school_girl_2 neutralface at enter_from_right_to_center
     pause 1.0
-    s2 "What's up..."
+    s2 "What's up everyone remember my name..."
     show school_girl_2 at fast_moveoutright
     show school_girl_3 grimaceface at enter_from_right_to_center
     pause 1.0
-    s3 "...Rememeber my name..."
+    s3 "I don't need an introduction just don't mess with me this year, that's all"
     show school_girl_3 at fast_moveoutright
+    show school_girl_4 smileoface at enter_from_right_to_center
+    pause 1.0
+    s4 "Oh my... This is embarassing I'm..."
+    show school_girl_4 at fast_moveoutright
+    show school_girl_5 neutralface at enter_from_right_to_center
+    pause 1.0
+    s5 "I am uhhh..."
+    s5 "uhhh..."
+    show school_girl_5 at fast_moveoutright
     scene black with fade
     scene bg classroom with dissolve
     t "Lastly Lily! Can you introduce yourself to us please."
@@ -256,19 +269,17 @@ label school_day_1:
     h "My name is... my name Holly and for this year I want to have..." 
     show holly crazyeye:
         medlong
-        toleft
-        center
+        center_upper
     h "I WANT WX_YuriZ TO BE MINE, AND ONLY MINE!!!"
     show holly smugface:
         medium
-        toleft
-        center
+        center_uppest
     h "I LOVE YOU WX_YuriZ I'VE COME HERE JUST TO BE WITH YOU" 
     h "I FUCKING LOVE YOOOOOOOOOOOUUUUUUUUUU WX_YuriZ"
     show holly:
         full
-        toleft
-        slide_to(0.9)
+        slide_to_vert(0.5, 0.2)
+        slide_to(0.8)
     show lily:
         full
         toright
@@ -282,6 +293,7 @@ label school_day_1:
     menu first_meet:
         "Wha-what should I say?"
         "Who-who are you talking to":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔")
             l "Who-who are you talking to"
             l "There's no girl named WX_YuriZ"
@@ -290,6 +302,7 @@ label school_day_1:
             h "Is that so?"
             h "Looks like my effort to get here are wasted how sad..."
         "N-n-no way are you holl–":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             l "I-is this reall..."
             l "N-n-no way are you holl–"
@@ -304,10 +317,7 @@ label school_day_1:
     show teacher:
         full
         slide_in_left
-    show holly:
-        full
-        toleft
-        slide_off_right(1.0)
+    show holly at slide_off_right
     t "What the hell is wrong with you! get out of this room and come to my office NOW!"
     show teacher:
         full
@@ -371,6 +381,7 @@ label evening_day_1:
 
     menu (nvl=True):
         "Are you really Holly?":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             l_nvl "Are you really Holly?"
             l_nvl "You must be joking right?"
@@ -379,6 +390,7 @@ label evening_day_1:
             show lily grimacecface
             l_nvl "How can you do this?"
         "Why would you this?":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔")
             show lily grimacecface
             l_nvl "Why would you this?"
@@ -391,6 +403,7 @@ label evening_day_1:
     show lily shyface
     menu (nvl=True):
         "No":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔")
             show lily grimaceoface angryeye
             l_nvl "are you serious?"
@@ -405,6 +418,7 @@ label evening_day_1:
             l_nvl "throw away my secrets"
             l_nvl "I won't let you destroy my image"
         "Yes":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             show lily thinkeye
             l_nvl "Yes"
@@ -450,10 +464,12 @@ label evening_day_1:
     show lily frownface
     menu (nvl=True):
         "Please stop this, I’ll do anything":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             l_nvl "please stop what you're about to do"
             l_nvl "I'll do anything"
         "Just tell me what you want":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             l_nvl "Just tell me what you want"
             l_nvl "Just don't expose me"

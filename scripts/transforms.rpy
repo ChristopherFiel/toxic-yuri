@@ -72,14 +72,35 @@ transform centerleft:
 
 transform center:
     anchor (0.55, 1.0)
-    xpos 0.5
+    xpos 0.45
 
-transform center_upper:
-    anchor (0.55, 1.0)
-    xpos 0.5
+transform center_lower:
+    anchor (0.45, 1.0)
+    xpos 0.45
+    yanchor 1.0
+    ypos 1.0
+    yoffset -200
+
+transform center_lowest:
+    anchor (0.35, 1.0)
+    xpos 0.25
     yanchor 1.0
     ypos 1.0
     yoffset -400
+
+transform center_upper:
+    anchor (0.45, 1.0)
+    xpos 0.45
+    yanchor 1.0
+    ypos 1.0
+    yoffset 200
+
+transform center_uppest:
+    anchor (0.45, 1.0)
+    xpos 0.45
+    yanchor 1.0
+    ypos 1.0
+    yoffset 600
 
 transform centerright:
     anchor (0.55, 1.0)
@@ -107,19 +128,23 @@ transform offscreenright:
 ################################################################################
 
 transform fast_moveoutright:
-    yalign 0.5
+    yalign 1.0
     easeout 0.5 xalign 1.5
 
 transform slow_moveoutright:
-    yalign 0.5
+    yalign 1.0
+    easeout 1.0 xalign 2.0
+
+transform bus_slow_moveoutright:
+    yalign -4.0
     easeout 1.0 xalign 2.0
 
 transform fast_moveoutleft:
-    yalign 0.5
+    yalign 1.0
     easeout 0.5 xalign -1.0
 
 transform slow_moveoutleft:
-    yalign 0.5
+    yalign 1.0
     easeout 1.0 xalign -1.0
 
 transform slide_in_left:
@@ -138,19 +163,19 @@ transform enter_from_left_to_center:
     xpos -0.5
     xanchor 0.5
     yalign 1.0
-    ease 1.5 xpos 0.5
+    ease 1.5 xpos 0.45
 
 transform slow_enter_from_left_to_center:
     xpos -0.5
     xanchor 0.5
     yalign 1.0
-    ease 2.5 xpos 0.5
+    ease 2.5 xpos 0.45
 
 transform enter_from_right_to_center:
     xpos 1.5
     xanchor 0.5
     yalign 1.0
-    ease 1.5 xpos 0.5
+    ease 1.5 xpos 0.45
 
 transform enter_from_right_to_rightish(target_x=0.75, dur=1.5):
     xpos 1.5
@@ -187,6 +212,10 @@ transform slide_to(x, dur=1.0):
     anchor (0.55, 1.0)
     ease dur xpos x
 
+transform slide_to_vert(y, dur=1.0):
+    anchor (0.55, 1.0)
+    ease dur ypos y
+
 transform slide_off_right(dur=1.0):
     xanchor 0.5
     easeout dur xpos 1.5
@@ -196,13 +225,13 @@ transform slide_off_right(dur=1.0):
 ## Falls / shakes / zooms
 ################################################################################
 
-transform fall_and_recover(height=400, fall_time=0.5, ground_time=1.0, recover_time=0.6, recover_offset=50):
-    anchor (0.5, 1.0)
+transform fall_and_recover(height=400, fall_time=0.5, ground_time=1.0, recover_time=0.6, recover_offset=50, settle_time=0.3):
     yoffset 0
     rotate 0
     easein fall_time yoffset height rotate 90
     linear ground_time yoffset height rotate 90
     easeout recover_time yoffset recover_offset rotate 0
+    ease settle_time yoffset 0
 
 transform frantic_shake:
     subpixel True
