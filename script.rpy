@@ -278,8 +278,8 @@ label school_day_1:
     h "I FUCKING LOVE YOOOOOOOOOOOUUUUUUUUUU WX_YuriZ"
     show holly:
         full
-        slide_to_vert(0.5, 0.2)
         slide_to(0.8)
+        slide_to_vert(0.45, 0.6)
     show lily:
         full
         toright
@@ -565,7 +565,6 @@ label morning_day_2:
     show lily shyface
     h_nvl "Oppsss I forgot you're my girlfriend now"
     h_nvl "Yippie"
-    h_nvl "*sent GIF*"
     h_nvl "I should call you something else now"
     h_nvl "What do you like???"
     h_nvl "how about..."
@@ -879,7 +878,7 @@ label school_day_2:
 
 label school_cafeteria_day_2:
     play music "audio/ambience/cafeteria.ogg" fadein 1.0 volume 0.5
-    h "Come on Lily, let’s sit right there~"
+    h "Come on Lily, lets sit right there~"
     scene bg cafeteria seat with wipeleft
     show holly unibase unil1 unir1 smilecface neutraleye with dissolve:
         full
@@ -1030,8 +1029,8 @@ label school_cafeteria_counter:
     show lily cryeye
     l "I just wanted to be me..."
     l "To express myself freely..."
-    l "This is a disaster…"
-    l "I can't let her near me…"
+    l "This is a disaster..."
+    l "I can't let her near me..."
     show lily unir2
     l "I-I don't feel safe…"
     l "I can't let her expose me, and out me…"
@@ -1983,7 +1982,7 @@ label delete_this_menu:
     stop music fadeout 1.0
     l "No no no no no no no no no no"
     scene black with eyeclose_slow
-    if holly_affection >= 3:
+    if holly_affection >= 4:
         jump lily_monologue_day_2
     else:
         jump outted_ending

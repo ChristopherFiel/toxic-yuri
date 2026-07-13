@@ -140,7 +140,7 @@ transform slow_moveoutright:
     easeout 1.0 xalign 2.0
 
 transform bus_slow_moveoutright:
-    yalign -4.0
+    yalign 1.0
     easeout 1.0 xalign 2.0
 
 transform fast_moveoutleft:

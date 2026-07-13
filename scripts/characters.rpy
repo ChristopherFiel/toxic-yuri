@@ -58,21 +58,21 @@ define l = Character(
 define h_unknown = Character(
     "Shadowy Figure",
     image = "holly",
-    color="#B44E5D",
+    color="#FE2619",
     callback=type_sound
 )
 
 define h = Character(
     "Holly",
     image = "holly",
-    color="#B44E5D",
+    color="#FE2619",
     callback=type_sound
 )
 
 define t = Character(
     "Teacher",
     image = "teacher",
-    color="#000000",
+    color="#a1a1a1",
     callback=type_sound
 )
 
@@ -82,11 +82,11 @@ define c = Character(
     color="#85BB65",
 )
 
-define s1 = Character("School Girl 1", image="school_girl_1",callback=type_sound, color="#ffffff")
-define s2 = Character("School Girl 2", image="school_girl_2",callback=type_sound, color="#ffffff")
-define s3 = Character("School Girl 3", image="school_girl_3",callback=type_sound, color="#ffffff")
-define s4 = Character("School Girl 4", image="school_girl_4",callback=type_sound, color="#ffffff")
-define s5 = Character("School Girl 5", image="school_girl_5",callback=type_sound, color="#ffffff")
+define s1 = Character("School Girl 1", image="school_girl_1", who_font="gui/fonts/AlphaSpikeRegular-vn0xL.ttf", callback=type_sound, color="#ffffff")
+define s2 = Character("School Girl 2", image="school_girl_2", who_font="gui/fonts/AlphaSpikeRegular-vn0xL.ttf", callback=type_sound, color="#ffffff")
+define s3 = Character("School Girl 3", image="school_girl_3", who_font="gui/fonts/AlphaSpikeRegular-vn0xL.ttf", callback=type_sound, color="#ffffff")
+define s4 = Character("School Girl 4", image="school_girl_4", who_font="gui/fonts/AlphaSpikeRegular-vn0xL.ttf", callback=type_sound, color="#ffffff")
+define s5 = Character("School Girl 5", image="school_girl_5", who_font="gui/fonts/AlphaSpikeRegular-vn0xL.ttf", callback=type_sound, color="#ffffff")
 
 # Shaders
 transform silhouette_fade_in:
