@@ -35,6 +35,7 @@ define config.nvl_adv_transition = Dissolve(0.3)
 
 label start:
     # Disclaimer Screen
+    stop music
     scene black
     $ quick_menu = False
     pause 1.0
@@ -66,7 +67,7 @@ label start:
     pause 5.0
     scene bg abandoned house with eyeopen
 
-    show holly d3base d3l2 d3r2 oface crazyeye:
+    show holly d2base d2l2 d2r2 oface crazyeye:
         full
         center
         silhouette_idle
@@ -2700,7 +2701,7 @@ label morning_day_4:
 
     play music "audio/ambience/morning_ambience.ogg" fadein 3.0
     scene bg bed top view with eyeopen_slow
-    show lily_here:
+    show lily pjbase pjl1 pjr2 frownface spookeye with dissolve:
         full
         center
     l "..."
@@ -2709,9 +2710,11 @@ label morning_day_4:
     l "The-these are no-not my dreams..."
     l "..."
     stop music
+    show lily grimacecface scaredeye
     l "The-they are my me-me-memories..."
     l "What the fuck!"
     l "What the fuck!"
+    show lily grimaceoface 
     l "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     camera at frantic_shake
     $ quick_menu = False
@@ -2741,38 +2744,44 @@ label kidnap_intro:
     pause 1.0
     scene bg rainy tree with fade
 
-    show lily_here with dissolve:
+    show lily pjbase pjl2 pjr2 frownface emptiness with dissolve:
         full
         left
     l "AH"
     l "..."
-    pause 4.0
-    show holly_here at enter_from_right_to_rightish
+    show holly d2base d2l2 d2r1 shockeye oface at enter_from_right_to_rightish
+    pause 3.0
     h "Lily?"
     h "What are you doing here?"
     l "..."
     h "Are you ok?"
+    show holly neutraleye
     h "You'll get sick if you stay here"
     l "..."
     play sound "audio/sfx/dry thunder.ogg"
+    show holly d2l1 d2r1 thinkeye smileoface:
+        full
+        slide_to (0.7, 0.6)
     h "It looks like it's going to rain hard"
     h "Don't worry I've got a nice place for you to hide"
-    show holly_here:
-        full
-        slide_to (0.6, 0.6)
-    h "I'll keep you safe there"
-    show holly_here:
+    show holly d2l2 d2r2 neutraleye smugface:
         full
         slide_to (0.4, 0.6)
+    h "I'll keep you safe there"
+    show holly:
+        full
+        slide_to (0.3, 0.6)
     h "I'll protect you there"
-    show holly_here:
+    show holly:
         full
         slide_to (0.2, 0.6)
+    show holly crazyeye smugface
     h "You can be the real Lily, Yuri, or [holly_nickname] there"
     h "My Lily"
     h "and We'll be together forever"
     play sound "audio/sfx/thunder.ogg" volume 0.75
     scene black
+    pause 1.0
     jump kidnap_ending
 
 
@@ -2781,7 +2790,7 @@ label kidnap_ending:
     play music "audio/ambience/heavy rain.ogg" fadein 3.0 volume 0.5
     pause 1.0
     scene bg abandoned house with eyeopen
-    show lily_here with dissolve:
+    show lily pjbase pjl2 pjr1 frownface emptiness with dissolve:
         full
         left
     pause 2.0
@@ -2789,37 +2798,37 @@ label kidnap_ending:
     play sound "audio/sfx/breathe.ogg"
     pause 5.0
     scene bg abandoned house with eyeopen
-    show lily_here with dissolve:
+    show lily pjbase pjl2 pjr2 frownface emptiness with dissolve:
         full
         left
-    show holly_here with dissolve:
+    show holly d2base d2l2 d2r1 oface crazyeye with dissolve:
         full
         right
     stop sound
     h "Finally, you're aaaaaall miiiiiiiine now"
     h "We can live together forever now, just the two us"
-    show holly_here with dissolve:
+    show holly d2base d2l2 d2r2 smilecface crazyeye:
         full
         slide_to (0.6, 0.5)
     h "You couldn't hide from your true self, so now I'm setting you free"
     h "I know deep down inside you also want this to happen..."
-    show holly_here with dissolve:
+    show holly d2base d2l1 d2r2 smugface crazyeye:
         full
         slide_to (0.3, 0.5)
     h "DON'T YOU?"
     play sound "audio/sfx/thunder.ogg" volume 0.75
     scene black with eyeclose
     scene bg abandoned house with eyeopen
-    show lily_here with dissolve:
+    show lily pjbase pjl2 pjr2 frownface emptiness with dissolve:
         medlong
         left
-    show holly_here with dissolve:
+    show holly d2base d2l2 d2r2 smugface crazyeye with dissolve:
         medlong
         right
     h "Telling you the truth..."
     h "I didn't saw you by accident, right then"
     h "I followed you"
-    show holly_here:
+    show holly:
         medlong
         slide_to(0.75, 1.0)
     h "I know everything about you Lily"
@@ -2827,7 +2836,7 @@ label kidnap_ending:
     h "I know your past"
     h "Present"
     h "and future"
-    show holly_here:
+    show holly:
         medlong
         slide_to(0.5, 1.0)
     h "The world out there is cruel for people like you Lily"
@@ -2835,7 +2844,7 @@ label kidnap_ending:
     h "But don't worry you're safe here with me"
     h "I don't care who you are anymore whethe it's Lily, Yuri, or [holly_nickname]"
     h "At the end"
-    show holly_here:
+    show holly:
         medlong
         slide_to(0.25, 1.0)
     h "YOU ARE MINE"
@@ -2843,7 +2852,7 @@ label kidnap_ending:
     menu together_forever:
         "Together 4 Ever?"
         "Yes":
-            show holly_here:
+            show holly:
                 medlong
                 slide_to(0.75, 1.0)
             h "Good"
@@ -2855,11 +2864,11 @@ label kidnap_ending:
             $ quick_menu = False
             window hide
             show screen infinite_iloveu
-            pause 3.0
+            pause 6.0
             stop music fadeout 1.0
             scene black with fade
-            play music "audio/bgm/ending theme.ogg" fadein 0.5
-            pause 3.0
+            play music "audio/bgm/ending theme.ogg" fadein 1.0
+            pause 2.0
             "Bad End"
             "Play the game again to reach all 3 endings"
             hide screen infinite_iloveu
