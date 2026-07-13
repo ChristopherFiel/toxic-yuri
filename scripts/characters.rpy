@@ -144,6 +144,9 @@ layeredimage lily:
             "images/sprites/Lily/lilyd3_base.png"
         attribute pjbase:
             "images/sprites/Lily/lilypj_base.png"
+        attribute unibasedirty:
+            "images/sprites/Lily/lilyuni_basedirty.png"
+
 
     group eye:
         attribute angryeye:

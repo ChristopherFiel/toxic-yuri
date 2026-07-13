@@ -560,7 +560,7 @@ label morning_day_2:
     play sound "audio/sfx/phone notification.ogg"
     show lily downeye frownface pjlphone at centerright with ease
     
-    h_nvl "Good morning my Yuri (emojis)"
+    h_nvl "Good morning my Yuri 🌻🤗"
     l_nvl "gm"
     h_nvl "Why are you so cold to me Lily?"
     show lily shyface
@@ -1298,7 +1298,7 @@ label restaurant_date:
     h "Hmmm... how about"
     show holly neutraleye smileoface
     h "What's your favourite color?"
-    "You can input your answer by typing"
+    "Input your answer by typing"
     $ fav_color = renpy.input("What's your favorite color?").strip()
     if fav_color == "":
         $ fav_color = "lilac"
@@ -1361,6 +1361,8 @@ label restaurant_date:
     menu holly_pressure:
         "What do I do?"
         "Run away":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             l "I'm sorry I can't do this"
             show lily:
                 bump (-40)
@@ -1395,6 +1397,8 @@ label restaurant_date:
             scene black with wiperight
             jump abandoned_house_date_3
         "Push Holly":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             show holly shockeye oface:
                 medlong
                 toleft
@@ -1506,20 +1510,27 @@ label abandoned_house_date_1:
         "Do you have any hobbies?"
 
         "Yes":
-            l "yeah... I have some"
-            h "me too I also have some hobbies"
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖") 
+            l "Yeah... I have some."
+            h "Me too, I also have some hobbies!!"
 
         "No":
-            l "N-n-no, I don't have one"
-            h "me too I also don't have any hobby"
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖") 
+            l "N-n-no, I don't have one."
+            h "Me too, I also don't have any hobbies!!"
     
     show holly thinkeye smilecface
     h "Hmmm... how about"
     h "What's your favourite color?"
+    "Input your answer by typing"
     $ fav_color = renpy.input("What's your favorite color?").strip()
     if fav_color == "":
         $ fav_color = "lilac"
     l "I like [fav_color]"
+    $ holly_affection += 1
+    $ renpy.notify("Holly's Affection 💖") 
     show holly crazyeye d2r2
     h "Ohh what a coincidence I also love [fav_color]"
     h "I can't believe it we're so similar haahahhahahahahah"
@@ -1530,7 +1541,8 @@ label abandoned_house_date_1:
     if childhood_dream == "":
         $ childhood_dream = "Police"
     l "I want to be a [childhood_dream]"
-    
+    $ holly_affection += 1
+    $ renpy.notify("Holly's Affection 💖") 
     show holly crazyeye d2r2
     h "Whaaaaaat!! me too! I also want to be a [childhood_dream]"
     h "We are really the same, I feel like I found my soulmate hehehe"
@@ -1605,12 +1617,11 @@ label abandoned_house_date_1:
             $ push_holly_count += 1
             show holly shockeye oface:
                 medlong
-                toright
                 slide_to(0.9, 0.8)
 
             if push_holly_count == 1:
                 l "Ge-get away from me..."
-                show holly annoyedeye smugface:
+                show holly annoyedeye oface:
                     parallel:
                         ease 0.5 full
                     parallel:
@@ -1624,16 +1635,16 @@ label abandoned_house_date_1:
                 h "Lily!"
                 h "Why are you doing this?"
                 show holly cryeye frownface d2r2
-                h "I thought we were friends…"
-                h "*sobs*"
+                h "I thought we were friends..."
+                show holly grimaceoface
                 h "WAAAAAAAAAAAAAAAAAAAAAH!!!"
-                show holly d2r1
-                l "I know… I know we were friends-"
+                show holly d2r1 frownface
+                l "I know... I know we were friends-"
                 l "Bu-bu-but I"
                 h "Why are you doing this to me?"
                 h "Why are you like this?"
                 h "What's wrong with you?"
-                show lily oface
+                show lily oface 
                 l "wha-what do you mean?"
                 l "I'm just acting, like how we are supposed to act!"
                 show lily frownface
@@ -1670,39 +1681,44 @@ label abandoned_house_date_1:
                 l "get away from me please"
                 h "You told me you want to be closer with me…"
 
-                show holly_here:
+                show holly annoyedeye grimacecface:
                     full
                     toleft
                     slide_to(0.7, 0.8)
                 h "spend time with me…"
 
-                show holly_here:
+                show holly grimaceoface:
                     full
                     toleft
                     slide_to(0.4, 0.6)
-                h "do things with me…"
+                h "do things with me..."
 
-                show holly_here:
+                show holly crazyeye grimacecface:
                     full
                     toleft
                     slide_to(0.3, 0.5)
                 h "BE CLOSER TO ME!"
 
                 stop music fadeout 2.0
+                show lily d2l2 
                 l "I can't be seen doing like this here, if only you understand you'd knew"
                 l "a-a-I'll be dead if I'm seen doing anything like this"
-                h "..."
-                show holly_here:
+                show holly d2l2 shockeye oface:
                     full
                     toleft
                     slide_to(0.6, 0.8)
+                h "..."
                 l "I'll be dead…"
                 h "what do you mean?"
+                show holly frownface
                 l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
                 h "what abo--"
+                show lily grimacecface
                 l "I can't be gay"
                 h "..."
-                l "It's already, can we just go home already…"
+                l "It's already, can we just go home already..."
+                show lily frownface
+                show holly neutraleye oface
                 h "yeah right… right..."
                 h "Let's just go home now, we're still friends right?"
                 l "yes of course…"
@@ -1714,41 +1730,47 @@ label abandoned_house_date_2:
     $ time_of_day = "DAY"
     scene bg outside abandoned house with wiperight
 
-    show lily_here with dissolve:
-        full
-        left
-    show holly_here with dissolve:
+    show holly d2base d2l1 d2r1 grimaceoface shockeye with dissolve:
         full
         right
+    show lily d2base d2l2 d2r1 scaredeye grimaceoface with dissolve:
+        full 
+        left
 
     h "Lily!"
+    show holly shockeye oface
     h "Why are you doing this?"
+    show holly cryeye frownface d2r2
     h "I thought we were friends…"
-    h "*sobs*"
+    show holly grimaceoface
     h "WAAAAAAAAAAAAAAAAAAAAAH!!!"
-    l "I know… I know we were friends"
+    show holly d2r1 frownface
+    show lily grimacecface
+    l "I know... I know we were friends"
     l "bu-bu-but I"
+    show lily d2l1 d2r2
     h "Why are you doing this to me?"
     h "Why are you like this?"
     h "What's wrong with you?"
+    show lily oface 
     l "wha-what do you mean?"
     l "I'm just acting, like how we are supposed to act"
     h "Why can't you be like the Lily I knew, and the way you are supposed to act"
     h "You want to do something like this right"
 
-    show holly_here:
+    show holly neutraleye smileoface:
         full
         toleft
         slide_to(0.7, 1.0)
     h "Right?"
 
-    show holly_here:
+    show holly crazyeye smugface:
         full
         toleft
         slide_to(0.4, 0.8)
     h "Right…"
 
-    show holly_here:
+    show holly:
         full
         toleft
         slide_to(0.3, 0.6)
@@ -1758,49 +1780,49 @@ label abandoned_house_date_2:
         "Run away":
             l "Stop followin me!"
             l "please"
-            show lily_here at fast_moveoutleft
+            show lily at fast_moveoutleft
             scene black with wiperight
             jump abandoned_house_date_3
 
         "Push Holly":
-            show holly_here:
+            show holly d2l2 annoyedeye oface:
                 full
-                toright
                 slide_to(0.9, 0.8)
             l "Stop!"
             l "I don't feel safe around you"
-
+            show lily d2l1 d2r2 scaredeye oface
             l "ca-can we stop this…"
             l "get away from me please"
 
-            show holly_here:
+            show holly d2l1 annoyedeye grimaceoface:
                 full
                 toleft
                 slide_to(0.5, 1.0)
             h "You told me you want to be closer with me…"
 
-            show holly_here:
+            show holly annoyedeye grimacecface:
                 full
                 toleft
                 slide_to(0.4, 0.8)
             h "spend time with me…"
 
-            show holly_here:
+            show holly grimaceoface:
                 full
                 toleft
                 slide_to(0.3, 0.6)
             h "do things with me…"
 
-            show holly_here:
+            show holly crazyeye grimacecface:
                 full
                 toleft
                 slide_to(0.2, 0.5)
             h "BE CLOSER TO ME!"
 
             stop music fadeout 2.0
+            show lily d2l2 
             l "I can't be seen doing like this here, if only you understand you'd knew"
             l "a-a-I'll be dead if I'm seen doing anything like this"
-            show holly_here:
+            show holly d2l2 shockeye oface:
                 full
                 toleft
                 slide_to(0.6, 0.8)
@@ -1808,10 +1830,14 @@ label abandoned_house_date_2:
             l "I'll be dead…"
             h "what do you mean?"
             l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
+            show holly frownface
             h "what abo--"
+            show lily grimacecface
             l "I can't be gay"
             h "..."
-            l "It's already late, can we just go home already…"
+            l "It's already late, can we just go home already..."
+            show lily frownface
+            show holly neutraleye oface
             h "yeah right… right..."
             h "Let's just go home now, we're still friends right?"
             l "yes of course…"
@@ -1822,47 +1848,48 @@ label abandoned_house_date_2:
 label abandoned_house_date_3:
     scene bg tunnel with wiperight
 
-    show lily_here with dissolve:
-        full
-        left
-    show holly_here with dissolve:
+    show holly d2base d2l1 d2r1 grimacecface shockeye with dissolve:
         full
         right
+    show lily d2base d2l2 d2r1 scaredeye frownface with dissolve:
+        full 
+        left
 
     l "Stop!"
     l "I don't feel safe around you"
-
+    show lily d2l1 d2r2 scaredeye oface
     l "ca-can we stop this…"
     l "get away from me please"
 
-    show holly_here:
+    show holly annoyedeye grimaceoface:
         full
         toleft
         slide_to(0.5, 1.0)
     h "You told me you want to be closer with me…"
 
-    show holly_here:
+    show holly annoyedeye grimacecface:
         full
         toleft
         slide_to(0.4, 0.8)
-    h "spend time with me…"
+    h "spend time with me..."
 
-    show holly_here:
+    show holly grimaceoface:
         full
         toleft
         slide_to(0.3, 0.6)
-    h "do things with me…"
+    h "do things with me..."
 
-    show holly_here:
+    show holly crazyeye grimacecface:
         full
         toleft
         slide_to(0.2, 0.5)
     h "BE CLOSER TO ME!"
 
     stop music fadeout 2.0
+    show lily d2l2
     l "I can't be seen doing like this here, if only you understand you'd knew"
     l "a-a-I'll be dead if I'm seen doing anything like this"
-    show holly_here:
+    show holly d2l2 shockeye oface:
         full
         toleft
         slide_to(0.6, 0.8)
@@ -1870,11 +1897,15 @@ label abandoned_house_date_3:
     l "I'll be dead…"
     h "what do you mean?"
     l "I need to act like how am I supposed to act, not like a freak, not like a disgrace"
+    show holly frownface
     h "what abo--"
+    show lily grimacecface
     l "I can't be gay"
     h "..."
-    l "It's already, can we just go home already…"
-    h "yeah right… right..."
+    l "It's already, can we just go home already..."
+    show lily frownface
+    show holly neutraleye oface
+    h "yeah right... right..."
     h "Let's just go home now, we're still friends right?"
     l "yes of course…"
     scene black with fade
@@ -1887,15 +1918,24 @@ label evening_day_2:
     scene bg lily bedroom with dissolve
     play music "audio/ambience/night ambiance.ogg" fadein 2.0
 
-    show lily_here with dissolve:
+    show lily pjbase pjl1 pjr2 spookeye frownface with dissolve:
         full
-        centerright
-
+        center
     l "I don't feel so good…"
     l "There's something wrong"
     l "No. everything's going wrong"
-
+    l "Is that Holly?"
+    show lily pjlphone downeye:
+        full
+        slide_to (0.6, 0.5)
     play sound "audio/sfx/phone notification.ogg"
+    h_nvl "{image=images/objects/pic 1.webp}"
+    show lily shyface
+    h_nvl "{image=images/objects/pic 2.webp}"
+    show lily frownface
+    h_nvl "{image=images/objects/pic 3.webp}"
+    show lily grimacecface
+    h_nvl "{image=images/objects/pic 4.webp}"
     h_nvl "We looked so cute here, [holly_nickname] :3"
     l_nvl "What the hell? When did you take this?!"
     l_nvl "what are you going to do with these?"
@@ -1935,11 +1975,14 @@ label delete_this_menu:
                 jump delete_this_menu
 
         "Give up":
+            show lily frownface
             l_nvl "I'll come talk to you tommorow"
             l_nvl "please delete this"
 
     nvl clear
+    show lily pjl1 pjr2 thinkeye
     l "What is she planning with those pirctures"
+    show lily pjl2 grimacecface spookeye
     l "If those pictures comes out then..."
     stop music fadeout 1.0
     l "No no no no no no no no no no"
