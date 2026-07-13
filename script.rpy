@@ -975,7 +975,7 @@ label school_cafeteria_day_2:
         h "You don't know me well huh?"
         show holly neutraleye smilecface    
         h "It's ok [holly_nickname] we have time to get to know each other"
-        $ holly_affection -= 3
+        $ holly_affection -= 1
         $ renpy.notify("Holly's Affection 💔")
 
     show holly winkeye smileoface unil1
@@ -988,7 +988,6 @@ label school_cafeteria_day_2:
 
     menu holly_napkin_request:
         "I don't want to play your games.":
-            $ holly_affection -= 1
             $ holly_refusal_count += 1
 
             if holly_refusal_count == 1:
@@ -1007,7 +1006,6 @@ label school_cafeteria_day_2:
                 h "[no_text]"
                 show holly frownface
 
-            $ renpy.notify("Holly's Affection 💔")
             jump holly_napkin_request
 
         "Alright I'll get it.":
@@ -1947,8 +1945,6 @@ label evening_day_2:
 label delete_this_menu:
     menu (nvl=True):
         "Delete this!":
-            $ delete_text += 1
-            $ renpy.notify("Holly's Affection 💖")
 
             if delete_text == 1:
                 l_nvl "Hey what the hell"
@@ -1987,7 +1983,7 @@ label delete_this_menu:
     stop music fadeout 1.0
     l "No no no no no no no no no no"
     scene black with eyeclose_slow
-    jump outted_ending
+    jump lily_monologue_day_2
 
 
 label lily_monologue_day_2:
