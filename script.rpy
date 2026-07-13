@@ -4,7 +4,6 @@ default holly_nickname = "Lily"
 default holly_refusal_count = 0
 default push_holly_count = 0
 default delete_text = 0
-default kidnap_ending_flag = False
 # Use like h "lets go [holly_nickname]"
 
 
@@ -1945,6 +1944,7 @@ label evening_day_2:
 label delete_this_menu:
     menu (nvl=True):
         "Delete this!":
+            $ delete_text += 1
 
             if delete_text == 1:
                 l_nvl "Hey what the hell"
@@ -1983,7 +1983,10 @@ label delete_this_menu:
     stop music fadeout 1.0
     l "No no no no no no no no no no"
     scene black with eyeclose_slow
-    jump lily_monologue_day_2
+    if holly_affection >= 4:
+        jump lily_monologue_day_2
+    else:
+        jump outted_ending
 
 
 label lily_monologue_day_2:
@@ -2080,22 +2083,18 @@ label bus_scene_day_3:
     show lily_here at enter_from_left_to_center
 
     play sound "audio/sfx/bus start.ogg"
-    # SHOW: Picture of rural Southeast Asian country (Scene 1)
     l "This town is old, and rusty."
     l "I forgot the exact reason why I hated it."
 
     stop sound
     play music "audio/ambience/road ambiance.ogg" fadein 2.0
-    # SHOW: Picture of rural Southeast Asian country (Scene 2)
     l "I just have this feeling ever since."
     l "Why can't I be me here? What am I scared of?"
     l "I don't remember…"
     l "I just know that if I don't act exactly as expected, something bad will happen…"
     l "Something out of a nightmare."
     l "Something that maybe I'd like to forget."
-    l "I wonder if I leave this place, I'll be free from that feeling."
-    # SHOW: Picture of a lily flower
-    
+    l "I wonder if I leave this place, I'll be free from that feeling."    
     l "At least for now, I still feel safe online sharing who I really am."
     l "One day I'll come out of my closet and kiss a girl in front of everyone…"
     l "But not right now... She's just making things much harder for me."
@@ -2143,12 +2142,11 @@ label school_day_3:
         "Cosmos":
             l "Hmmm... Cosmos"
             t "Study harder, that's incorrect"
-            $ renpy.notify("Holly's Affection 💔")
         "Daffodil":
             l "Uhhh... Daffodils?"
             t "Nice try but, that's not correct"
-            $ renpy.notify("Holly's Affection 💖") 
         "Lily":
+            $ holly_affection += 2
             l "I think the poem is about..."
             t "Very good correct!"
             $ renpy.notify("Holly's Affection 💖") 
@@ -2156,7 +2154,6 @@ label school_day_3:
             l "I don't know..."
             t "It's alright"
             t "I should've expected less from you"
-            $ renpy.notify("Holly's Affection 💔")
     hide lily_here with dissolve
     show teacher:
         slide_to(0.5)
@@ -2249,12 +2246,16 @@ label school_day_3:
     menu lunch_day_2:
         "We're friends aren't we?"
         "Ignore":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             l "..."
             h "I’ll take that as a yes."
             l "Bu-bu-but I haven’t said anything…"            
             h "Don’t worry, I know how to act now."
             h "It’s just a casual friends' lunch, not a big deal."
         "Go with Holly":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💔")
             l "alright it's just a lunch anyways"
             h "Yaaaay! Let’s go!"
             h "I brought some food."
@@ -2413,6 +2414,8 @@ label shopping_date:
     menu shopping_date_choice:
         "Alright, then decide what you want?"
         "Don't go with Holly":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             l "I'll just buy replacement for my uniform"
             l "I dont really need to go anywhere"
             l "I don't need to change my clothings"
@@ -2437,7 +2440,8 @@ label shopping_date:
             jump women_section
 
         "Go with Holly":
-            $ holly_affection += 4
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖")
             l "yeah your're right yeah have some time"
             l "we could shop around for a bit and try out stuff"
             h "Yippie!"
@@ -2475,7 +2479,6 @@ label women_section:
     play sound "audio/sfx/cash register.ogg"
     c "That would be 1000"
     c "Thank you for shoping come again!"
-    $ kidnap_ending_flag = True
     jump evening_day_3
 
 
@@ -2575,6 +2578,8 @@ label men_section:
         "Ohh I see how it is, you two are..."
 
         "Deny":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             show lily_here:
                 full
                 slide_to (0.1, 0.3)
@@ -2603,6 +2608,8 @@ label men_section:
             jump evening_day_3
 
         "Run away":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💔")
             show lily_here at fast_moveoutleft
             show holly_here at fast_moveoutleft
             s5 "Hey wait!"
@@ -2660,6 +2667,7 @@ label evening_day_3:
     menu text_Holly_tonight:
         "Should I text her?"
         "Text Holly":
+            $ holly_affection += 2
             $ renpy.notify("Holly's Affection 💖")
             show lily_here:
                 full
@@ -2668,6 +2676,7 @@ label evening_day_3:
             l_nvl "Are you awake"
             l "No replies huh"
         "Sleep":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔") 
             l "Nevermind"
             l "She must be tired as well"
@@ -2684,7 +2693,10 @@ label evening_day_3:
     stop music fadeout 1.0
     scene black with eyeclose_slow
     pause 1.0
-    jump lily_monologue_day_3
+    if holly_affection >= 8:
+        jump lily_monologue_day_3
+    else:
+        jump outted_ending
 
 
 label lily_monologue_day_3:

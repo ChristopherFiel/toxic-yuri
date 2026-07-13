@@ -1,5 +1,4 @@
 # Dialogue sfx
-
 define sounds = [
     'audio/dialogue_sfx/A1.ogg', 'audio/dialogue_sfx/A2.ogg', 'audio/dialogue_sfx/A3.ogg',
     'audio/dialogue_sfx/A4.ogg', 'audio/dialogue_sfx/A5.ogg',

@@ -79,7 +79,7 @@ screen nvl_phonetext(dialogue):
                     xsize 360
                     text_align 0.5
                     italic True
-                    size 28
+                    size 22
                     slow_cps False
                     id d.what_id
                     if d.current:

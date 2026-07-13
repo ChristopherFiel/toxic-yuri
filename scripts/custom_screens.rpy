@@ -1,9 +1,8 @@
 screen warning_screen():
     text """{font=gui/fonts/cmunorm.ttf}{size=40}Warning! This game is intended for ages 18+
 It contains adult themes such as
-kidnapping, manipulation, violence,
-foul language, and sexual themes
-Viewer discretion is advised{/size}{/font}""":
+Violence, suicide, strong language, and sexual themes
+Player discretion is advised{/size}{/font}""":
         xalign 0.5
         yalign 0.45
         text_align 0.5
