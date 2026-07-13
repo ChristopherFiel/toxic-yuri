@@ -2468,54 +2468,55 @@ label shopping_date:
     menu shopping_date_choice:
         "Alright, then decide what you want?"
         "Don't go with Holly":
-            l "I'll just buy replacement for my uniform"
-            l "I dont really need to go anywhere"
-            l "I don't need to change my clothings"
+            l "I'll just buy a replacement for my uniform."
+            l "I don't really need to go anywhere else."
+            l "I don't need to change my clothing..."
             show holly shockeye oface
-            h "ah…"
+            h "Ah…"
             show holly annoyedeye
             h "AAAAAAAAAAAAAAHHHHHHH!!!"
             show holly grimaceoface
             h "ARE YOU SERIOUS"
             h "THEN WHY MAKE ME GO WITH YOU?"
             show lily scaredeye unil2
-            l "But yo-you're the one who insist to go here with me"
+            l "But yo-you're the one who insists on coming here with me!"
             show holly neutraleye smugface
-            h "hahahahaahaha"
+            h "Hahahahaahaha..."
             h "Yeah, right… right…"
             show holly winkeye
-            h "I didn't mean anything I said"
-            h "I'll go now myself, have fun shopping"
+            h "I didn't mean anything I said."
+            h "I'll go now myself, have fun shopping~"
             show lily downeye
-            l "yeah… take care"
+            l "Yeah… take care..."
             show lily neutraleye
             l "You didn't take any photos this time, did you?"
-            h "… ye-yeah"
+            h "… Ye-yeah"
             show holly frownface annoyedeye at fast_moveoutright
             l "Thanks for coming alo—"
-            l "long"
+            l "Along"
+            show lily cryeye 
             l "..."
-            show lily cryeye at slow_moveoutleft
+            show lily at slow_moveoutleft
             scene black with wipeleft
             jump women_section
 
         "Go with Holly":
             $ holly_affection += 4
-            show lily unil1 unir1
-            l "yeah your're right yeah have some time"
-            l "we could shop around for a bit and try out stuff"
+            show lily unil1 unir1 smilecface
+            l "Yeah, you're right, we have some time."
+            l "We could shop around for a bit and try out stuff!"
             show holly neutraleye smugface d3l2 d3r1
             h "Yippie!"
-            h "I know you want to try it out don't you?"
+            h "I knew you wanted to try it out."
             show holly d3l1 winkeye
-            h "I really knew you better than anyone"
+            h "I really know you better than anyone else~"
             show lily downeye
             l "I'm not really uncomfortable with my clothes..."
-            h "don't worry it won't take too much time"
-            h "we could get your uniform later"
+            h "Don't worry. It won't take too much time."
+            h "We could get your uniform later."
             show lily neutraleye
-            l "yeah"
-            h "let's go"
+            l "Yeah."
+            h "Let's go!"
             show holly at slow_moveoutright
             show lily at slow_moveoutright
             scene black with wiperight
@@ -2529,12 +2530,12 @@ label women_section:
     show lily:
         full
         slide_to(0.8)
-    l "I don't have enough money for this one... hehe"
+    l "I don't have enough money for this one... hehe."
     show lily unil1 downeye:
         full
         slide_to(0.1)
-    l "This one's cheaper"
-    l "I'll buy this"
+    l "This one's cheaper-"
+    l "I'll buy this."
     show lily at slide_off_right
     pause 1.0
     scene black with dissolve
@@ -2558,30 +2559,30 @@ label men_section:
         leftish
     with dissolve
 
-    h "Let me pick clothes for you"
-    h "I mean Lily"
-    h "I think this will fit you well"
+    h "Let me pick clothes for you."
+    h "I mean Lily-"
+    h "I think this will fit you well!"
     show holly d3l1:
         full
         slide_to(0.9)
-    h "and this"
+    h "And this-"
     show holly d3l2 d3r2 crazyeye smilecface:
         full
         slide_to(0.1)
-    h "and this"
+    h "And this!!"
     show holly neutraleye smugface:
         full
         slide_to(0.75)
     show lily spookeye unil2
-    l "Isn't this a bit too much"
-    l "It's my first time trying this stuff"
+    l "Isn't this a bit too much?!"
+    l "It's my first time trying this stuff..."
     show holly winkeye
-    h "Don't worry I'm sure it'll fit you well Yur--"
-    h "I mean Lily, hurry and try it out I'll wait for you"
+    h "Don't worry. I'm sure it'll fit you well Yur--"
+    h "I mean Lily. Hurry and try it out, I'll wait for you!"
     show lily downeye unir1
-    l "This is so embarrassing, I hope no one will see us"
+    l "This is so embarrassing, I hope no one will see us."
     l "If someone noticed me wearing this then..."
-    l "I'll be dead I'll be dead I'll be dead"
+    l "I'll be dead I'll be dead I'll be dead-"
     show lily at fast_moveoutleft
     scene black with dissolve
     scene bg men section with dissolve
@@ -2592,70 +2593,70 @@ label men_section:
 
     show lily d3base d3l1 d3r1 neutraleye shyface at enter_from_left_to_leftish
     pause 1.0
-    l "hello"
+    l "Hello?"
     show lily smilecface
     show holly crazyeye frownface
     l "I guess this is not too bad after all..."
     h "..."
     show holly oface
-    h "ah"
+    h "Ah."
     h "AAAAAAAAAAAHHHHH"
     show holly smileoface d3r2 
     h "OMG OMG OMG OMG"
-    h "it fits you so well, you're just like the Lily I imagined, the Lily I knew"
+    h "It fits you so well!!!! You're just like the Lily I imagined, the Lily I knew!"
     h "THE REAL LILYYYYY"
-    h "My [holly_nickname] Lily"
+    h "My [holly_nickname]"
     show lily spookeye d3l2
     show holly winkeye smilecface
-    l "o-ok calm down stop it or people would notice us"
+    l "O-ok calm down. Stop it, or people will notice us!"
     l "This feels so weird..."
     show lily thinkeye frownface
-    l "We're standing out too much... we're not acting like other people"
-    l "Oh god... Oh god... I'm gonna get exposed this way"
+    l "We're standing out too much... we're not acting like other people."
+    l "Oh god... Oh god... I'm gonna get exposed this way!"
     show lily d3r2
-    h "Don't worry I won't let that happen"
-    l "Let's hurry and buy the things I actually need please!"
-    l "I-I can't have anybody see me like this"
+    h "Don't worry, I won't let that happen."
+    l "Let's hurry and buy the things I actually need, please!"
+    l "I-I can't have anybody see me like this."
     show lily frownface cryeye
     l "If anyone notices me and out me..."
     l "I'll be... dead..."
-    h "Don't worry no one will notice you"
-    h "You look like a totally new different person"
+    h "Don't worry, no one will notice you"
+    h "You look like a totally new and different person!"
     h "But..."
 
     show holly d3l2 d3r1 neutraleye smileoface:
         full
         toleft
         slide_to(0.7, 1.0)
-    h "It feels good doesn't it?"
+    h "It feels good, doesn't it?"
 
     show holly smugface d3r2:
         full
         toleft
         slide_to(0.6, 0.8)
-    h "To let out the real you"
-    h "Not the Lily of this town, but the Lily I want, and I'll have"
+    h "To let out the real you."
+    h "Not the Lily of this town, but the Lily I want, and I'll have."
 
     show holly crazyeye d3l1:
         full
         toleft
         slide_to(0.4, 0.6)
-    h "One day it'll all come out but you'll have me"
+    h "One day it'll all come out, but you'll have me~"
     h "AND I'LL HAVE YO-"
 
+    show school_girl_5 smileoface at enter_from_right_to_rightish
     show holly shockeye oface 
     show lily spookeye grimacecface
-    show school_girl_5 smileoface at enter_from_right_to_rightish
-    s5 "Oh what a coincidence if it isn't Holly, and Lily"
-    s5 "Hellooooooo, it's nice meeting you around here hehe"
+    s5 "Oh, what a coincidence if it isn't Holly. And... Lily?"
+    s5 "Hellooooooo, it's nice meeting you around here hehe."
     s5 "Hmmmm... what are you two doing here?"
     show school_girl_5 oface
-    s5 "It's rare to see Lily around with anyone"
-    s5 "You two seems supeeeeer close with each other"
-    s5 "Ohh I see how it is, you two are..."
+    s5 "It's rare to see Lily around with anyone."
+    s5 "You two seem supeeeeer close with each other."
+    s5 "Ohh, I see how it is, you two are..."
 
     menu shopping_date_s5_choice:
-        "Ohh I see how it is, you two are..."
+        "Ohh, I see how it is, you two are..."
 
         "Deny":
             show lily:
@@ -2664,26 +2665,26 @@ label men_section:
             l "No-no-no-no it's not what you're thinking…"
             l "We're ju-"
             show school_girl_5 smileoface
-            s5 "Huh? you two are not role playing as undercover cop and a criminal"
-            s5 "Aawww too bad I would love to join"
+            s5 "Huh? You two are not role-playing as an undercover cop and a criminal?"
+            s5 "Aawww, too bad. I would love to join!"
             show holly winkeye smileoface d3l1 d3r1
-            h "Uh man You blew up my cover now she knows that I'm the criminal... game's over"
-            s5 "ooppsss hehe, my bad"
+            h "Uh, man. You blew up my cover, now she knows that I'm the criminal... game's over."
+            s5 "Ooppsss hehe, my bad~"
             show school_girl_5 at slow_moveoutright
             show lily cryeye d3l2 d3r2 frownface
             l "That was a close one..."
             show holly neutraleye smilecface d3l2 d3r2
-            h "see I got this"
-            h "I can save you"
-            h "I just saved you"
+            h "See, I got this."
+            h "I can save you-"
+            h "I just saved you!"
             show lily downeye smilecface d3l1
             l "Let's just go home..."
-            l "That's enough for today, I don't want to wear this again"
+            l "That's enough for today. I don't want to wear this again!"
             show lily d3l2 cryeye smileoface
-            l "I can't let anybody see me like this again"
+            l "I can't let anybody see me like this again..."
             show holly thinkeye frownface
-            h "yeah right"
-            l "I'm just gonna buy the things the I need now"
+            h "Yeah, right..."
+            l "I'm just gonna buy the things that I need now..."
             scene black with dissolve
             stop music fadeout 1.0
             pause 1.0
@@ -2695,9 +2696,9 @@ label men_section:
         "Run away":
             show lily at fast_moveoutleft
             show holly at fast_moveoutleft
-            s5 "Hey wait!"
-            s5 "You guys are role playing as undercover cop, and criminal right! I wanna join"
-            s5 "awwww... there's next time I guess"
+            s5 "Hey, wait!"
+            s5 "You guys are role-playing as undercover cops and criminals, right? I wanna join!"
+            s5 "Awwww... there's next time, I guess"
             jump men_section_getaway
 
 
@@ -2713,14 +2714,14 @@ label men_section_getaway:
     l "*huff* *huff* *huff*"
     l "I can no longer go on like this"
     show lily spookeye grimacecface
-    l "Oh God... Oh God... I wonder what is she thinking"
-    l "does she knew about our relationship"
+    l "Oh God... Oh God... I wonder what she is thinking-"
+    l "Does she know about our relationship?"
     show holly winkeye smilecface d3l1 d3r2
-    h "But we're just friends right?"
-    h "I bet she's just thinking we're just playing some game"
-    h "Don't worry about it"
+    h "But we're just friends, right?"
+    h "I bet she's just thinking we're just playing some game."
+    h "Don't worry about it!"
     show holly neutraleye smileoface
-    h "I'll talk to her, and explain. Go buy your things Lily"
+    h "I'll talk to her, and explain. Go buy your things, Lily."
     show holly at fast_moveoutright
     l "Tha-thanks..."
     scene black with dissolve
@@ -2747,10 +2748,10 @@ label evening_day_3:
     show lily thinkeye
     l "Did I judge her too quickly?"
     show lily downeye frownface pjl2
-    l "No no no... she doesn't undestand it"
+    l "No no no... she doesn't understand yet."
     l "I'm just protecting myself..."
-    l "But I'm glad she's trying her best to understand this place"
-    l "She still didn't text me tonight"
+    l "But I'm glad she's trying her best to understand this place."
+    l "Wait, she still hasn't texted me goodnight?"
     show lily spookeye
     l "Is there something wrong?"
     l "Should I text her?"
@@ -2763,23 +2764,24 @@ label evening_day_3:
                 slide_to (0.7, 0.9)
             l_nvl "Helloooo H0lly"
             l_nvl "Are you awake"
-            l "No replies huh"
+            l "No replies, huh?"
         "Sleep":
             $ renpy.notify("Holly's Affection 💔") 
             show lily neutraleye
-            l "Nevermind"
-            l "She must be tired as well"
-            l "I'll just sleep"
+            l "Nevermind."
+            l "She must be tired as well."
+            l "I'll just sleep."
     
     show lily shyface downeye pjl1 pjr1
-    l "But she was really helpful to me today, and she didn't put me on any drama"
+    l "But she was really helpful to me today, and she didn't put me in any drama."
+    l "In fact, she actually stood up for me!"
     l "Am I wrong about her?"
-    l "Is her drama over now"
+    l "Is her drama over now?"
     show lily smileoface pjl2
     l "Hahahahahaha, I was worried about nothing…"
     show lily smilecface downeye
     l "I hope I won’t get any more of those weird dreams."
-    l "What was all that about, anyways… Is it because of what happened lately?"
+    l "What was all that about, anyways… Is it because of what has happened lately?"
     l "I’m so tired…"
     l "I think I'm fallin aslee-"
 
