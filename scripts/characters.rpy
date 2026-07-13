@@ -115,8 +115,8 @@ layeredimage holly:
             "images/sprites/Holly/hollyd2_base.png"
         attribute d3base:
             "images/sprites/Holly/hollyd3_base.png"
-        attribute lilyuni_basepants:
-            "images/sprites/Lily/lilyuni_basepants.png"
+        attribute unibasedirty:
+            "images/sprites/Holly/hollyuni_basedirty.png"
 
     group eye:
         attribute annoyedeye:
@@ -199,6 +199,8 @@ layeredimage lily:
             "images/sprites/Lily/lilypj_base.png"
         attribute unibasedirty:
             "images/sprites/Lily/lilyuni_basedirty.png"
+        attribute unibasepants:
+            "images/sprites/Lily/lilyuni_basepants.png"
 
 
     group eye:

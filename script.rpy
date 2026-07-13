@@ -2385,13 +2385,11 @@ label school_cafeteria_day_3:
     show holly unil1 unir1:
         bump (-60)
         full
-        toleft
     h "BUT NOT WITH LILYYYYYYYYYYYY!"
 
     show holly:
         bump (-40)
         full
-        toleft
         slide_to(1.5, 0.6)
     show school_girl_1 oface at fast_moveoutright
     show school_girl_2 oface at fast_moveoutright
@@ -2466,11 +2464,9 @@ label shopping_date:
     menu shopping_date_choice:
         "Alright, then decide what you want?"
         "Don't go with Holly":
-            $ holly_affection -= 1
-            $ renpy.notify("Holly's Affection 💔")
-            l "I'll just buy a replacement for my uniform."
-            l "I don't really need to go anywhere else."
-            l "I don't need to change my clothing..."
+            l "I'll just buy replacement for my uniform"
+            l "I dont really need to go anywhere"
+            l "I don't need to change my clothings"
             show holly shockeye oface
             h "Ah…"
             show holly annoyedeye
@@ -2639,7 +2635,7 @@ label men_section:
     show holly crazyeye d3l1:
         full
         toleft
-        slide_to(0.4, 0.6)
+        slide_to(0.5, 0.6)
     h "One day it'll all come out, but you'll have me~"
     h "AND I'LL HAVE YO-"
 
@@ -2668,7 +2664,8 @@ label men_section:
             show school_girl_5 smileoface
             s5 "Huh? You two are not role-playing as an undercover cop and a criminal?"
             s5 "Aawww, too bad. I would love to join!"
-            show holly winkeye smileoface d3l1 d3r1
+            show holly winkeye smileoface d3l1 d3r1:
+                toright
             h "Uh, man. You blew up my cover, now she knows that I'm the criminal... game's over."
             s5 "Ooppsss hehe, my bad~"
             show school_girl_5 at slow_moveoutright
