@@ -62,6 +62,8 @@ layeredimage holly:
             "images/sprites/Holly/hollyd2_base.png"
         attribute d3base:
             "images/sprites/Holly/hollyd3_base.png"
+        attribute unibasedirty:
+            "images/sprites/Holly/hollyuni_basedirty.png"
 
     group eye:
         attribute annoyedeye:
@@ -71,11 +73,13 @@ layeredimage holly:
         attribute cryeye:
             "images/sprites/Holly/Faces/holly_eye_cry.png"
         attribute neutraleye:
-            "images/sprites/Holly/Faces/hollyuni_eye_neutral.png"
+            "images/sprites/Holly/Faces/holly_eye_neutral.png"
         attribute shockeye:
             "images/sprites/Holly/Faces/holly_eye_shock.png"
         attribute winkeye:
             "images/sprites/Holly/Faces/holly_eye_wink.png"
+        attribute thinkeye:
+            "images/sprites/Holly/Faces/holly_eye_think.png"
 
     group face:
         attribute frownface:
@@ -154,6 +158,8 @@ layeredimage lily:
             "images/sprites/Lily/Face/lily_eye_think.png"
         attribute cryeye:
             "images/sprites/Lily/Face/lily_eye_cry.png"
+        attribute spookeye:
+            "images/sprites/Lily/Face/lily_eye_spook.png"
 
     group face:
         attribute frownface:
