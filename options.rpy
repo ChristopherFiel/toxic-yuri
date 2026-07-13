@@ -145,6 +145,8 @@ default preferences.afm_time = 15
 ## literal string, not an expression.
 
 define config.save_directory = "toxic_yuri_vn-1783349608"
+define build.name = "all_about_lily_v1"
+define build.itch_project= "chrisux/all-about-lily"
 
 
 ## Icon ########################################################################

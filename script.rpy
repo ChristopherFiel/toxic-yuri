@@ -18,16 +18,16 @@ define config.nvl_adv_transition = Dissolve(0.3)
 #plz work plz work plz work
 
 #Warning splash screen
-# label splashscreen:
-#     with Pause(1)
+label splashscreen:
+    with Pause(1)
 
-#     show screen warning_screen with dissolve
-#     with Pause(5)
+    show screen warning_screen with dissolve
+    with Pause(5)
 
-#     hide screen warning_screen with dissolve
-#     with Pause(1)
+    hide screen warning_screen with dissolve
+    with Pause(1)
 
-#     return
+    return
 
 
 # The game starts here.
@@ -2819,7 +2819,7 @@ label lily_monologue_day_3:
             show_positioned_line(line, 0.2)
 
     stop sound
-    # play sound "audio/sfx/kissing.ogg" fadein 1.0 volume 0.5
+    play sound "audio/sfx/kissing.ogg" fadein 1.0 volume 0.5
 
     python:
         right_lines = [
