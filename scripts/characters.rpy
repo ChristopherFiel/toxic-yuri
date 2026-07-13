@@ -1,26 +1,80 @@
+# Dialogue sfx
+
+define sounds = [
+    'audio/dialogue_sfx/A1.ogg', 'audio/dialogue_sfx/A2.ogg', 'audio/dialogue_sfx/A3.ogg',
+    'audio/dialogue_sfx/A4.ogg', 'audio/dialogue_sfx/A5.ogg',
+    'audio/dialogue_sfx/B1.ogg', 'audio/dialogue_sfx/B2.ogg', 'audio/dialogue_sfx/B3.ogg',
+    'audio/dialogue_sfx/B4.ogg', 'audio/dialogue_sfx/B5.ogg'
+]
+
+init python:
+    def type_sound(event, interact=True, **kwargs):
+        if not interact:
+            return
+
+        if event == "show": 
+            renpy.sound.play(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+            renpy.sound.queue(renpy.random.choice(sounds))
+
+        elif event == "slow_done" or event == "end":
+            renpy.sound.stop()
+
 # Put all the characters here
 define l = Character(
     "Lily",
     image = "lily",
     color="#C8AABF",
+    callback=type_sound
 )
 
 define h_unknown = Character(
-    "Mysterious Person",
+    "Shadowy Figure",
     image = "holly",
     color="#B44E5D",
+    callback=type_sound
 )
 
 define h = Character(
     "Holly",
     image = "holly",
     color="#B44E5D",
+    callback=type_sound
 )
 
 define t = Character(
     "Teacher",
     image = "teacher",
     color="#000000",
+    callback=type_sound
 )
 
 define c = Character(
@@ -29,11 +83,11 @@ define c = Character(
     color="#85BB65",
 )
 
-define s1 = Character("School Girl 1", image="school_girl_1", color="#ffffff")
-define s2 = Character("School Girl 2", image="school_girl_2", color="#ffffff")
-define s3 = Character("School Girl 3", image="school_girl_3", color="#ffffff")
-define s4 = Character("School Girl 4", image="school_girl_4", color="#ffffff")
-define s5 = Character("School Girl 5", image="school_girl_5", color="#ffffff")
+define s1 = Character("School Girl 1", image="school_girl_1",callback=type_sound, color="#ffffff")
+define s2 = Character("School Girl 2", image="school_girl_2",callback=type_sound, color="#ffffff")
+define s3 = Character("School Girl 3", image="school_girl_3",callback=type_sound, color="#ffffff")
+define s4 = Character("School Girl 4", image="school_girl_4",callback=type_sound, color="#ffffff")
+define s5 = Character("School Girl 5", image="school_girl_5",callback=type_sound, color="#ffffff")
 
 # Shaders
 transform silhouette_fade_in:
