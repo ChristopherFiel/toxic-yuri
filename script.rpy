@@ -1228,7 +1228,7 @@ label date_intro:
             scene black with wiperight
             jump abandoned_house_date_1
         "Some Cozy":
-            $ holly_affection -= 1
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖") 
             show lily downeye frownface
             l "Take me to somewhere cozy"
@@ -1983,7 +1983,7 @@ label delete_this_menu:
     stop music fadeout 1.0
     l "No no no no no no no no no no"
     scene black with eyeclose_slow
-    if holly_affection >= 4:
+    if holly_affection >= 3:
         jump lily_monologue_day_2
     else:
         jump outted_ending
@@ -2087,13 +2087,11 @@ label bus_scene_day_3:
     show lily unibase unil1 unir1 neutraleye at enter_from_left_to_center
 
     play sound "audio/sfx/bus start.ogg"
-    # SHOW: Picture of rural Southeast Asian country (Scene 1)
     l "This town is old, and rusty."
     l "I forgot the exact reason why I hated it."
 
     stop sound
     play music "audio/ambience/road ambiance.ogg" fadein 2.0
-    # SHOW: Picture of rural Southeast Asian country (Scene 2)
     l "I just have this feeling ever since..."
     show lily thinkeye unir2
     l "Why can't I be me here? What am I scared of?"
@@ -2103,9 +2101,7 @@ label bus_scene_day_3:
     l "Something out of a nightmare."
     l "Something that maybe I'd like to forget."
     show lily downeye
-    l "I wonder if I leave this place, I'll be free from that feeling."
-    # SHOW: Picture of a lily flower
-    
+    l "I wonder if I leave this place, I'll be free from that feeling."    
     l "At least for now, I still feel safe online sharing who I really am."
     show lily neutraleye
     l "One day, I'll come out of my closet and kiss a girl in front of everyone…"
@@ -2155,12 +2151,11 @@ label school_day_3:
         "Cosmos":
             l "Hmmm... Cosmos?"
             t "Study harder, that's incorrect."
-            $ renpy.notify("Holly's Affection 💔")
         "Daffodil":
             l "Uhhh... Daffodils?"
             t "Nice try but that's not correct."
-            $ renpy.notify("Holly's Affection 💖") 
         "Lily":
+            $ holly_affection += 1
             l "I think the poem is about... lilies?"
             t "Very good, correct!"
             $ renpy.notify("Holly's Affection 💖") 
@@ -2168,7 +2163,6 @@ label school_day_3:
             l "I don't know..."
             t "It's alright."
             t "I should've expected less from you."
-            $ renpy.notify("Holly's Affection 💔")
     hide lily with dissolve
     show teacher:
         slide_to(0.5)
@@ -2267,6 +2261,8 @@ label school_day_3:
     menu lunch_day_2:
         "We're friends, aren't we?"
         "Ignore":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             l "..."
             h "I’ll take that as a yes."
             show lily neutraleye unil2
@@ -2274,6 +2270,8 @@ label school_day_3:
             h "Don’t worry, I know how to act now."
             h "It’s just a casual friends' lunch, not a big deal."
         "Go with Holly":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖")
             show lily neutraleye
             l "Alright, it's just lunch anyways"
             show holly smugface
@@ -2468,6 +2466,8 @@ label shopping_date:
     menu shopping_date_choice:
         "Alright, then decide what you want?"
         "Don't go with Holly":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             l "I'll just buy replacement for my uniform"
             l "I dont really need to go anywhere"
             l "I don't need to change my clothings"
@@ -2500,7 +2500,8 @@ label shopping_date:
             jump women_section
 
         "Go with Holly":
-            $ holly_affection += 4
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💖")
             show lily unil1 unir1
             l "yeah your're right yeah have some time"
             l "we could shop around for a bit and try out stuff"
@@ -2543,7 +2544,6 @@ label women_section:
     play sound "audio/sfx/cash register.ogg"
     c "That would be 1000"
     c "Thank you for shoping come again!"
-    $ kidnap_ending_flag = True
     jump evening_day_3
 
 
@@ -2658,6 +2658,8 @@ label men_section:
         "Ohh I see how it is, you two are..."
 
         "Deny":
+            $ holly_affection -= 1
+            $ renpy.notify("Holly's Affection 💔")
             show lily:
                 full
                 slide_to (0.1, 0.3)
@@ -2693,6 +2695,8 @@ label men_section:
             jump evening_day_3
 
         "Run away":
+            $ holly_affection += 1
+            $ renpy.notify("Holly's Affection 💔")
             show lily at fast_moveoutleft
             show holly at fast_moveoutleft
             s5 "Hey wait!"
@@ -2757,6 +2761,7 @@ label evening_day_3:
     menu text_Holly_tonight:
         "Should I text her?"
         "Text Holly":
+            $ holly_affection += 1
             $ renpy.notify("Holly's Affection 💖")
             show lily downeye:
                 full
@@ -2765,6 +2770,7 @@ label evening_day_3:
             l_nvl "Are you awake"
             l "No replies huh"
         "Sleep":
+            $ holly_affection -= 1
             $ renpy.notify("Holly's Affection 💔") 
             show lily neutraleye
             l "Nevermind"
@@ -2786,7 +2792,7 @@ label evening_day_3:
     stop music fadeout 1.0
     scene black with eyeclose_slow
     pause 1.0
-    if holly_affection >= 8:
+    if holly_affection >= 7:
         jump lily_monologue_day_3
     else:
         jump outted_ending
