@@ -1333,19 +1333,16 @@ label restaurant_date:
     show lily spookeye d2r2 d2l1
     show holly:
         medlong
-        toleft
         slide_to(0.6, 0.8)
     h "You wanted this didn't you?"
 
     show holly smileoface:
         medlong
-        toleft
         slide_to(0.5, 0.8)
     h "You told me before you wanted to do this."
 
     show holly crazyeye smugface:
         medlong
-        toleft
         slide_to(0.4, 0.8)
     h "YOU TOLD ME YOU WANTED TO DO THIS!"
 
