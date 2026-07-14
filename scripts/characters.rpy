@@ -6,46 +6,21 @@ define sounds = [
     'audio/dialogue_sfx/B4.ogg', 'audio/dialogue_sfx/B5.ogg'
 ]
 
+init -1 python:
+    renpy.music.register_channel("typing", mixer="sfx", loop=False)
+
 init python:
     def type_sound(event, interact=True, **kwargs):
         if not interact:
             return
 
-        if event == "show": 
-            renpy.sound.play(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
-            renpy.sound.queue(renpy.random.choice(sounds))
+        if event == "show":
+            renpy.sound.play(renpy.random.choice(sounds), channel="typing")
+            for i in range(29):
+                renpy.sound.queue(renpy.random.choice(sounds), channel="typing")
 
         elif event == "slow_done" or event == "end":
-            renpy.sound.stop()
+            renpy.sound.stop(channel="typing")
 
 # Put all the characters here
 define l = Character(
