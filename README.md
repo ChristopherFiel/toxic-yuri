@@ -1,11 +1,10 @@
-# toxic-yuri-vn
-How to use:
-* Click the green code button beside the add file
+# All about Lily
 
-![click this](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg-TxyDWBXO61VW81F4iA1aiUjNZ5cCwrpRA&s)
+In person, Lily is the typical high school girl. Silent, no drama, simply trying to blend in with her oppressive environment.
+Online, though, WX_YuriZ is the biggest yuri-pilled masc/androgynous loving lesbian you'll ever encounter, only rivalled by her online bestie.
+Her "friend" is so openly proud and gay that she manages to change Lily's life forever. In what way, however, you'll have to find out~ 
 
-* Download as zip
-* Inside the extracted zip folder, create a new folder named "game"
-* Move all the files inside to newly created "game" folder
-* Move the entire extracted folder in the Ren'py projects directory
-* Refresh Ren'Py, and play the game :>
+Multiple endings visual novel made for the 2026 TOXIC YURI VN JAM 2 with the theme "Psychosexual trauma".
+
+## Out now!
+Play for free at: https://chrisux.itch.io/all-about-lily
